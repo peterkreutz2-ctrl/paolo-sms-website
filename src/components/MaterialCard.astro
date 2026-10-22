@@ -37,12 +37,12 @@ const linkLabel: Partial<Record<Material['availability'], string>> = {
   </dl>
   {href && linkLabel[item.availability] && (
     <p>
-      <a class="btn btn--ghost" href={href}rel={item.availability === 'external' ? 'noopener noreferrer' : undefined}>
+      <a class="btn btn--ghost" href={href} rel={item.availability === 'external' ? 'noopener noreferrer' : undefined}>
         {linkLabel[item.availability]}
       </a>
     </p>
   )}
   {item.availability === 'pending' && <p class="muted small">Dieses Dokument wird nach Prüfung hier veröffentlicht.</p>}
-  {item.availability === 'in-app' && <p class="muted small">Dieser Inhalt gehört zur jeweiligen Installation Ihres Vereins oder Ihrer Flugschule und ist nicht auf dieser Website abrufbar.</p>}
+  {item.availability === 'in-app' && <p class="muted small">Dieser Inhalt gehört zur jeweiligen Installation deines Vereins oder deiner Flugschule und ist nicht auf dieser Website abrufbar.</p>}
   {item.releaseNote && <Unreleased>{item.releaseNote}</Unreleased>}
 </li>
