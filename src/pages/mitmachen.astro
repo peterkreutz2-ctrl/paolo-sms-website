@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import Unreleased from '../components/Unreleased.astro';
+import { SITE } from '../config';
+---
+
+<Base title="Mitmachen" description="PAOLO SMS ist ein Gemeinschaftsprojekt unter der GPL-3.0-or-later. So können Sie mitmachen, testen und Rückmeldungen geben.">
+  <section class="section" aria-labelledby="h-mit">
+    <div class="wrap">
+      <p class="eyebrow">Gemeinschaftsprojekt</p>
+      <h1 id="h-mit">Mitmachen</h1>
+      <p class="lead">PAOLO SMS entsteht als Gemeinschaftsprojekt und wird unentgeltlich angeboten. Rückmeldungen aus der Praxis, Tests und Beiträge sind willkommen.</p>
+
+      <h2>Wie Sie mitmachen können</h2>
+      <ul class="measure">
+        <li><strong>Ausprobieren:</strong> Verein oder Flugschule, die PAOLO in der Pilotphase testen möchten, melden sich per E-Mail.</li>
+        <li><strong>Rückmeldung geben:</strong> Was ist unklar, was fehlt, was hat sich im Alltag bewährt?</li>
+        <li><strong>Technisch mitarbeiten:</strong> Quellcode und Dokumentation sind während der Pilotphase auf Anfrage erhältlich.</li>
+      </ul>
+      <div class="btn-row">
+        <a class="btn" href={`mailto:${SITE.email}`}>E-Mail schreiben</a>
+      </div>
+      <Unreleased>
+        Der Quellcode der Anwendung ist vorerst nur auf Anfrage erhältlich. Die Bezeichnung „Open Source" wird erst verwendet, wenn der Quellcode öffentlich zugänglich ist.
+      </Unreleased>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="lizenz" aria-labelledby="h-lizenz">
+    <div class="wrap">
+      <h2 id="h-lizenz">Lizenz und Marke</h2>
+      <p class="measure">PAOLO SMS wird unter der Lizenz <strong>GPL-3.0-or-later</strong> veröffentlicht. Kommerzielle Nutzung und Betrieb sind erlaubt. Bei Weitergabe der Software gelten die GPL-Pflichten, insbesondere zu Lizenz und Quellcode.</p>
+      <p class="measure">Der Name PAOLO, der Name PAOLO SMS und die Logos sind vom Lizenzrecht ausgenommen und gesondert vorbehalten. Sie dürfen die Software nutzen, ohne diese Namen und Logos zu verwenden; ein Fork soll eigene Bezeichnungen führen.</p>
+      <Unreleased>
+        Offen: Markenregelung, Freigabe des Logos für die Website sowie die Lizenz der Website-Inhalte und des Website-Codes.
+      </Unreleased>
+    </div>
+  </section>
+</Base>

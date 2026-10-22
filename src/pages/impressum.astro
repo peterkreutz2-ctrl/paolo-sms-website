@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import Unreleased from '../components/Unreleased.astro';
+import { SITE, PROVIDER } from '../config';
+---
+
+<Base title="Impressum" description="Anbieterkennzeichnung der PAOLO-SMS-Projektwebsite.">
+  <section class="section" aria-labelledby="h-imp">
+    <div class="wrap measure">
+      <h1 id="h-imp">Impressum</h1>
+
+      <Unreleased label="Review-Version">
+        Diese Website ist eine vorläufige Vorschau zur Beurteilung durch Projektbeteiligte, keine offizielle Veröffentlichung. Die rechtliche Prüfung des Impressums (Rechtsgrundlagen, weiterer Kontaktweg) steht vor einer Produktivfreigabe aus.
+      </Unreleased>
+
+      <h2>Anbieter</h2>
+      <p>
+        {PROVIDER.name}<br />
+        {PROVIDER.street}<br />
+        {PROVIDER.city}
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>E-Mail: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+
+      <h2>Verantwortlich für die Inhalte</h2>
+      <p>{PROVIDER.name}, Anschrift wie oben.</p>
+
+      <h2>Hinweis zu den PAOLO-Installationen</h2>
+      <p>Diese Website ist die Projektseite von PAOLO SMS. Installationen der Anwendung werden von Vereinen und Flugschulen eigenständig betrieben. Impressum und Datenschutzerklärung einer Installation verantwortet deren Betreiber.</p>
+    </div>
+  </section>
+</Base>

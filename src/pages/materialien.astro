@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import MaterialCard from '../components/MaterialCard.astro';
+import Unreleased from '../components/Unreleased.astro';
+import { groups, materials } from '../data/materials';
+import { SITE } from '../config';
+import { url } from '../lib/url';
+---
+
+<Base title="Informationen & Materialien" description="Factsheet, Vorstellung, Leitfäden und Video zu PAOLO SMS, geordnet nach Zielgruppe und Verwendungszweck.">
+  <section class="section" aria-labelledby="h-mat">
+    <div class="wrap">
+      <p class="eyebrow">Informationen &amp; Materialien</p>
+      <h1 id="h-mat">Material zum Kennenlernen, Vorstellen und Einführen</h1>
+      <p class="lead">
+        Hier finden Sie Material, um PAOLO kennenzulernen, im Verein oder in der Flugschule vorzustellen und eine Einführung vorzubereiten. Jedes Dokument nennt Version und Stand.
+      </p>
+      <p class="muted small">
+        Gekennzeichnet ist, ob ein Material zum <strong>Download</strong> bereitsteht, über einen <strong>externen Link</strong> erreichbar ist, <strong>nur in der Anwendung</strong> zugänglich ist, <strong>auf Anfrage</strong> erhältlich ist oder noch <strong>in Vorbereitung</strong> ist.
+      </p>
+    </div>
+  </section>
+
+  {groups.map((g, i) => (
+    <section class={`section ${i % 2 === 0 ? 'section--alt' : ''}`} id={g.id} aria-labelledby={`h-${g.id}`}>
+      <div class="wrap">
+        <h2 id={`h-${g.id}`}>{g.title}</h2>
+        <p class="muted">{g.audience}</p>
+        <ul class="cards cards--2">
+          {materials.filter((m) => m.group === g.id).map((m) => <MaterialCard item={m} />)}
+        </ul>
+      </div>
+    </section>
+  ))}
+
+  <section class="section" id="versionen" aria-labelledby="h-versionen">
+    <div class="wrap">
+      <h2 id="h-versionen">Versionen und Änderungen</h2>
+      <p>Jedes veröffentlichte Dokument nennt Version, Datum und den Stand der Software, auf den es sich bezieht. Ältere Versionen bleiben unter ihrer Adresse erreichbar.</p>
+      <div class="table-wrap">
+        <table>
+          <caption>Veröffentlichte Dokumente</caption>
+          <thead><tr><th scope="col">Dokument</th><th scope="col">Version</th><th scope="col">Datum</th><th scope="col">Änderung</th></tr></thead>
+          <tbody>
+            <tr><td colspan="4">Noch kein Dokument veröffentlicht.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <Unreleased>Die Tabelle wird beim ersten freigegebenen Dokument befüllt.</Unreleased>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="nutzung" aria-labelledby="h-nutzung">
+    <div class="wrap">
+      <h2 id="h-nutzung">Nutzung der Materialien</h2>
+      <p>PAOLO SMS steht unter der GPL-3.0-or-later. Name und Logo sind vom Lizenzrecht ausgenommen und gesondert vorbehalten (<a href={url('/mitmachen/#lizenz')}>Lizenz und Marke</a>). Einzelne Dokumente wurden mit Hilfe künstlicher Intelligenz erstellt und werden damit auch aktualisiert; das steht im jeweiligen Dokument.</p>
+      <p>Fragen zu Materialien oder zur Weitergabe? <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+      <Unreleased>Die Lizenz der Dokumente ist noch festzulegen.</Unreleased>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,52 @@
+---
+// Der Ring des SMS-Regelkreises (fünf Segmente) als eigenes SVG ohne Logo.
+// Rein dekorativ: immer in einem aria-hidden-Container einsetzen.
+import { steps } from '../data/regelkreis';
+
+interface Props {
+  /** Beschriftung in der Mitte */
+  labels?: boolean;
+}
+const { labels = true } = Astro.props;
+
+const cx = 150, cy = 150, ro = 140, ri = 78, gap = 5, start = -126;
+const rad = (d: number) => (d * Math.PI) / 180;
+const pt = (r: number, a: number): [number, number] => [cx + r * Math.cos(rad(a)), cy + r * Math.sin(rad(a))];
+const f = (n: number) => n.toFixed(2);
+const rm = (ro + ri) / 2;
+
+const segs = steps.map((s, i) => {
+  const a0 = start + i * 72 + gap / 2;
+  const a1 = start + (i + 1) * 72 - gap / 2;
+  const [x0, y0] = pt(ro, a0), [x1, y1] = pt(ro, a1), [x2, y2] = pt(ri, a1), [x3, y3] = pt(ri, a0);
+  const d = `M${f(x0)} ${f(y0)} A${ro} ${ro} 0 0 1 ${f(x1)} ${f(y1)} L${f(x2)} ${f(y2)} A${ri} ${ri} 0 0 0 ${f(x3)} ${f(y3)} Z`;
+  const [lx, ly] = pt(rm, start + i * 72 + 36);
+  // Pfeilspitze in der Lücke, im Uhrzeigersinn
+  const g = start + (i + 1) * 72;
+  const [gx, gy] = pt(rm, g);
+  const tx = -Math.sin(rad(g)), ty = Math.cos(rad(g));
+  const nx = Math.cos(rad(g)), ny = Math.sin(rad(g));
+  const tri = [
+    [gx + tx * 6, gy + ty * 6],
+    [gx - tx * 4 + nx * 9, gy - ty * 4 + ny * 9],
+    [gx - tx * 4 - nx * 9, gy - ty * 4 - ny * 9],
+  ].map(([x, y]) => `${f(x)},${f(y)}`).join(' ');
+  return { ...s, d, lx, ly, tri };
+});
+---
+
+<svg viewBox="0 0 300 300" focusable="false">
+  {segs.map((s) => (
+    <g>
+      <path d={s.d} fill={s.color} />
+      <text x={f(s.lx)} y={f(s.ly)} text-anchor="middle" dominant-baseline="central" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="30" fill={s.numColor}>{s.n}</text>
+      <polygon points={s.tri} fill="#343f47" />
+    </g>
+  ))}
+  {labels && (
+    <>
+      <text x="150" y="146" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="15" fill="#343f47">Regelkreis</text>
+      <text x="150" y="166" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#55616a">im Uhrzeigersinn</text>
+    </>
+  )}
+</svg>

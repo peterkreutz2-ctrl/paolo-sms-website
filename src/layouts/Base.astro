@@ -1,0 +1,77 @@
+---
+import '../styles/global.css';
+import { PROTOTYPE, SITE, NAV, FOOTER_NAV } from '../config';
+import { url } from '../lib/url';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = SITE.description } = Astro.props;
+const fullTitle = title ? `${title} – ${SITE.name}` : SITE.titleDefault;
+const path = Astro.url.pathname;
+const current = (href: string) => !href.includes('#') && path === url(href);
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {PROTOTYPE && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="generator" content={Astro.generator} />
+    <!-- Kein Favicon im Prototyp: Das Bildmarken-Favicon ist noch nicht freigegeben. -->
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+    {PROTOTYPE && (
+      <div class="proto">
+        <div class="wrap">
+          <p><strong>Prototyp.</strong> Lokale Vorschau, nicht veröffentlicht. Mit „Nicht freigegeben" markierte Inhalte sind Platzhalter oder noch zu prüfen.</p>
+        </div>
+      </div>
+    )}
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="logo" href={url('/')}>
+          <img src={url('/brand/paolo-sms-logo.svg')} alt="PAOLO SMS – zur Startseite" width="217" height="60" />
+        </a>
+        <nav class="nav" aria-label="Hauptnavigation">
+          <ul>
+            {NAV.map((item) => (
+              <li>
+                <a href={url(item.href)} aria-current={current(item.href) ? 'page' : undefined}>{item.label}</a>
+              </li>
+            ))}
+            <li><a class="btn" href={`mailto:${SITE.email}`}>Kontakt</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <nav aria-label="Fußnavigation">
+          <ul>
+            {FOOTER_NAV.map((item) => (
+              <li><a href={url(item.href)}>{item.label}</a></li>
+            ))}
+            <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+          </ul>
+        </nav>
+        <p>PAOLO SMS – Pilot Awareness and Occurrence Learning Online. Software unter GPL-3.0-or-later.</p>
+        <p class="small">Name und Logo sind vom Lizenzrecht ausgenommen und gesondert vorbehalten. Diese Website ist die Projektseite; PAOLO-Installationen werden von Vereinen und Flugschulen eigenständig betrieben. Stand: {SITE.stand}.</p>
+      </div>
+    </footer>
+  </body>
+</html>

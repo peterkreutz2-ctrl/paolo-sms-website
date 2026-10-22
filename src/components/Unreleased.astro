@@ -1,0 +1,13 @@
+---
+// Kennzeichnet Inhalt, der noch nicht freigegeben ist. Erscheint nur im Prototyp
+// sinnvoll; `npm run release:check` zählt jede Verwendung (data-unreleased).
+interface Props {
+  label?: string;
+}
+const { label = 'Nicht freigegeben' } = Astro.props;
+---
+
+<aside class="unreleased" data-unreleased role="note" aria-label={label}>
+  <strong class="unreleased__label">{label}</strong>
+  <div><slot /></div>
+</aside>

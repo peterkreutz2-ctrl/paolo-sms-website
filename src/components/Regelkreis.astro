@@ -1,0 +1,42 @@
+---
+// SMS-Regelkreis mit den fünf Schritten aus dem Flyer.
+// Der Ring ist reine Dekoration (aria-hidden); der Inhalt steht in der Liste.
+import { steps } from '../data/regelkreis';
+import RegelkreisArt from './RegelkreisArt.astro';
+import Unreleased from './Unreleased.astro';
+---
+
+<div class="cycle">
+  <div class="cycle__art" aria-hidden="true">
+    <RegelkreisArt />
+  </div>
+
+  <ol class="steps">
+    {steps.map((s) => (
+      <li class="step" style={`--c:${s.color};--n:${s.numColor}`}>
+        <span class="step__n" aria-hidden="true">{s.n}</span>
+        <h3><span class="visually-hidden">Schritt {s.n}: </span>{s.title}</h3>
+        <p class="step__task">{s.task}</p>
+        {s.hint && <p class="step__hint">{s.hint}</p>}
+        <p class="step__in"><b>In PAOLO:</b> {s.inPaolo}</p>
+        {s.releaseNote && <Unreleased>{s.releaseNote}</Unreleased>}
+      </li>
+    ))}
+  </ol>
+</div>
+
+<p class="cycle__caption">Nach dem fünften Schritt beginnt der Kreislauf von vorn: Was die Organisation gelernt hat, fließt in die nächste Beobachtung ein.</p>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

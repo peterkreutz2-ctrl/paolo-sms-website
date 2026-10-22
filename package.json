@@ -1,0 +1,26 @@
+{
+  "name": "paolo-sms-website",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Vorläufige Review-Version der PAOLO-SMS-Produktwebsite (nicht offiziell freigegeben)",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "node scripts/check-site.mjs",
+    "release:review": "node scripts/release-check.mjs --stage=review",
+    "release:production": "node scripts/release-check.mjs --stage=production",
+    "release:check": "node scripts/release-check.mjs --stage=production",
+    "test": "astro build && node scripts/check-site.mjs",
+    "verify": "npm test && npm run release:review",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "7.4.2"
+  }
+}

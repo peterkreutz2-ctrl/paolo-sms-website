@@ -1,0 +1,132 @@
+---
+import Base from '../layouts/Base.astro';
+import Unreleased from '../components/Unreleased.astro';
+import { SITE } from '../config';
+import { url } from '../lib/url';
+
+const phases = [
+  { t: 'Entscheiden und Rollen benennen', d: 'Die Leitung beschließt die Einführung. Accountable Executive, Safety Manager und Administrator werden benannt.' },
+  { t: 'Technische Einführung', d: 'Voraussetzungen schaffen und PAOLO SMS als eigene Instanz installieren. Der empfohlene Weg ist Docker auf einem eigenen Server oder einer Ubuntu-VM.' },
+  { t: 'Einstellungen vornehmen', d: 'Benutzer anlegen, rechtliche Angaben eingeben, Organisationseinstellungen festlegen und Dokumente aus den Vorlagen erstellen.' },
+  { t: 'Betrieb aufnehmen', d: 'Den Start in der Organisation begleiten und die ersten Meldungen bearbeiten.' },
+  { t: 'Laufender Betrieb', d: 'Meldungen bearbeiten, Maßnahmen verfolgen, Sicherheitsbesprechungen durchführen und die Installation pflegen.' },
+  { t: 'Checkliste', d: 'Der Leitfaden schließt mit einer Checkliste für die Einführung.' },
+];
+
+const variants = [
+  { v: 'Docker + Better Auth + PostgreSQL in Docker', c: 'Selbstbetrieb mit hoher Datenhoheit; eigener Aufwand für Datenbank, Backups und Updates.' },
+  { v: 'Docker + Better Auth + Neon', c: 'Eigenes Login, verwaltete Cloud-Datenbank; weniger Datenbankbetrieb, dafür Anbieterabhängigkeit.' },
+  { v: 'Docker + Clerk + Neon', c: 'Verwaltetes Login und verwaltete Datenbank; geringer eigener Aufwand, stärkere Anbieterabhängigkeit.' },
+];
+---
+
+<Base title="Einführung und Betrieb" description="So führen Gleitschirmvereine und Flugschulen PAOLO SMS ein: Rollen, Ablauf, Betriebswege und Verantwortung.">
+  <section class="section" aria-labelledby="h-intro">
+    <div class="wrap">
+      <p class="eyebrow">Für Verein und Flugschule</p>
+      <h1 id="h-intro">Einführung und Betrieb</h1>
+      <p class="lead">
+        Sie brauchen keine Vorkenntnisse im Sicherheitsmanagement. Wichtig sind eine Entscheidung der Leitung, ein benannter Safety Manager und ein Betriebsweg, der zu Ihrer Organisation passt.
+      </p>
+      <Unreleased>
+        Entwurf auf Grundlage des Betreiberleitfadens. Die Aussage „keine Vorkenntnisse" ist noch zu belegen; die fachliche Bestätigung steht aus.
+      </Unreleased>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="h-weg">
+    <div class="wrap">
+      <h2 id="h-weg">Der Weg in sechs Schritten</h2>
+      <ol class="steps">
+        {phases.map((p, i) => (
+          <li class="step" style="--c: var(--petrol); --n: #fff">
+            <span class="step__n" aria-hidden="true">{i + 1}</span>
+            <h3>{p.t}</h3>
+            <p>{p.d}</p>
+          </li>
+        ))}
+      </ol>
+      <p>Der ausführliche Leitfaden steht unter <a href={url('/materialien/')}>Informationen &amp; Materialien</a>.</p>
+    </div>
+  </section>
+
+  <section class="section" id="rollen" aria-labelledby="h-rollen">
+    <div class="wrap">
+      <h2 id="h-rollen">Rollen</h2>
+      <p class="lead">PAOLO unterscheidet, wer meldet, wer bearbeitet und wer verantwortet.</p>
+      <dl class="roles">
+        <dt>Melder</dt>
+        <dd>Jede Person, ohne Anmeldung. Meldungen sind auf Wunsch anonym.</dd>
+        <dt>Benutzer</dt>
+        <dd>Ein an Sicherheitsthemen interessiertes Mitglied der Organisation.</dd>
+        <dt>Safety Assistant</dt>
+        <dd>Eine vertrauenswürdige und kompetente Ansprechperson, die mit sensiblen Informationen verantwortungsvoll umgeht. In einer Flugschule etwa ein erfahrener Fluglehrer, in einem Verein ein geeigneter Funktionsträger.</dd>
+        <dt>Safety Manager</dt>
+        <dd>Setzt das Sicherheitsmanagementsystem operativ um, koordiniert und hält es aufrecht. Eine Vertretung mit denselben Aufgaben ist möglich.</dd>
+        <dt>Administrator</dt>
+        <dd>Betreut den technischen Betrieb der Installation: Konfiguration, Wartung, Zugänge. Das kann eine externe IT-Person sein.</dd>
+        <dt>Accountable Executive</dt>
+        <dd>Trägt die Gesamtverantwortung für das Sicherheitsmanagementsystem und unterzeichnet die Sicherheitsrichtlinie. Die Verantwortung ist nicht delegierbar. Im Verein üblicherweise der Vorstand, in der Flugschule die Schulleitung. Das ist keine PAOLO-Rolle; die Person wird in der Anwendung nur dokumentarisch benannt.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="betrieb" aria-labelledby="h-betrieb">
+    <div class="wrap">
+      <h2 id="h-betrieb">Betriebswege</h2>
+      <p class="lead">
+        Jeder Verein und jede Flugschule betreibt eine eigene Installation, selbst oder über einen beauftragten IT-Dienstleister. PAOLO SMS ist keine zentral betriebene Plattform und für eine Organisation je Installation ausgelegt.
+      </p>
+      <p>Der Betreiber verantwortet Hosting, Datenschutz, Zugänge, Updates und Backups. Für den empfohlenen Docker-Weg braucht es einen Server oder eine VM, eine eigene Domain und eine Person mit Linux- und Docker-Kenntnissen oder einen beauftragten IT-Dienstleister.</p>
+      <div class="table-wrap">
+        <table>
+          <caption>Mögliche Bausteinkombinationen (Stand Factsheet V1.2, 30.09.2026)</caption>
+          <thead><tr><th scope="col">Variante</th><th scope="col">Charakter</th></tr></thead>
+          <tbody>
+            {variants.map((r) => (<tr><th scope="row">{r.v}</th><td>{r.c}</td></tr>))}
+          </tbody>
+        </table>
+      </div>
+      <p>Welche Variante passt, hängt von Datenhoheit, Kosten und Ihrem eigenen Betriebsaufwand ab. Die ausführliche Abwägung steht im Leitfaden.</p>
+      <Unreleased>
+        Die Bewertung der Anmeldeverfahren ist in den Projektunterlagen noch nicht einheitlich; der Wortlaut wird abgestimmt. Kostenangaben folgen erst, wenn sie belegt sind.
+      </Unreleased>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-faq">
+    <div class="wrap">
+      <h2 id="h-faq">Häufige Fragen</h2>
+      <div class="faq">
+        <details>
+          <summary>Müssen wir eine eigene IT haben?</summary>
+          <p>Nicht unbedingt, aber jemand muss die Installation betreiben. Für den Docker-Weg braucht es eine Person mit Linux- und Docker-Kenntnissen oder einen beauftragten IT-Dienstleister.</p>
+        </details>
+        <details>
+          <summary>Was kostet PAOLO?</summary>
+          <p>Die Software ist unentgeltlich. Je nach Betriebsweise können Kosten für Hosting oder verwaltete Dienste entstehen.</p>
+        </details>
+        <details>
+          <summary>Wo geben Meldende ihre Meldung ab?</summary>
+          <p>In der Installation Ihrer Organisation, nicht auf dieser Website. Eine Anmeldung ist zum Melden nicht nötig.</p>
+        </details>
+        <details>
+          <summary>Ersetzt PAOLO die Meldung an den DHV?</summary>
+          <p>Nein. PAOLO ersetzt keine Meldung an den DHV über FIDA und keine anderen gesetzlich vorgeschriebenen Meldungen. Eine PAOLO-Meldung erreicht FIDA nicht automatisch.</p>
+        </details>
+        <details>
+          <summary>Können sich mehrere Organisationen eine Installation teilen?</summary>
+          <p>Nein. Die Anwendung ist auf eine Organisation je Installation ausgelegt. Eine zentrale Plattform gibt es derzeit nicht.</p>
+        </details>
+        <details>
+          <summary>Wie ist der Stand der Entwicklung?</summary>
+          <p>PAOLO SMS befindet sich in der Pilotphase und ist für kleine, bekannte Gruppen ausgelegt (Stand: {SITE.stand}).</p>
+        </details>
+      </div>
+      <div class="btn-row">
+        <a class="btn" href={`mailto:${SITE.email}`}>Fragen? Schreiben Sie uns</a>
+        <a class="btn btn--ghost" href={url('/materialien/')}>Materialien</a>
+      </div>
+    </div>
+  </section>
+</Base>

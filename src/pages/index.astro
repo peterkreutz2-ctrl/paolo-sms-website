@@ -1,0 +1,214 @@
+---
+import Base from '../layouts/Base.astro';
+import Regelkreis from '../components/Regelkreis.astro';
+import Unreleased from '../components/Unreleased.astro';
+import RegelkreisArt from '../components/RegelkreisArt.astro';
+import { SITE } from '../config';
+import { url } from '../lib/url';
+
+const shots = [
+  { t: 'Meldeformular', d: 'Meldung ohne Anmeldung einreichen: wenige Pflichtfelder, auf Wunsch anonym.' },
+  { t: 'Dashboard', d: 'Überblick über neue Meldungen sowie offene und überfällige Maßnahmen.' },
+  { t: 'Meldung bewerten', d: 'Meldungsdetail mit Priorität und Risikobewertung nach Risikomatrix.' },
+  { t: 'Maßnahmen', d: 'Maßnahmenliste mit Verantwortlichen, Fälligkeitsdatum und Status.' },
+];
+---
+
+<Base>
+  <!-- A. Kopfbereich -->
+  <section class="hero" aria-labelledby="h-hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Melden. Verstehen. Verbessern.</p>
+        <h1 id="h-hero">PAOLO macht Sicherheitsmanagement einfach.</h1>
+        <p class="subtitle">Sicherheit wird zu einem Teil des täglichen Betriebs.</p>
+        <p class="lead">
+          PAOLO SMS ist ein Safety-Management-System für Gleitschirmvereine und Flugschulen. Es gibt Ihnen einen klaren Ablauf und fertige Vorlagen, um Beobachtungen zu erfassen, einzuschätzen und daraus Maßnahmen abzuleiten.
+        </p>
+        <div class="btn-row">
+          <a class="btn" href="#regelkreis">So funktioniert es</a>
+          <a class="btn btn--ghost" href={url('/einfuehren/')}>Für Verein oder Flugschule</a>
+        </div>
+        <p class="small muted">Unentgeltlich als Gemeinschaftsprojekt. Lizenz: GPL-3.0-or-later.</p>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <RegelkreisArt labels={false} />
+      </div>
+    </div>
+  </section>
+
+  <!-- B. Worum geht es? -->
+  <section class="section" aria-labelledby="h-sms">
+    <div class="wrap">
+      <h2 id="h-sms">Was ist ein Sicherheitsmanagementsystem?</h2>
+      <p class="lead">
+        Ein Sicherheitsmanagementsystem (SMS) sorgt dafür, dass Hinweise zur Sicherheit nicht versanden. Aus einer Beobachtung wird eine Meldung, daraus eine Einschätzung, daraus eine Maßnahme. Am Ende steht, was Ihre Organisation daraus lernt. Dabei geht es um Verständnis und Verbesserung, nicht um Schuld.
+      </p>
+      <p class="muted small">SMS steht hier für Safety Management System, nicht für Kurznachrichten.</p>
+    </div>
+  </section>
+
+  <!-- C. Regelkreis -->
+  <section class="section section--alt" id="regelkreis" aria-labelledby="h-kreis">
+    <div class="wrap">
+      <h2 id="h-kreis">Fünf Schritte, die sich wiederholen</h2>
+      <p class="lead">Sicherheitsarbeit ist ein Kreislauf. Jeder Schritt baut auf dem vorigen auf.</p>
+      <Regelkreis />
+    </div>
+  </section>
+
+  <!-- D. Teamarbeit -->
+  <section class="section" id="team" aria-labelledby="h-team">
+    <div class="wrap">
+      <h2 id="h-team">Sicherheit ist Teamarbeit</h2>
+      <p class="lead">Ein Sicherheitsmanagementsystem funktioniert nur, wenn alle ihren Teil beitragen.</p>
+      <ul class="cards cards--3">
+        <li class="card" style="--accent: var(--orange)">
+          <h3>Accountable Executive</h3>
+          <p class="role">Gesamtverantwortung</p>
+          <ul>
+            <li>Sicherheit ist Chefsache.</li>
+            <li>Stellt Ressourcen bereit.</li>
+            <li>Schafft die Voraussetzungen für eine Redlichkeitskultur (Just Culture).</li>
+          </ul>
+          <p class="small muted">Im Verein üblicherweise der Vorstand, in der Flugschule die Schulleitung.</p>
+        </li>
+        <li class="card" style="--accent: var(--yellow)">
+          <h3>Safety Manager</h3>
+          <p class="role">Koordination</p>
+          <ul>
+            <li>Organisiert die Sicherheitsarbeit.</li>
+            <li>Berät und moderiert.</li>
+            <li>Ist Schnittstelle zum Management.</li>
+          </ul>
+        </li>
+        <li class="card" style="--accent: var(--green)">
+          <h3>Team</h3>
+          <p class="role">Sicherheitskultur</p>
+          <ul>
+            <li>Meldet ohne Angst vor Strafe oder Blamage.</li>
+            <li>Lernt aus Erfahrungen.</li>
+            <li>Trägt Verbesserungen mit.</li>
+          </ul>
+        </li>
+      </ul>
+      <p><a href={url('/einfuehren/#rollen')}>Die Rollen in PAOLO im Überblick</a></p>
+      <Unreleased>
+        Der Flyer verwendet „Accountable Manager" und „Just Culture". Hier gelten die Begriffe der Projekt-Terminologie: „Accountable Executive" und „Redlichkeitskultur (Just Culture)". Der Flyer wird angeglichen.
+      </Unreleased>
+    </div>
+  </section>
+
+  <!-- E. Einblicke -->
+  <section class="section section--alt" id="einblicke" aria-labelledby="h-einblicke">
+    <div class="wrap">
+      <h2 id="h-einblicke">So sieht PAOLO aus</h2>
+      <p class="lead">Die Bilder zeigen Spieldaten, keine echten Meldungen.</p>
+      <div class="shots">
+        {shots.map((s) => (
+          <figure class="shot">
+            <div class="shot__ph"><span>Platzhalter: geprüfter Screenshot „{s.t}"</span></div>
+            <figcaption><strong>{s.t}.</strong> {s.d}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <Unreleased>
+        Die Screenshots fehlen noch. Sie werden aus einer Testinstallation mit Spieldaten erstellt und vor der Veröffentlichung geprüft.
+      </Unreleased>
+    </div>
+  </section>
+
+  <!-- F. Verein und Flugschule -->
+  <section class="section" id="organisationen" aria-labelledby="h-org">
+    <div class="wrap">
+      <h2 id="h-org">Für Ihre Organisation</h2>
+      <p class="lead">Beide nutzen dieselben Rollen, denselben Ablauf und dieselben Dokumentvorlagen. Unterschiede liegen im Alltag.</p>
+      <div class="cards cards--2">
+        <article class="card" style="--accent: var(--blue)">
+          <h3>Verein</h3>
+          <ul>
+            <li>Der Vorstand trägt die Gesamtverantwortung.</li>
+            <li>Beobachtungen zu Fluggelände, Startplätzen und Vereinsbetrieb lassen sich zentral erfassen.</li>
+            <li>Der Safety Manager koordiniert; eine Vertretung ist möglich.</li>
+          </ul>
+        </article>
+        <article class="card" style="--accent: var(--blue)">
+          <h3>Flugschule</h3>
+          <ul>
+            <li>Die Schulleitung trägt die Gesamtverantwortung.</li>
+            <li>Erfahrene Fluglehrer können als Safety Assistant mitarbeiten.</li>
+            <li>Meldungen lassen sich nach Aktivitätsart einordnen, etwa Grundausbildung, Höhenflugausbildung oder Sicherheitstraining.</li>
+          </ul>
+        </article>
+      </div>
+      <p><a href={url('/einfuehren/')}>Einführung und Betrieb</a></p>
+      <Unreleased>Entwurf. Die fachliche Bestätigung durch Vertreter von Verein und Flugschule steht aus.</Unreleased>
+    </div>
+  </section>
+
+  <!-- G. Eigene Installation -->
+  <section class="section section--alt" id="betrieb" aria-labelledby="h-betrieb">
+    <div class="wrap">
+      <h2 id="h-betrieb">Jede Organisation betreibt ihr eigenes PAOLO</h2>
+      <p class="lead">
+        PAOLO SMS ist keine zentrale Plattform. Ihr Verein oder Ihre Flugschule betreibt eine eigene Installation, selbst oder mit einem IT-Dienstleister. Sie entscheiden, wo Daten liegen, und verantworten Datenschutz, Zugänge, Updates und Backups. Die Software ist unentgeltlich. Je nach Betriebsweise können Kosten für Hosting oder Dienste entstehen.
+      </p>
+      <p>Meldungen geben Sie in der Installation Ihrer Organisation ab, nicht auf dieser Website.</p>
+      <p><a href={url('/einfuehren/#betrieb')}>Betriebswege im Überblick</a> · <a href={url('/materialien/')}>Factsheet, Vorstellung und Leitfäden</a></p>
+    </div>
+  </section>
+
+  <!-- H. Stand und Grenzen -->
+  <section class="section" id="stand" aria-labelledby="h-stand">
+    <div class="wrap">
+      <h2 id="h-stand">Stand und Grenzen</h2>
+      <div class="cards cards--2">
+        <div class="card" style="--accent: var(--petrol)">
+          <h3>Entwicklungsstand</h3>
+          <p>PAOLO SMS befindet sich in der Pilotphase und ist für kleine, bekannte Gruppen ausgelegt. Stand: {SITE.stand}.</p>
+          <h3>Funktionsumfang</h3>
+          <ul class="tick">
+            <li>Anonymes Meldeformular ohne Anmeldung</li>
+            <li>Bewertung mit Risikomatrix</li>
+            <li>Maßnahmen mit Fristen</li>
+            <li>Sicherheitsbesprechungen</li>
+            <li>SMS-Dokumente mit Vorlagen</li>
+            <li>Rollen und Zugriffsrechte</li>
+            <li>Datenschutzwerkzeuge und Audit-Log</li>
+            <li>Backups</li>
+          </ul>
+        </div>
+        <div class="card" style="--accent: var(--orange)">
+          <h3>Grenzen</h3>
+          <ul>
+            <li>Eine Organisation je Installation, keine zentrale Plattform.</li>
+            <li>PAOLO ersetzt keine Meldung an den DHV über FIDA und keine anderen gesetzlich vorgeschriebenen Meldungen.</li>
+          </ul>
+          <p>Weitere Einzelheiten zum Stand erhalten Sie <a href={`mailto:${SITE.email}`}>auf Anfrage</a>.</p>
+        </div>
+      </div>
+      <Unreleased>
+        Belege zum Entwicklungsstand werden mit den freigegebenen Dokumenten ergänzt (siehe „Informationen &amp; Materialien"). Die Formulierung „Pilotphase" wird abgestimmt.
+      </Unreleased>
+    </div>
+  </section>
+
+  <!-- I. Kontakt -->
+  <section class="section section--alt" id="kontakt" aria-labelledby="h-kontakt">
+    <div class="wrap">
+      <h2 id="h-kontakt">Interesse an der Pilotphase?</h2>
+      <p class="lead">
+        Schreiben Sie uns an <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Wir sprechen über Ihren Bedarf, den Betrieb und die nächsten Schritte. Rückmeldungen aus der Praxis helfen uns, PAOLO zu verbessern.
+      </p>
+      <p>Quellcode und Dokumentation sind während der Pilotphase auf Anfrage erhältlich.</p>
+      <div class="btn-row">
+        <a class="btn" href={`mailto:${SITE.email}`}>E-Mail schreiben</a>
+        <a class="btn btn--ghost" href={url('/mitmachen/')}>Mitmachen</a>
+      </div>
+      <p><strong>Mit PAOLO wird Sicherheitsmanagement einfach und nachvollziehbar.</strong></p>
+      <Unreleased>
+        Der Flyer schließt mit „einfach, nachvollziehbar und wirksam". „Wirksam" ist ein Wirkungsversprechen und hier vorerst weggelassen; der Schlusssatz wird abgestimmt.
+      </Unreleased>
+    </div>
+  </section>
+</Base>

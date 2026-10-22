@@ -1,0 +1,48 @@
+---
+import type { Material } from '../data/materials';
+import Unreleased from './Unreleased.astro';
+import { url } from '../lib/url';
+
+interface Props {
+  item: Material;
+}
+const { item } = Astro.props;
+// Interne Dateien (z. B. /materialien/x.pdf) laufen über den Basispfad, externe und mailto: nicht.
+const href = item.href?.startsWith('/') ? url(item.href) : item.href;
+
+const badge: Record<Material['availability'], { text: string; cls: string }> = {
+  download: { text: 'Download', cls: 'badge badge--download' },
+  external: { text: 'Externer Link', cls: 'badge' },
+  'in-app': { text: 'Nur in der Anwendung', cls: 'badge' },
+  'on-request': { text: 'Auf Anfrage', cls: 'badge' },
+  pending: { text: 'In Vorbereitung', cls: 'badge badge--pending' },
+};
+const b = badge[item.availability];
+const linkLabel: Partial<Record<Material['availability'], string>> = {
+  download: `${item.title} herunterladen${item.format ? ` (${item.format})` : ''}`,
+  external: `${item.title} ansehen (öffnet YouTube)`,
+  'on-request': 'Per E-Mail anfragen',
+};
+---
+
+<li class="card material" style="--accent: var(--petrol)">
+  <p><span class={b.cls}>{b.text}</span></p>
+  <h3>{item.title}</h3>
+  <p>{item.purpose}</p>
+  <dl class="material__meta">
+    <div><dt>Für:</dt> <dd>{item.audience}</dd></div>
+    {item.format && <div><dt>Format:</dt> <dd>{item.format}</dd></div>}
+    {item.extent && <div><dt>Umfang:</dt> <dd>{item.extent}</dd></div>}
+    {item.version && <div><dt>Version:</dt> <dd>{item.version}{item.stand ? `, Stand ${item.stand}` : ''}</dd></div>}
+  </dl>
+  {href && linkLabel[item.availability] && (
+    <p>
+      <a class="btn btn--ghost" href={href}rel={item.availability === 'external' ? 'noopener noreferrer' : undefined}>
+        {linkLabel[item.availability]}
+      </a>
+    </p>
+  )}
+  {item.availability === 'pending' && <p class="muted small">Dieses Dokument wird nach Prüfung hier veröffentlicht.</p>}
+  {item.availability === 'in-app' && <p class="muted small">Dieser Inhalt gehört zur jeweiligen Installation Ihres Vereins oder Ihrer Flugschule und ist nicht auf dieser Website abrufbar.</p>}
+  {item.releaseNote && <Unreleased>{item.releaseNote}</Unreleased>}
+</li>
