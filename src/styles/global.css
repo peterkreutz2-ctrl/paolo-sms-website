@@ -121,6 +121,8 @@ a:hover { color: var(--petrol-dark); }
 
 /* Illustrationen der Anwendung */
 .shots { display: grid; gap: 1.25rem; margin: 1.25rem 0; align-items: start; }
+/* Desktop zuerst: Grafiken und Screenshots dürfen breiter sein als der Textbereich (bis 90rem), auf kleinen Bildschirmen entspricht die Breite dem Textbereich. */
+.wide { --w-wide: max(100%, min(90rem, 100vw - 3rem)); width: var(--w-wide); margin-left: calc(50% - var(--w-wide) / 2); }
 .shot { margin: 0; }
 .shot__frame { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: .75rem; }
 .shot__frame img { display: block; width: 100%; max-width: var(--w); height: auto; margin-inline: auto; border: 1px solid var(--line); border-radius: 6px; }
