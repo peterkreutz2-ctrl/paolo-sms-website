@@ -86,6 +86,9 @@ a:hover { color: var(--petrol-dark); }
 .hero { padding-block: clamp(2rem, 6vw, 4.5rem); background: linear-gradient(180deg, #eef6fb 0, var(--paper) 100%); }
 .hero .wrap { display: grid; gap: 2rem; align-items: center; }
 .hero h1 { margin-bottom: .35em; }
+.hero .acronym { font-size: 1rem; color: var(--muted); margin: 0 0 .75rem; }
+.hero .acronym strong { color: var(--ink); }
+.hero .acronym__l { font-weight: 700; font-size: 1.15em; color: var(--petrol); }
 .hero .subtitle { font-size: clamp(1.25rem, 2.6vw, 1.6rem); color: var(--muted); margin-bottom: 1rem; max-width: 30ch; }
 
 /* Säulen */
