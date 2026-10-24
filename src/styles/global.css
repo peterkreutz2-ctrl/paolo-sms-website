@@ -99,6 +99,14 @@ a:hover { color: var(--petrol-dark); }
 .saeule__icon { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; flex: none; border-radius: 50%; background: var(--paper); color: var(--ink); }
 .saeule p { margin: .75rem 0 0; padding-top: .75rem; border-top: 3px solid var(--petrol); }
 
+/* Ablaufgrafik (Einführen) */
+.flow { margin: 1.25rem 0 1.75rem; }
+.flow__scroll { overflow-x: auto; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: .75rem; }
+.flow__scroll img { display: block; width: 100%; min-width: 52rem; height: auto; }
+.flow figcaption { margin-top: .5rem; font-size: .95rem; color: var(--muted); max-width: var(--measure); }
+.flow__hint { display: none; }
+@media (max-width: 56em) { .flow__hint { display: inline; } }
+
 /* Karten */
 .cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; list-style: none; padding: 0; margin: 1.25rem 0; }
 .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.2rem; border-top: 6px solid var(--accent, var(--line)); }

@@ -74,6 +74,7 @@ const allowedAssets = new Set([
   'bilder/dashboard.png',
   'bilder/meldung-klassifizieren.png',
   'bilder/massnahmen.png',
+  'bilder/weg-zu-paolo-sms.png',
 ]);
 for (const m of materials) if (m.availability === 'download' && m.href?.startsWith('/')) allowedAssets.add(m.href.slice(1));
 const staticFiles = dist.filter((f) => !f.endsWith('.html') && !relative(DIST, f).replaceAll('\\', '/').startsWith('_astro/'));
