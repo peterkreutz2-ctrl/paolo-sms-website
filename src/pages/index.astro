@@ -6,10 +6,38 @@ import { SITE } from '../config';
 import { url } from '../lib/url';
 
 const shots = [
-  { t: 'Meldeformular', d: 'Meldung ohne Anmeldung einreichen: wenige Pflichtfelder, auf Wunsch anonym.' },
-  { t: 'Dashboard', d: 'Überblick über neue Meldungen sowie offene und überfällige Maßnahmen.' },
-  { t: 'Meldung bewerten', d: 'Meldungsdetail mit Priorität und Risikobewertung nach Risikomatrix.' },
-  { t: 'Maßnahmen', d: 'Maßnahmenliste mit Verantwortlichen, Fälligkeitsdatum und Status.' },
+  {
+    t: 'Meldeformular',
+    d: 'Meldung ohne Anmeldung einreichen: wenige Pflichtfelder, auf Wunsch anonym.',
+    src: '/bilder/meldung-einreichen.png',
+    w: 840,
+    h: 987,
+    alt: 'Illustration des öffentlichen Meldeformulars „Sicherheitsmeldung einreichen“: links Hinweise (nicht zurechtweisend, kein offizieller Bericht, anonym möglich), rechts die Felder Art der Meldung, Kurzbeschreibung und ausführliche Beschreibung.',
+  },
+  {
+    t: 'Dashboard',
+    d: 'Überblick über neue Meldungen sowie offene und überfällige Maßnahmen.',
+    src: '/bilder/dashboard.png',
+    w: 944,
+    h: 720,
+    alt: 'Illustration des Dashboards: Hinweis zur nächsten Sicherheitsbesprechung, Kennzahlen zu Meldungen (neue, in Prüfung, kritische, offene) und zu Maßnahmen (offene, überfällige).',
+  },
+  {
+    t: 'Meldung bewerten',
+    d: 'Meldungsdetail mit Priorität und Risikobewertung nach Risikomatrix.',
+    src: '/bilder/meldung-klassifizieren.png',
+    w: 390,
+    h: 720,
+    alt: 'Illustration einer Meldung in der Bearbeitung: Meldungsdaten, Angaben zur meldenden Person und Klassifizierung mit Risikobewertung nach Risikomatrix aus Eintrittswahrscheinlichkeit und Schweregrad.',
+  },
+  {
+    t: 'Maßnahmen',
+    d: 'Maßnahmenliste mit Verantwortlichen, Fälligkeitsdatum und Status.',
+    src: '/bilder/massnahmen.png',
+    w: 388,
+    h: 720,
+    alt: 'Illustration einer Meldung mit Maßnahme: vorhandene Maßnahme mit Status, Fälligkeitsdatum und Verantwortlichem sowie Formular zum Anlegen einer neuen Maßnahme.',
+  },
 ];
 ---
 
@@ -101,18 +129,17 @@ const shots = [
   <section class="section section--alt" id="einblicke" aria-labelledby="h-einblicke">
     <div class="wrap">
       <h2 id="h-einblicke">So sieht PAOLO aus</h2>
-      <p class="lead">Die Bilder zeigen Spieldaten, keine echten Meldungen.</p>
+      <p class="lead">Die Bilder sind anonymisierte, vereinfachte Illustrationen. Sie zeigen die wesentlichen Funktionen, entsprechen aber nicht exakt der Benutzeroberfläche.</p>
       <div class="shots">
         {shots.map((s) => (
           <figure class="shot">
-            <div class="shot__ph"><span>Platzhalter: geprüfter Screenshot „{s.t}"</span></div>
+            <div class="shot__frame">
+              <img src={url(s.src)} alt={s.alt} width={s.w} height={s.h} style={`--w:${s.w}px`} loading="lazy" decoding="async" />
+            </div>
             <figcaption><strong>{s.t}.</strong> {s.d}</figcaption>
           </figure>
         ))}
       </div>
-      <Unreleased>
-        Die Screenshots fehlen noch. Sie werden aus einer Testinstallation mit Spieldaten erstellt und vor der Veröffentlichung geprüft.
-      </Unreleased>
     </div>
   </section>
 
