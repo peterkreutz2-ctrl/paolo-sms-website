@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Saeulen from '../components/Saeulen.astro';
+import Risikomanagement from '../components/Risikomanagement.astro';
 import Unreleased from '../components/Unreleased.astro';
 import { SITE } from '../config';
 import { url } from '../lib/url';
@@ -122,6 +123,26 @@ const shots = [
       <p><a href={url('/einfuehren/#rollen')}>Die Rollen in PAOLO im Überblick</a></p>
       <Unreleased>
         Der Flyer verwendet „Accountable Manager" und „Just Culture". Hier gelten die Begriffe der Projekt-Terminologie: „Accountable Executive" und „Redlichkeitskultur (Just Culture)". Der Flyer wird angeglichen.
+      </Unreleased>
+    </div>
+  </section>
+
+  <!-- Risikomanagement -->
+  <section class="section" id="risikomanagement" aria-labelledby="h-risiko">
+    <div class="wrap">
+      <h2 id="h-risiko">Risikomanagement – die Kernfunktion von PAOLO</h2>
+      <p class="lead">
+        Risikomanagement ist eine der vier Säulen deines Sicherheits&shy;management&shy;systems, und genau diesen Prozess unterstützt PAOLO am stärksten. Er ist ein Kreislauf aus vier Schritten, der nie abgeschlossen ist: Erkennen, Bewerten, Mindern, Kommunizieren.
+      </p>
+      <Risikomanagement />
+      <div class="callout">
+        <h3>Ein durchgängiger Ablauf an einem Ort</h3>
+        <p>
+          In PAOLO führt jede Meldung ohne Medienbruch von der ersten Beobachtung über die Bewertung und die Maßnahme bis zur Information des Teams. Rollen, Fristen und Status bleiben dabei nachvollziehbar. Die Entscheidungen treffen weiterhin die Menschen in deiner Organisation.
+        </p>
+      </div>
+      <Unreleased>
+        Neuer Abschnitt. Die Formulierung „Kernfunktion“ und die Schrittnamen sind noch nicht freigegeben.
       </Unreleased>
     </div>
   </section>

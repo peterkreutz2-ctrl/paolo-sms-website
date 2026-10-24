@@ -103,6 +103,20 @@ a:hover { color: var(--petrol-dark); }
 .saeule__icon { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; flex: none; border-radius: 50%; background: var(--paper); color: var(--ink); }
 .saeule p { margin: .75rem 0 0; padding-top: .75rem; border-top: 3px solid var(--petrol); }
 
+/* Risikomanagement-Kreislauf */
+.rm { display: grid; gap: 1.5rem; margin: 1.5rem 0 1rem; align-items: center; }
+.rm__art svg { width: 100%; max-width: 15rem; margin-inline: auto; display: block; }
+.rm__steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+.rm__step { display: grid; grid-template-columns: 3rem 1fr; gap: .25rem 1rem; align-content: start; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; }
+.rm__n { grid-row: 1 / span 3; width: 3rem; height: 3rem; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 1.4rem; background: var(--c); color: var(--n); }
+.rm__step > :not(.rm__n) { grid-column: 2; min-width: 0; }
+.rm__step h3 { margin: 0; align-self: center; }
+.rm__step p { margin: 0; }
+.rm__task { font-weight: 700; }
+.rm__in { border-top: 1px solid var(--line); padding-top: .5rem; margin-top: .4rem !important; }
+.rm__in b { color: var(--petrol); }
+.rm__caption { color: var(--muted); font-size: .95rem; max-width: var(--measure); }
+
 /* Schritte der Einführung (Einführen), ohne Nummerierung */
 .steps { list-style: none; padding: 0; margin: 0 0 1.25rem; display: grid; gap: 1rem; }
 .step { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; }
@@ -193,9 +207,12 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
   .cards--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .shots { grid-template-columns: repeat(2, 1fr); }
   .saeulen__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rm__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (min-width: 64em) {
+  .rm { grid-template-columns: minmax(16rem, 22rem) 1fr; gap: 2.5rem; }
+  .rm__art svg { max-width: 22rem; }
   .saeulen__img { display: block; }
   .saeulen__list { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 }
