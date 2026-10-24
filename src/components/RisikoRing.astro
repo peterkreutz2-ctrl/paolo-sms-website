@@ -1,9 +1,9 @@
 ---
 // Kreislauf des Risikomanagements auf Basis der vierfarbigen Segmentmarke des PAOLO-Logos.
 // Die vier Pfade und Farben sind unverändert aus public/brand/paolo-sms-logo.svg
-// übernommen (Marke ohne Schriftzug) und horizontal gespiegelt, damit die Pfeilspitzen
-// im Uhrzeigersinn laufen (im Original gegen den Uhrzeigersinn):
-// Orange (oben) → Gelb (rechts) → Blau (unten) → Grün (links).
+// übernommen (Marke ohne Schriftzug), nicht gespiegelt und nicht umgefärbt. Der Fluss der
+// Marke läuft laut Betreiber im Uhrzeigersinn:
+// Orange (oben) → Grün (rechts) → Blau (unten) → Gelb (links).
 // Rein dekorativ: immer in einem aria-hidden-Container einsetzen.
 import { risikoSchritte } from '../data/risikomanagement';
 
@@ -18,12 +18,10 @@ const font = 'Arial, Helvetica, sans-serif';
 ---
 
 <svg viewBox="-76 -17 212 125" focusable="false">
-  <g transform="translate(85.4 0) scale(-1 1)">
   <path fill="#FD5F04" d="M12.4864 12.4864c15.7097,-15.7097 40.6363,-16.5947 57.3881,-2.661l-1.50104 12.5485 -11.235 4.83099c-7.68804,-7.22854 -19.4597,-7.62893 -27.6006,-1.20207l-4.76138 -11.0729 -0.341077 -0.79318 -0.852493 -0.101923 -11.2894 -1.35051c0.0648147,-0.0657149 0.127629,-0.13263 0.192944,-0.197945z"/>
   <path fill="#FDB205" d="M12.6845 72.9883c-0.0657149,-0.0647146 -0.13263,-0.127629 -0.198045,-0.192944 -15.7095,-15.7096 -16.5947,-40.6364 -2.6612,-57.3882l12.5487 1.50114 4.83099 11.2348c-7.22864,7.68804 -7.62903,19.46 -1.20197,27.6008l-11.073 4.76138 -0.79308 0.341077 -0.102023 0.852493 -1.35041 11.2894z"/>
   <path fill="#0262D5" d="M72.9884 72.5973c-0.0648147,0.0657149 -0.127729,0.13263 -0.193044,0.198045 -15.7096,15.7096 -40.6363,16.5946 -57.3881,2.661l1.50104 -12.5485 11.2351 -4.83109c7.68794,7.22834 19.4596,7.62873 27.6004,1.20177l4.76148 11.0733 0.341077 0.79308 0.852493 0.102023 11.2895 1.35041z"/>
   <path fill="#6CB324" d="M72.5974 12.2934c0.0657149,0.0649147 0.13263,0.127729 0.197945,0.193044 15.7097,15.7096 16.5947,40.6363 2.661,57.3881l-12.5485 -1.50104 -4.83099 -11.2351c7.22824,-7.68794 7.62873,-19.4596 1.20177,-27.6004l11.0732 -4.76148 0.79318 -0.341077 0.101923 -0.852493 1.35051 -11.2895z"/>
-  </g>
   {risikoSchritte.map((s, i) => (
     <>
       <text x={pos[i].x} y={pos[i].y} text-anchor="middle" dominant-baseline="central" font-family={font} font-weight="700" font-size="15" fill={s.numColor}>{s.n}</text>

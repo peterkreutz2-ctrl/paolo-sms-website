@@ -84,7 +84,6 @@ Weitere Bilder oder Logo-Varianten sind nicht freigegeben.
   nicht als unveränderte Gesamtdatei. Das ist eine Ausnahme auf ausdrückliche Anweisung
   des Betreibers; die Regeln für die eigenständige Logo-Verwendung bleiben sonst
   unverändert. Die endgültige Markenregelung steht vor der Produktivfreigabe aus.
-- **Spiegelung (25.10.2026):** Die Marke in der Kreislaufgrafik ist horizontal gespiegelt,
-  damit die Pfeile im Uhrzeigersinn laufen und zur Nummerierung 1 bis 4 passen (im Original
-  laufen sie gegen den Uhrzeigersinn). Farben und Pfadform sind sonst unverändert. Auch das ist
-  eine Ausnahme auf ausdrückliche Anweisung des Betreibers.
+- **Ausrichtung (25.10.2026):** Die Marke ist nicht gespiegelt und nicht umgefärbt. Die
+  Schritte 1 bis 4 folgen den Segmenten im Uhrzeigersinn: Orange (oben), Grün (rechts),
+  Blau (unten), Gelb (links). Die Farben der Nummern in den Karten folgen dieser Zuordnung.
