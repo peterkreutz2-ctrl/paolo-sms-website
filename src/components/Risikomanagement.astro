@@ -1,0 +1,25 @@
+---
+// Risikomanagement als Kreislauf mit vier Schritten. Der Ring ist reine Dekoration
+// (aria-hidden); der Inhalt steht in der Liste.
+import { risikoSchritte } from '../data/risikomanagement';
+import RisikoRing from './RisikoRing.astro';
+---
+
+<div class="rm">
+  <div class="rm__art" aria-hidden="true">
+    <RisikoRing />
+  </div>
+
+  <ol class="rm__steps">
+    {risikoSchritte.map((s) => (
+      <li class="rm__step" style={`--c:${s.color};--n:${s.numColor}`}>
+        <span class="rm__n" aria-hidden="true">{s.n}</span>
+        <h3><span class="visually-hidden">Schritt {s.n}: </span>{s.title}</h3>
+        <p class="rm__task">{s.task}</p>
+        <p class="rm__in"><b>In PAOLO:</b> {s.inPaolo}</p>
+      </li>
+    ))}
+  </ol>
+</div>
+
+<p class="rm__caption">Nach dem vierten Schritt beginnt der Kreislauf von vorn: Was kommuniziert wurde, schärft den Blick für das nächste Erkennen.</p>
