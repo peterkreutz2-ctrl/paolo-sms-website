@@ -36,7 +36,7 @@ const variants = [
 
   <section class="section section--alt" aria-labelledby="h-weg">
     <div class="wrap">
-      <h2 id="h-weg">Der Weg in sechs Schritten</h2>
+      <h2 id="h-weg">Der Weg zur Einführung von PAOLO SMS</h2>
       <figure class="flow wide">
         <div class="flow__scroll" role="region" aria-label="Ablaufgrafik: Der Weg zur Einführung mit PAOLO (seitlich verschiebbar)" tabindex="0">
           <img
@@ -52,9 +52,8 @@ const variants = [
         </figcaption>
       </figure>
       <ol class="steps">
-        {phases.map((p, i) => (
-          <li class="step" style="--c: var(--petrol); --n: #fff">
-            <span class="step__n" aria-hidden="true">{i + 1}</span>
+        {phases.map((p) => (
+          <li class="step">
             <h3>{p.t}</h3>
             <p>{p.d}</p>
           </li>
