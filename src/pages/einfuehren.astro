@@ -37,6 +37,20 @@ const variants = [
   <section class="section section--alt" aria-labelledby="h-weg">
     <div class="wrap">
       <h2 id="h-weg">Der Weg in sechs Schritten</h2>
+      <figure class="flow">
+        <div class="flow__scroll" role="region" aria-label="Ablaufgrafik: Der Weg zur Einführung mit PAOLO (seitlich verschiebbar)" tabindex="0">
+          <img
+            src={url('/bilder/weg-zu-paolo-sms.png')}
+            alt="Ablaufdiagramm: Auf die Entscheidung für ein SMS folgen zwei Stränge. Organisatorisch: Prozesse und Rollen festlegen. Technisch: Technische Voraussetzungen schaffen und PAOLO installieren. Beide münden in die Grundeinstellungen in PAOLO (Benutzer anlegen, rechtliche Pflichtangaben machen, Organisationseinstellungen festlegen, Dokumente erstellen und einstellen). Danach folgt: Betrieb aufnehmen."
+            width="4232"
+            height="1202"
+            decoding="async"
+          />
+        </div>
+        <figcaption>
+          <strong>Von der Entscheidung zum Betrieb.</strong> Die organisatorischen Schritte und der technische Strang (orange hinterlegt: Voraussetzungen schaffen, PAOLO installieren) laufen zusammen, bevor der Betrieb beginnt. <span class="flow__hint">Die Grafik lässt sich seitlich verschieben.</span>
+        </figcaption>
+      </figure>
       <ol class="steps">
         {phases.map((p, i) => (
           <li class="step" style="--c: var(--petrol); --n: #fff">

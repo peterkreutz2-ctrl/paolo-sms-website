@@ -24,6 +24,7 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
 | `public/brand/paolo-sms-logo.svg` | Logo (Original) |
 | `public/saeulen/sms-saeulen.png` | Säulengrafik der Startseite (enthält das Logo) |
 | `public/bilder/*.png` | vier Illustrationen der Anwendung (Meldeformular, Dashboard, Meldung bewerten, Maßnahmen) |
+| `public/bilder/weg-zu-paolo-sms.png` | Ablaufgrafik „Weg zu PAOLO SMS“ auf der Seite „Einführen“ |
 
 ## Säulengrafik
 
@@ -57,6 +58,15 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
   Oberfläche. Es wird dadurch nicht eigenständig verwendet; die Regeln oben bleiben
   unverändert.
 - **Metadaten:** Die Dateien enthalten keine Text-, Autoren- oder Pfadmetadaten
+  (nur Gamma, Farbraum und Auflösungsangabe).
+
+## Ablaufgrafik „Weg zu PAOLO SMS“
+
+- **Freigabe:** Die Datei `public/bilder/weg-zu-paolo-sms.png` ist am 25.10.2026 vom
+  Betreiber der Website, Peter Kreutz, als Bildmaterial für die Seite „Einführen“
+  bereitgestellt worden.
+- **Logo:** Die Grafik enthält kein Logo.
+- **Metadaten:** Die Datei enthält keine Text-, Autoren- oder Pfadmetadaten
   (nur Gamma, Farbraum und Auflösungsangabe).
 
 Weitere Bilder oder Logo-Varianten sind nicht freigegeben.
