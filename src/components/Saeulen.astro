@@ -1,0 +1,32 @@
+---
+// Die vier SMS-Säulen. Ab 64em die Originalgrafik, darunter Karten.
+// Die Kartenliste bleibt ab 64em als visuell versteckte Liste im Dokument und
+// ist die Textalternative zur Grafik; unter 64em ist die Grafik ausgeblendet.
+import { saeulen } from '../data/saeulen';
+import { url } from '../lib/url';
+---
+
+<figure class="saeulen">
+  <img
+    class="saeulen__img"
+    src={url('/saeulen/sms-saeulen.png')}
+    alt="Das Sicherheitsmanagementsystem (SMS) ruht auf vier Säulen: Sicherheitsrichtlinie, Risikomanagement, Überwachung und Förderung. Die Beschreibung der Säulen folgt als Liste."
+    width="2910"
+    height="1861"
+    decoding="async"
+  />
+  <figcaption class="visually-hidden">Die vier Säulen eines Sicherheitsmanagementsystems</figcaption>
+  <ul class="saeulen__list">
+    {saeulen.map((s) => (
+      <li class="saeule">
+        <div class="saeule__head">
+          <span class="saeule__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={s.icon} />
+          </span>
+          <h3>{s.title}</h3>
+        </div>
+        <p>{s.text}</p>
+      </li>
+    ))}
+  </ul>
+</figure>

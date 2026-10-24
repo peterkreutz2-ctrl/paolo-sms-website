@@ -34,7 +34,7 @@ export interface NavItem {
 
 /** Hauptnavigation. „Kontakt" wird im Layout als Schaltfläche gesetzt. */
 export const NAV: NavItem[] = [
-  { label: 'So funktioniert es', href: '/#regelkreis' },
+  { label: 'So funktioniert es', href: '/#saeulen' },
   { label: 'Einführen', href: '/einfuehren/' },
   { label: 'Materialien', href: '/materialien/' },
   { label: 'Mitmachen', href: '/mitmachen/' },
