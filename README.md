@@ -45,11 +45,12 @@ Tailwind, keine UI-Bibliothek, keine Webfonts, keine Integrationen.
 src/config.ts            PROTOTYPE-Schalter, Name, E-Mail, Anbieter, Navigation
 src/layouts/Base.astro   Kopf, Navigation, Fuß, Prototyp-Hinweis, Sprungmarke
 src/pages/               Start, Einführen, Materialien, Mitmachen, Impressum, Datenschutz, 404
-src/components/          Regelkreis, MaterialCard, Unreleased, Placeholder
-src/data/regelkreis.ts   die fünf Schritte
+src/components/          Saeulen, MaterialCard, Unreleased, Placeholder
+src/data/saeulen.ts      die vier Säulen eines SMS
 src/data/materials.ts    alle Informationsmaterialien
 src/styles/global.css    ein Stylesheet
 public/brand/            Logo (Original-SVG, unverändert)
+public/saeulen/          Säulengrafik der Startseite (enthält das Logo, siehe BRAND.md)
 scripts/                 check-site.mjs, release-check.mjs
 .github/workflows/       Build, Prüfungen und Deployment auf GitHub Pages
 ```
@@ -65,7 +66,13 @@ scripts/                 check-site.mjs, release-check.mjs
 4. `npm run verify`.
 
 Der Release-Check lässt nur Dateien zu, die auf seiner Freigabeliste stehen
-(Logo und als `download` eingetragene Materialien).
+(Logo, Säulengrafik und als `download` eingetragene Materialien).
+
+## Entwicklungsregeln
+
+Dieses Repository und die PAOLO-SMS-Anwendung sind getrennt; die Regeln stehen in
+[AGENTS.md](AGENTS.md). Kurz: Änderungen an dieser Website prüft `npm run verify`,
+E2E-Tests mit Better Auth oder Clerk gehören ausschließlich zur Anwendung.
 
 ## Prüfungen
 

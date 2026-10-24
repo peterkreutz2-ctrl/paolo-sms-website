@@ -1,8 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
-import Regelkreis from '../components/Regelkreis.astro';
+import Saeulen from '../components/Saeulen.astro';
 import Unreleased from '../components/Unreleased.astro';
-import RegelkreisArt from '../components/RegelkreisArt.astro';
 import { SITE } from '../config';
 import { url } from '../lib/url';
 
@@ -23,37 +22,36 @@ const shots = [
         <h1 id="h-hero">PAOLO macht Sicherheitsmanagement einfach.</h1>
         <p class="subtitle">Sicherheit wird zu einem Teil des täglichen Betriebs.</p>
         <p class="lead">
-          PAOLO SMS ist ein Safety-Management-System für Gleitschirmvereine und Flugschulen. Es gibt dir einen klaren Ablauf und fertige Vorlagen, um Beobachtungen zu erfassen, einzuschätzen und daraus Maßnahmen abzuleiten.
+          PAOLO SMS ist freie Software, die Gleitschirmvereine und Flugschulen beim Aufbau und Betrieb ihres Sicherheits&shy;management&shy;systems unterstützt: mit einem klaren Ablauf und fertigen Vorlagen, um Beobachtungen zu erfassen, einzuschätzen und daraus Maßnahmen abzuleiten.
         </p>
         <div class="btn-row">
-          <a class="btn" href="#regelkreis">So funktioniert es</a>
+          <a class="btn" href="#saeulen">So funktioniert es</a>
           <a class="btn btn--ghost" href={url('/einfuehren/')}>Für Verein oder Flugschule</a>
         </div>
         <p class="small muted">Unentgeltlich als Gemeinschaftsprojekt. Lizenz: GPL-3.0-or-later.</p>
       </div>
-      <div class="hero__art" aria-hidden="true">
-        <RegelkreisArt labels={false} />
-      </div>
     </div>
   </section>
 
-  <!-- B. Worum geht es? -->
-  <section class="section" aria-labelledby="h-sms">
+  <!-- B. Worum geht es? Die vier Säulen eines SMS -->
+  <section class="section" id="saeulen" aria-labelledby="h-sms">
     <div class="wrap">
-      <h2 id="h-sms">Was ist ein Sicherheitsmanagementsystem?</h2>
+      <h2 id="h-sms">Was ist ein Sicherheits&shy;management&shy;system?</h2>
       <p class="lead">
-        Ein Sicherheitsmanagementsystem (SMS) sorgt dafür, dass Hinweise zur Sicherheit nicht versanden. Aus einer Beobachtung wird eine Meldung, daraus eine Einschätzung, daraus eine Maßnahme. Am Ende steht, was deine Organisation daraus lernt. Dabei geht es um Verständnis und Verbesserung, nicht um Schuld.
+        Ein Sicherheits&shy;management&shy;system ist mehr als ein Meldeverfahren. Es schafft Struktur und Prozesse für die kontinuierliche Verbesserung der Sicherheitskultur.
       </p>
+      <p>Dabei geht es um Verständnis und Verbesserung, nicht um Schuld.</p>
       <p class="muted small">SMS steht hier für Safety Management System, nicht für Kurznachrichten.</p>
-    </div>
-  </section>
-
-  <!-- C. Regelkreis -->
-  <section class="section section--alt" id="regelkreis" aria-labelledby="h-kreis">
-    <div class="wrap">
-      <h2 id="h-kreis">Fünf Schritte, die sich wiederholen</h2>
-      <p class="lead">Sicherheitsarbeit ist ein Kreislauf. Jeder Schritt baut auf dem vorigen auf.</p>
-      <Regelkreis />
+      <Saeulen />
+      <div class="callout">
+        <h3>Das SMS gehört deiner Organisation. PAOLO unterstützt dich dabei.</h3>
+        <p>
+          Das Sicherheits&shy;management&shy;system ist das organisatorische Managementsystem deines Vereins oder deiner Flugschule. Sicherheitsrichtlinie, Rollen, Entscheidungen, Schulung und gelebte Sicherheitskultur liegen bei deiner Organisation.
+        </p>
+        <p>
+          PAOLO unterstützt dich bei der Einführung und beim laufenden Betrieb deines SMS. Die Software bietet dafür strukturierte Prozesse, praktische Werkzeuge und eine zentrale Dokumentation. Die Verantwortung für das Sicherheitsmanagement bleibt bei deiner Organisation.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -61,7 +59,7 @@ const shots = [
   <section class="section" id="team" aria-labelledby="h-team">
     <div class="wrap">
       <h2 id="h-team">Sicherheit ist Teamarbeit</h2>
-      <p class="lead">Ein Sicherheitsmanagementsystem funktioniert nur, wenn alle ihren Teil beitragen.</p>
+      <p class="lead">Ein Sicherheits&shy;management&shy;system funktioniert nur, wenn alle ihren Teil beitragen.</p>
       <ul class="cards cards--3">
         <li class="card" style="--accent: var(--orange)">
           <h3>Accountable Executive</h3>

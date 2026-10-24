@@ -67,7 +67,7 @@ for (const [f, kind] of scan) {
 }
 
 // 2. Dateien: nur freigegebene Assets
-const allowedAssets = new Set(['brand/paolo-sms-logo.svg']);
+const allowedAssets = new Set(['brand/paolo-sms-logo.svg', 'saeulen/sms-saeulen.png']);
 for (const m of materials) if (m.availability === 'download' && m.href?.startsWith('/')) allowedAssets.add(m.href.slice(1));
 const staticFiles = dist.filter((f) => !f.endsWith('.html') && !relative(DIST, f).replaceAll('\\', '/').startsWith('_astro/'));
 for (const f of staticFiles) {
@@ -120,6 +120,12 @@ if (stageArg === 'review' && PROTOTYPE !== true) addMust('src/config.ts', 'PROTO
 if (allowedAssets.has('brand/paolo-sms-logo.svg')) {
   const brand = join(ROOT, 'BRAND.md');
   if (!existsSync(brand) || !/Berechtigung/.test(readFileSync(brand, 'utf8'))) addMust('BRAND.md', 'Dokumentation der Logo-Berechtigung fehlt');
+}
+
+// 3c. Säulengrafik (enthält das Logo): Freigabe muss in BRAND.md stehen
+if (allowedAssets.has('saeulen/sms-saeulen.png')) {
+  const brand = join(ROOT, 'BRAND.md');
+  if (!existsSync(brand) || !/sms-saeulen\.png/.test(readFileSync(brand, 'utf8'))) addMust('BRAND.md', 'Dokumentation der Säulengrafik (mit Logo) fehlt');
 }
 
 // 4. Impressum: festgelegte Anbieterangaben müssen im gebauten Impressum stehen

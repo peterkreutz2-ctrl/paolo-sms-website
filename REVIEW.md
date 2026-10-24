@@ -9,8 +9,8 @@ und wird nicht von Suchmaschinen indexiert (`noindex`).
 1. **Aussage und Ton der Startseite.** Hauptbotschaft „PAOLO macht
    Sicherheitsmanagement einfach.", Untertitel, Verständlichkeit für Verantwortliche
    ohne Vorkenntnisse.
-2. **Fachliche Richtigkeit.** Stimmen die fünf Schritte, die „In PAOLO"-Angaben,
-   der Vergleich Verein/Flugschule und die Seite „Einführen"? Sind Funktionen
+2. **Fachliche Richtigkeit.** Stimmen die vier Säulen des SMS und die Abgrenzung
+   zwischen SMS und Software, der Vergleich Verein/Flugschule und die Seite „Einführen"? Sind Funktionen
    genannt, die es nicht gibt, oder fehlen wichtige?
 3. **Begriffe.** Passen Accountable Executive, Safety Manager, Safety Assistant,
    Redlichkeitskultur und „Pilotphase"?
@@ -24,8 +24,7 @@ und wird nicht von Suchmaschinen indexiert (`noindex`).
 - Materialien stehen auf „In Vorbereitung"; es gibt noch keine Downloads.
 - Screenshots fehlen; die Datenschutzhinweise und das Impressum sind rechtlich
   nicht geprüft.
-- Das Hellblau im Regelkreis und die Schaltflächenfarbe sind noch keine
-  freigegebenen Markenwerte.
+- Die Schaltflächenfarbe ist noch kein freigegebener Markenwert.
 
 ## Rückmeldung
 
