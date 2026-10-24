@@ -23,6 +23,7 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
 |---|---|
 | `public/brand/paolo-sms-logo.svg` | Logo (Original) |
 | `public/saeulen/sms-saeulen.png` | Säulengrafik der Startseite (enthält das Logo) |
+| `public/bilder/*.png` | vier Illustrationen der Anwendung (Meldeformular, Dashboard, Meldung bewerten, Maßnahmen) |
 
 ## Säulengrafik
 
@@ -42,5 +43,20 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
   nur als Original-Vektordatei und unverändert verwendet werden.
 - **Metadaten:** Die Datei enthält keine Text-, Autoren- oder Pfadmetadaten
   (nur Bilddaten).
+
+## Illustrationen der Anwendung
+
+- **Freigabe:** Die Dateien `public/bilder/meldung-einreichen.png`, `dashboard.png`,
+  `meldung-klassifizieren.png` und `massnahmen.png` sind am 24.10.2026 vom Betreiber
+  der Website, Peter Kreutz, als Bildmaterial für diese Website bereitgestellt
+  worden.
+- **Charakter:** Anonymisierte und vereinfachte Darstellungen mit Spieldaten. Sie
+  entsprechen nicht exakt den Bildschirmen der Anwendung und stehen auf der Seite
+  ausdrücklich als Illustrationen.
+- **Logo:** Das PAOLO-Logo erscheint darin nur als Teil der abgebildeten
+  Oberfläche. Es wird dadurch nicht eigenständig verwendet; die Regeln oben bleiben
+  unverändert.
+- **Metadaten:** Die Dateien enthalten keine Text-, Autoren- oder Pfadmetadaten
+  (nur Gamma, Farbraum und Auflösungsangabe).
 
 Weitere Bilder oder Logo-Varianten sind nicht freigegeben.

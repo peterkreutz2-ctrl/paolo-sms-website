@@ -67,7 +67,14 @@ for (const [f, kind] of scan) {
 }
 
 // 2. Dateien: nur freigegebene Assets
-const allowedAssets = new Set(['brand/paolo-sms-logo.svg', 'saeulen/sms-saeulen.png']);
+const allowedAssets = new Set([
+  'brand/paolo-sms-logo.svg',
+  'saeulen/sms-saeulen.png',
+  'bilder/meldung-einreichen.png',
+  'bilder/dashboard.png',
+  'bilder/meldung-klassifizieren.png',
+  'bilder/massnahmen.png',
+]);
 for (const m of materials) if (m.availability === 'download' && m.href?.startsWith('/')) allowedAssets.add(m.href.slice(1));
 const staticFiles = dist.filter((f) => !f.endsWith('.html') && !relative(DIST, f).replaceAll('\\', '/').startsWith('_astro/'));
 for (const f of staticFiles) {

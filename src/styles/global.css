@@ -111,10 +111,11 @@ a:hover { color: var(--petrol-dark); }
 .tick li { padding-left: 1.6rem; position: relative; margin-bottom: .35rem; }
 .tick li::before { content: ''; position: absolute; left: .15rem; top: .55em; width: .6rem; height: .35rem; border-left: 3px solid var(--green); border-bottom: 3px solid var(--green); transform: rotate(-45deg); }
 
-/* Screenshots (Platzhalter) */
-.shots { display: grid; gap: 1.25rem; margin: 1.25rem 0; }
+/* Illustrationen der Anwendung */
+.shots { display: grid; gap: 1.25rem; margin: 1.25rem 0; align-items: start; }
 .shot { margin: 0; }
-.shot__ph { aspect-ratio: 16 / 10; display: grid; place-items: center; text-align: center; padding: 1rem; background: var(--paper); border: 2px dashed var(--muted); border-radius: var(--radius); color: var(--muted); }
+.shot__frame { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: .75rem; }
+.shot__frame img { display: block; width: 100%; max-width: var(--w); height: auto; margin-inline: auto; border: 1px solid var(--line); border-radius: 6px; }
 .shot figcaption { margin-top: .5rem; font-size: .95rem; color: var(--muted); }
 
 /* Hinweis- und Freigabeboxen */
