@@ -105,7 +105,7 @@ a:hover { color: var(--petrol-dark); }
 
 /* Risikomanagement-Kreislauf */
 .rm { display: grid; gap: 1.5rem; margin: 1.5rem 0 1rem; align-items: center; }
-.rm__art svg { width: 100%; max-width: 15rem; margin-inline: auto; display: block; }
+.rm__art svg { width: 100%; max-width: 24rem; margin-inline: auto; display: block; }
 .rm__steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 .rm__step { display: grid; grid-template-columns: 3rem 1fr; gap: .25rem 1rem; align-content: start; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; }
 .rm__n { grid-row: 1 / span 3; width: 3rem; height: 3rem; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 1.4rem; background: var(--c); color: var(--n); }
@@ -211,8 +211,8 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
 }
 
 @media (min-width: 64em) {
-  .rm { grid-template-columns: minmax(16rem, 22rem) 1fr; gap: 2.5rem; }
-  .rm__art svg { max-width: 22rem; }
+  .rm { grid-template-columns: minmax(20rem, 26rem) 1fr; gap: 2.5rem; }
+  .rm__art svg { max-width: 26rem; }
   .saeulen__img { display: block; }
   .saeulen__list { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 }

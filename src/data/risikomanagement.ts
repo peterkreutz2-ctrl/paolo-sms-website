@@ -1,5 +1,5 @@
 // Die vier Schritte des Risikomanagements (Säule „Risikomanagement“ des SMS).
-// Gestaltung und Farben stammen vom früheren Regelkreis der Startseite.
+// Die Farben folgen der Segmentmarke des PAOLO-Logos (Pfeilfluss Orange, Gelb, Blau, Grün).
 // `inPaolo` nennt nur Funktionen, die in der Anwendung nachweisbar vorhanden sind.
 
 export interface RisikoSchritt {
@@ -38,8 +38,8 @@ export const risikoSchritte: RisikoSchritt[] = [
     task: 'Maßnahmen festlegen, Verantwortliche und Fristen bestimmen und die Umsetzung verfolgen.',
     inPaolo:
       'Maßnahmen mit Verantwortlichen, Fälligkeitsdatum und Status. Das Dashboard zeigt offene und überfällige Maßnahmen.',
-    color: '#6CB324',
-    numColor: '#343F47',
+    color: '#0262D5',
+    numColor: '#FFFFFF',
   },
   {
     n: 4,
@@ -47,7 +47,7 @@ export const risikoSchritte: RisikoSchritt[] = [
     task: 'Erkenntnisse und Entscheidungen im Team teilen, damit die Organisation daraus lernt.',
     inPaolo:
       'Sicherheitshinweise (intern oder öffentlich), Protokolle der Sicherheitsbesprechung und SMS-Dokumente mit Vorlagen.',
-    color: '#0262D5',
-    numColor: '#FFFFFF',
+    color: '#6CB324',
+    numColor: '#343F47',
   },
 ];

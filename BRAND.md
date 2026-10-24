@@ -70,3 +70,17 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
   (nur Gamma, Farbraum und Auflösungsangabe).
 
 Weitere Bilder oder Logo-Varianten sind nicht freigegeben.
+
+## Kreislaufgrafik „Risikomanagement“
+
+- **Freigabe:** Auf Anweisung des Betreibers der Website, Peter Kreutz, vom 25.10.2026
+  basiert die Kreislaufgrafik im Startseitenabschnitt „Risikomanagement“ auf der
+  vierfarbigen Segmentmarke des PAOLO-Logos.
+- **Umfang der Ableitung:** Die vier Segmentpfade und ihre Farben sind unverändert aus
+  `public/brand/paolo-sms-logo.svg` übernommen (inline-SVG, `src/components/RisikoRing.astro`).
+  Der Schriftzug fehlt; ergänzt sind nur die Ziffern 1 bis 4 und die Schrittnamen als
+  Beschriftung. Keine Umfärbung, keine Verzerrung, kein Nachbau der Form.
+- **Abweichung von der Logo-Regel oben:** Die Marke erscheint hier ohne Schriftzug und
+  nicht als unveränderte Gesamtdatei. Das ist eine Ausnahme auf ausdrückliche Anweisung
+  des Betreibers; die Regeln für die eigenständige Logo-Verwendung bleiben sonst
+  unverändert. Die endgültige Markenregelung steht vor der Produktivfreigabe aus.

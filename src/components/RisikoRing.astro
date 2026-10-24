@@ -1,43 +1,30 @@
 ---
-// Der Ring des Risikomanagement-Kreislaufs (vier Segmente) als eigenes SVG ohne Logo.
+// Kreislauf des Risikomanagements auf Basis der vierfarbigen Segmentmarke des PAOLO-Logos.
+// Die vier Pfade und Farben sind unverändert aus public/brand/paolo-sms-logo.svg
+// übernommen (Marke ohne Schriftzug). Die Pfeilspitzen laufen gegen den Uhrzeigersinn:
+// Orange (oben) → Gelb (links) → Blau (unten) → Grün (rechts).
 // Rein dekorativ: immer in einem aria-hidden-Container einsetzen.
 import { risikoSchritte } from '../data/risikomanagement';
 
-const cx = 150, cy = 150, ro = 140, ri = 78, gap = 5, start = -90;
-const span = 360 / risikoSchritte.length;
-const rad = (d: number) => (d * Math.PI) / 180;
-const pt = (r: number, a: number): [number, number] => [cx + r * Math.cos(rad(a)), cy + r * Math.sin(rad(a))];
-const f = (n: number) => n.toFixed(2);
-const rm = (ro + ri) / 2;
-
-const segs = risikoSchritte.map((s, i) => {
-  const a0 = start + i * span + gap / 2;
-  const a1 = start + (i + 1) * span - gap / 2;
-  const [x0, y0] = pt(ro, a0), [x1, y1] = pt(ro, a1), [x2, y2] = pt(ri, a1), [x3, y3] = pt(ri, a0);
-  const d = `M${f(x0)} ${f(y0)} A${ro} ${ro} 0 0 1 ${f(x1)} ${f(y1)} L${f(x2)} ${f(y2)} A${ri} ${ri} 0 0 0 ${f(x3)} ${f(y3)} Z`;
-  const [lx, ly] = pt(rm, start + i * span + span / 2);
-  // Pfeilspitze in der Lücke, im Uhrzeigersinn
-  const g = start + (i + 1) * span;
-  const [gx, gy] = pt(rm, g);
-  const tx = -Math.sin(rad(g)), ty = Math.cos(rad(g));
-  const nx = Math.cos(rad(g)), ny = Math.sin(rad(g));
-  const tri = [
-    [gx + tx * 6, gy + ty * 6],
-    [gx - tx * 4 + nx * 9, gy - ty * 4 + ny * 9],
-    [gx - tx * 4 - nx * 9, gy - ty * 4 - ny * 9],
-  ].map(([x, y]) => `${f(x)},${f(y)}`).join(' ');
-  return { ...s, d, lx, ly, tri };
-});
+// Reihenfolge der Schritte = Reihenfolge des Pfeilflusses der Marke
+const pos = [
+  { x: 42.7, y: 10.7, label: { x: 42.7, y: -5, anchor: 'middle' } },
+  { x: 10.7, y: 42.7, label: { x: -6, y: 42.7, anchor: 'end' } },
+  { x: 42.7, y: 74.7, label: { x: 42.7, y: 97, anchor: 'middle' } },
+  { x: 74.7, y: 42.7, label: { x: 91.4, y: 42.7, anchor: 'start' } },
+];
+const font = 'Arial, Helvetica, sans-serif';
 ---
 
-<svg viewBox="0 0 300 300" focusable="false">
-  {segs.map((s) => (
-    <g>
-      <path d={s.d} fill={s.color} />
-      <text x={f(s.lx)} y={f(s.ly)} text-anchor="middle" dominant-baseline="central" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="30" fill={s.numColor}>{s.n}</text>
-      <polygon points={s.tri} fill="#343f47" />
-    </g>
+<svg viewBox="-50 -17 208 116" focusable="false">
+  <path fill="#FD5F04" d="M12.4864 12.4864c15.7097,-15.7097 40.6363,-16.5947 57.3881,-2.661l-1.50104 12.5485 -11.235 4.83099c-7.68804,-7.22854 -19.4597,-7.62893 -27.6006,-1.20207l-4.76138 -11.0729 -0.341077 -0.79318 -0.852493 -0.101923 -11.2894 -1.35051c0.0648147,-0.0657149 0.127629,-0.13263 0.192944,-0.197945z"/>
+  <path fill="#FDB205" d="M12.6845 72.9883c-0.0657149,-0.0647146 -0.13263,-0.127629 -0.198045,-0.192944 -15.7095,-15.7096 -16.5947,-40.6364 -2.6612,-57.3882l12.5487 1.50114 4.83099 11.2348c-7.22864,7.68804 -7.62903,19.46 -1.20197,27.6008l-11.073 4.76138 -0.79308 0.341077 -0.102023 0.852493 -1.35041 11.2894z"/>
+  <path fill="#0262D5" d="M72.9884 72.5973c-0.0648147,0.0657149 -0.127729,0.13263 -0.193044,0.198045 -15.7096,15.7096 -40.6363,16.5946 -57.3881,2.661l1.50104 -12.5485 11.2351 -4.83109c7.68794,7.22834 19.4596,7.62873 27.6004,1.20177l4.76148 11.0733 0.341077 0.79308 0.852493 0.102023 11.2895 1.35041z"/>
+  <path fill="#6CB324" d="M72.5974 12.2934c0.0657149,0.0649147 0.13263,0.127729 0.197945,0.193044 15.7097,15.7096 16.5947,40.6363 2.661,57.3881l-12.5485 -1.50104 -4.83099 -11.2351c7.22824,-7.68794 7.62873,-19.4596 1.20177,-27.6004l11.0732 -4.76148 0.79318 -0.341077 0.101923 -0.852493 1.35051 -11.2895z"/>
+  {risikoSchritte.map((s, i) => (
+    <>
+      <text x={pos[i].x} y={pos[i].y} text-anchor="middle" dominant-baseline="central" font-family={font} font-weight="700" font-size="15" fill={s.numColor}>{s.n}</text>
+      <text x={pos[i].label.x} y={pos[i].label.y} text-anchor={pos[i].label.anchor} dominant-baseline="central" font-family={font} font-weight="700" font-size="8.5" fill="#343f47">{s.title}</text>
+    </>
   ))}
-  <text x="150" y="146" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="15" fill="#343f47">Risiko-</text>
-  <text x="150" y="164" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="15" fill="#343f47">management</text>
 </svg>
