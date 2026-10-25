@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Saeulen from '../components/Saeulen.astro';
 import Risikomanagement from '../components/Risikomanagement.astro';
+import Praxisbeispiel from '../components/Praxisbeispiel.astro';
 import Unreleased from '../components/Unreleased.astro';
 import { SITE } from '../config';
 import { url } from '../lib/url';
@@ -145,6 +146,20 @@ const shots = [
       </div>
       <Unreleased>
         Neuer Abschnitt. Die Formulierung „Kernfunktion“ und die Schrittnamen sind noch nicht freigegeben.
+      </Unreleased>
+    </div>
+  </section>
+
+  <!-- Risikomanagement in der Praxis -->
+  <section class="section section--praxis" id="praxisbeispiel" aria-labelledby="h-praxis">
+    <div class="wrap">
+      <h2 id="h-praxis">Risikomanagement in der Praxis – ein Beispiel</h2>
+      <p class="lead">
+        Eine zu hohe Hecke im Abflugbereich zeigt, wie die vier Schritte im Vereinsalltag ineinandergreifen.
+      </p>
+      <Praxisbeispiel />
+      <Unreleased>
+        Neuer Abschnitt mit erfundenem Beispiel. Szenario, Formulierungen und die Darstellung des Zeitablaufs sind noch nicht freigegeben.
       </Unreleased>
     </div>
   </section>

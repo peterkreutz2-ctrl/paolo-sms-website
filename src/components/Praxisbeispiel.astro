@@ -1,0 +1,40 @@
+---
+// Praxisbeispiel zum Risikomanagement: vier Karten und ein Zeitstrahl, der zeigt, dass sich die
+// Schritte überlappen. Der Zeitstrahl ist Dekoration (aria-hidden); der Inhalt steht in den Karten.
+import { beispielSchritte } from '../data/praxisbeispiel';
+
+const zeitpunkte = ['Im Sommer', 'Sofort', 'Hecke wächst, Maßnahme offen', 'Oktober: Rückschnitt'];
+// Spannen im Zeitstrahl: [Startspalte, Endspalte (exklusiv)]
+const spannen: Record<number, [number, number]> = { 1: [1, 2], 2: [2, 3], 3: [2, 5], 4: [3, 5] };
+---
+
+<div class="pb">
+  <ol class="pb__cards">
+    {beispielSchritte.map((s) => (
+      <li class="pb__card" style={`--c:${s.color};--n:${s.numColor}`}>
+        <div class="pb__head">
+          <span class="pb__n" aria-hidden="true">{s.n}</span>
+          <div>
+            <h3><span class="visually-hidden">Schritt {s.n}: </span>{s.title}</h3>
+            <p class="pb__when">{s.when}</p>
+          </div>
+        </div>
+        {s.text.map((t) => <p>{t}</p>)}
+        <p class="pb__in"><b>In PAOLO:</b> {s.inPaolo}</p>
+      </li>
+    ))}
+  </ol>
+
+  <div class="pb__time" aria-hidden="true">
+    <div class="pb__row pb__row--axis">
+      {zeitpunkte.map((z) => <span>{z}</span>)}
+    </div>
+    {beispielSchritte.map((s) => (
+      <div class="pb__row">
+        <span class="pb__bar" style={`--c:${s.color};--n:${s.numColor};grid-column:${spannen[s.n][0]} / ${spannen[s.n][1]}`}>{s.n} {s.title}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<p class="rm__caption">Die vier Schritte laufen nicht streng nacheinander ab. Die Bewertung zeigt, dass schnell gehandelt werden muss, die Maßnahme bleibt monatelang offen, und die Kommunikation beginnt schon, solange sie offen ist. PAOLO nimmt einen Sicherheitshinweis nicht von selbst zurück: Wann er entfällt, entscheidet der Safety Manager.</p>

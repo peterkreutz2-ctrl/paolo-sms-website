@@ -79,6 +79,7 @@ a:hover { color: var(--petrol-dark); }
 /* Abschnitte */
 .section { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
 .section--alt { background: var(--paper-2); }
+.section--praxis { border-top: 1px solid var(--line); }
 .section > .wrap > h2 { max-width: var(--measure); }
 .lead { font-size: 1.25rem; max-width: var(--measure); }
 
@@ -116,6 +117,19 @@ a:hover { color: var(--petrol-dark); }
 .rm__in { border-top: 1px solid var(--line); padding-top: .5rem; margin-top: .4rem !important; }
 .rm__in b { color: var(--petrol); }
 .rm__caption { color: var(--muted); font-size: .95rem; max-width: var(--measure); }
+
+/* Praxisbeispiel Risikomanagement */
+.pb { margin: 1.5rem 0 1rem; }
+.pb__cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+.pb__card { background: var(--paper); border: 1px solid var(--line); border-top: 6px solid var(--c); border-radius: var(--radius); padding: 1.1rem 1.2rem; }
+.pb__head { display: flex; align-items: center; gap: .85rem; margin-bottom: .75rem; }
+.pb__head h3 { margin: 0; }
+.pb__n { flex: none; width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 1.2rem; background: var(--c); color: var(--n); }
+.pb__when { margin: 0; color: var(--petrol); font-weight: 700; font-size: .95rem; }
+.pb__card p { margin: 0 0 .6rem; }
+.pb__in { border-top: 1px solid var(--line); padding-top: .5rem; margin-top: .75rem !important; margin-bottom: 0 !important; }
+.pb__in b { color: var(--petrol); }
+.pb__time { display: none; }
 
 /* Schritte der Einführung (Einführen), ohne Nummerierung */
 .steps { list-style: none; padding: 0; margin: 0 0 1.25rem; display: grid; gap: 1rem; }
@@ -208,11 +222,17 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
   .shots { grid-template-columns: repeat(2, 1fr); }
   .saeulen__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .rm__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pb__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (min-width: 64em) {
   .rm { grid-template-columns: minmax(20rem, 26rem) 1fr; gap: 2.5rem; }
   .rm__art svg { max-width: 26rem; }
+  .pb__cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .pb__time { display: grid; gap: .4rem; margin-top: 1.5rem; padding: 1rem 1.2rem; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+  .pb__row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .4rem; }
+  .pb__row--axis span { font-size: .85rem; font-weight: 700; color: var(--petrol); border-bottom: 1px solid var(--line); padding-bottom: .3rem; }
+  .pb__bar { background: var(--c); color: var(--n); font-weight: 700; font-size: .9rem; padding: .3rem .75rem; border-radius: 999px; }
   .saeulen__img { display: block; }
   .saeulen__list { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 }
