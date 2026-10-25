@@ -136,6 +136,7 @@ a:hover { color: var(--petrol-dark); }
 .step { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; }
 .step h3 { margin: 0 0 .3em; }
 .step p { margin: 0; }
+.step .step__kind { color: var(--petrol); font-weight: 700; font-size: .9rem; margin: 0 0 .2em; }
 
 /* Ablaufgrafik (Einführen) */
 .flow { margin: 1.25rem 0 1.75rem; }

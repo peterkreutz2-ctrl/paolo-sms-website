@@ -1,36 +1,25 @@
 ---
 import Base from '../layouts/Base.astro';
-import Unreleased from '../components/Unreleased.astro';
 import { SITE } from '../config';
 import { url } from '../lib/url';
 
-const phases = [
-  { t: 'Entscheiden und Rollen benennen', d: 'Die Leitung beschließt die Einführung. Accountable Executive, Safety Manager und Administrator werden benannt.' },
-  { t: 'Technische Einführung', d: 'Voraussetzungen schaffen und PAOLO SMS als eigene Instanz installieren. Der empfohlene Weg ist Docker auf einem eigenen Server oder einer Ubuntu-VM.' },
-  { t: 'Einstellungen vornehmen', d: 'Benutzer anlegen, rechtliche Angaben eingeben, Organisationseinstellungen festlegen und Dokumente aus den Vorlagen erstellen.' },
-  { t: 'Betrieb aufnehmen', d: 'Den Start in der Organisation begleiten und die ersten Meldungen bearbeiten.' },
-  { t: 'Laufender Betrieb', d: 'Meldungen bearbeiten, Maßnahmen verfolgen, Sicherheitsbesprechungen durchführen und die Installation pflegen.' },
-  { t: 'Checkliste', d: 'Der Leitfaden schließt mit einer Checkliste für die Einführung.' },
-];
-
-const variants = [
-  { v: 'Docker + Better Auth + PostgreSQL in Docker', c: 'Selbstbetrieb mit hoher Datenhoheit; eigener Aufwand für Datenbank, Backups und Updates.' },
-  { v: 'Docker + Better Auth + Neon', c: 'Eigenes Login, verwaltete Cloud-Datenbank; weniger Datenbankbetrieb, dafür Anbieterabhängigkeit.' },
-  { v: 'Docker + Clerk + Neon', c: 'Verwaltetes Login und verwaltete Datenbank; geringer eigener Aufwand, stärkere Anbieterabhängigkeit.' },
+const steps = [
+  { k: 'Organisatorisch', t: 'Prozesse und Rollen festlegen', d: 'Nach der Entscheidung für ein SMS legt die Organisation fest, wie sie mit Sicherheitsthemen umgehen will, und benennt die Verantwortlichen: Accountable Executive, Safety Manager und Administrator. Dazu gehört auch, wer die Installation betreibt.' },
+  { k: 'Technisch', t: 'Technische Voraussetzungen schaffen', d: 'Parallel klärt die Organisation, wie PAOLO betrieben werden soll, und schafft die dafür nötige Umgebung. Was dazu gehört, hängt vom gewählten Betrieb ab (siehe „Technischer Betrieb“).' },
+  { k: 'Technisch', t: 'PAOLO installieren', d: 'PAOLO wird als eigene Installation der Organisation eingerichtet. Zur Installation gehört, den ersten Administrator anzulegen und Datensicherungen einzurichten.' },
+  { k: 'Gemeinsam', t: 'Grundeinstellungen in PAOLO vornehmen', d: 'Wenn Rollen und Installation bereitstehen, richtet die Organisation PAOLO ein: Benutzer anlegen, rechtliche Pflichtangaben machen, Organisationseinstellungen festlegen sowie Dokumente aus den Vorlagen erstellen und einstellen.' },
+  { k: 'Gemeinsam', t: 'Betrieb aufnehmen', d: 'Die Organisation macht den Meldeweg bekannt, legt die Sicherheitsrichtlinie fest und beginnt, die eingehenden Meldungen zu bearbeiten.' },
 ];
 ---
 
-<Base title="Einführung und Betrieb" description="So führen Gleitschirmvereine und Flugschulen PAOLO SMS ein: Rollen, Ablauf, Betriebswege und Verantwortung.">
+<Base title="Einführung und Betrieb" description="So führen Gleitschirmvereine und Flugschulen PAOLO SMS ein: Ablauf, Rollen, technischer Betrieb und Verantwortung.">
   <section class="section" aria-labelledby="h-intro">
     <div class="wrap">
       <p class="eyebrow">Für Verein und Flugschule</p>
       <h1 id="h-intro">Einführung und Betrieb</h1>
       <p class="lead">
-        Du brauchst keine Vorkenntnisse im Sicherheitsmanagement. Wichtig sind eine Entscheidung der Leitung, ein benannter Safety Manager und ein Betriebsweg, der zu deiner Organisation passt.
+        Auch ohne bisherige Erfahrung mit Sicherheitsmanagement kannst du mit PAOLO ein SMS in deinem Verein oder deiner Flugschule einführen. Wichtig sind die aktive Unterstützung durch die Vereins- oder Flugschulleitung, klar festgelegte Verantwortlichkeiten und die Bereitschaft, Sicherheitsmanagement dauerhaft zu betreiben. PAOLO erleichtert die Einführung und den laufenden Betrieb durch strukturierte Prozesse und Dokumentvorlagen.
       </p>
-      <Unreleased>
-        Entwurf auf Grundlage des Betreiberleitfadens. Die Aussage „keine Vorkenntnisse" ist noch zu belegen; die fachliche Bestätigung steht aus.
-      </Unreleased>
     </div>
   </section>
 
@@ -52,58 +41,64 @@ const variants = [
         </figcaption>
       </figure>
       <ol class="steps">
-        {phases.map((p) => (
+        {steps.map((p) => (
           <li class="step">
+            <p class="step__kind">{p.k}</p>
             <h3>{p.t}</h3>
             <p>{p.d}</p>
           </li>
         ))}
       </ol>
-      <p>Der ausführliche Leitfaden steht unter <a href={url('/materialien/')}>Informationen &amp; Materialien</a>.</p>
+      <p>Ein ausführlicher Leitfaden zur Einführung ist in Vorbereitung. Den Stand findest du unter <a href={url('/materialien/')}>Informationen &amp; Materialien</a>.</p>
     </div>
   </section>
 
   <section class="section" id="rollen" aria-labelledby="h-rollen">
     <div class="wrap">
-      <h2 id="h-rollen">Rollen</h2>
-      <p class="lead">PAOLO unterscheidet, wer meldet, wer bearbeitet und wer verantwortet.</p>
+      <h2 id="h-rollen">Rollen und Verantwortlichkeiten</h2>
+
+      <h3>Sicherheitsmeldungen ohne Anmeldung</h3>
+      <p>Jede Person kann eine Sicherheitsmeldung einreichen, auch ohne Benutzerkonto und auf Wunsch anonym. Die Hürde zum Melden soll so niedrig wie möglich sein.</p>
+
+      <h3>Rollen in PAOLO</h3>
+      <p>Wer in PAOLO arbeiten oder interne Inhalte lesen soll, erhält ein Benutzerkonto und eine Rolle. Die Rolle bestimmt, was die Person in PAOLO sehen und tun kann.</p>
       <dl class="roles">
-        <dt>Melder</dt>
-        <dd>Jede Person, ohne Anmeldung. Meldungen sind auf Wunsch anonym.</dd>
         <dt>Benutzer</dt>
-        <dd>Ein an Sicherheitsthemen interessiertes Mitglied der Organisation.</dd>
+        <dd>Ein an Sicherheitsthemen interessiertes Mitglied der Organisation. Nach der Anmeldung liest die Person Sicherheitsinformationen, die für angemeldete Mitglieder freigegeben sind. Zum internen Bereich, in dem Meldungen bearbeitet werden, hat diese Rolle keinen Zugang.</dd>
         <dt>Safety Assistant</dt>
-        <dd>Eine vertrauenswürdige und kompetente Ansprechperson, die mit sensiblen Informationen verantwortungsvoll umgeht. In einer Flugschule etwa ein erfahrener Fluglehrer, in einem Verein ein geeigneter Funktionsträger.</dd>
+        <dd>Eine vertrauenswürdige und kompetente Ansprechperson, die mit sensiblen Informationen verantwortungsvoll umgeht, in einer Flugschule etwa ein erfahrener Fluglehrer, in einem Verein ein geeigneter Funktionsträger. Die Rolle ist zum Einsehen gedacht: Der Safety Assistant liest Meldungen, Maßnahmen und interne Dokumente, kann Anhänge zu Meldungen hoch- und herunterladen und neuen Mitgliedern die Rolle Benutzer geben. Bearbeiten kann er nichts; Angaben zur meldenden Person und interne Notizen sieht er nicht.</dd>
         <dt>Safety Manager</dt>
-        <dd>Setzt das Sicherheitsmanagementsystem operativ um, koordiniert und hält es aufrecht. Eine Vertretung mit denselben Aufgaben ist möglich.</dd>
+        <dd>Setzt das Sicherheitsmanagementsystem operativ um, koordiniert und hält es aufrecht; eine Vertretung mit denselben Aufgaben ist möglich. PAOLO unterstützt ihn dabei, Meldungen zu bearbeiten und zu klassifizieren, Risiken zu bewerten, Maßnahmen zu verfolgen, Sicherheitsbesprechungen zu dokumentieren, Dokumente zu pflegen, Einstellungen und rechtliche Angaben zu verwalten und Benutzer zu betreuen.</dd>
         <dt>Administrator</dt>
-        <dd>Betreut den technischen Betrieb der Installation: Konfiguration, Wartung, Zugänge. Das kann eine externe IT-Person sein.</dd>
-        <dt>Accountable Executive</dt>
-        <dd>Trägt die Gesamtverantwortung für das Sicherheitsmanagementsystem und unterzeichnet die Sicherheitsrichtlinie. Die Verantwortung ist nicht delegierbar. Im Verein üblicherweise der Vorstand, in der Flugschule die Schulleitung. Das ist keine PAOLO-Rolle; die Person wird in der Anwendung nur dokumentarisch benannt.</dd>
+        <dd>Betreut die Installation: Konfiguration, Wartung, Datensicherung und Zugänge. Das kann auch eine externe IT-Person sein. Nur der Administrator kann Daten importieren, exportieren und die Datensicherung erstellen, und nur er kann die Administratorrolle vergeben. Technisch kann er auch Inhalte einsehen; die inhaltliche Arbeit im SMS ist aber Aufgabe des Safety Managers.</dd>
       </dl>
+
+      <h3>Organisatorische Verantwortung</h3>
+      <p>
+        Der <strong>Accountable Executive</strong> (verantwortliche Leitung) trägt die übergeordnete Verantwortung für die organisatorischen Voraussetzungen und die Funktionsfähigkeit des SMS, nicht für die Sicherheit jedes einzelnen Fluges. Dazu gehört etwa, die Sicherheitsrichtlinie zu unterzeichnen. In Vereinen kann ein entsprechend benanntes Vorstandsmitglied diese Funktion übernehmen, in Flugschulen beispielsweise der Geschäftsführer oder Ausbildungsleiter, jeweils im Rahmen ihrer Befugnisse.
+      </p>
+      <p>Der Accountable Executive ist <strong>keine PAOLO-Systemrolle</strong>. Seine Benennung wird in PAOLO lediglich dokumentiert und erzeugt keine Programmberechtigungen.</p>
     </div>
   </section>
 
   <section class="section section--alt" id="betrieb" aria-labelledby="h-betrieb">
     <div class="wrap">
-      <h2 id="h-betrieb">Betriebswege</h2>
+      <h2 id="h-betrieb">Technischer Betrieb</h2>
       <p class="lead">
-        Jeder Verein und jede Flugschule betreibt eine eigene Installation, selbst oder über einen beauftragten IT-Dienstleister. PAOLO SMS ist keine zentral betriebene Plattform und für eine Organisation je Installation ausgelegt.
+        Jeder Verein und jede Flugschule betreibt eine eigene Installation von PAOLO, selbst oder mit Unterstützung eines Dienstleisters. PAOLO SMS ist keine zentral betriebene Plattform und für eine Organisation je Installation ausgelegt.
       </p>
-      <p>Der Betreiber verantwortet Hosting, Datenschutz, Zugänge, Updates und Backups. Für den empfohlenen Docker-Weg braucht es einen Server oder eine VM, eine eigene Domain und eine Person mit Linux- und Docker-Kenntnissen oder einen beauftragten IT-Dienstleister.</p>
-      <div class="table-wrap">
-        <table>
-          <caption>Mögliche Bausteinkombinationen (Stand Factsheet V1.2, 30.09.2026)</caption>
-          <thead><tr><th scope="col">Variante</th><th scope="col">Charakter</th></tr></thead>
-          <tbody>
-            {variants.map((r) => (<tr><th scope="row">{r.v}</th><td>{r.c}</td></tr>))}
-          </tbody>
-        </table>
-      </div>
-      <p>Welche Variante passt, hängt von Datenhoheit, Kosten und deinem eigenen Betriebsaufwand ab. Die ausführliche Abwägung steht im Leitfaden.</p>
-      <Unreleased>
-        Die Bewertung der Anmeldeverfahren ist in den Projektunterlagen noch nicht einheitlich; der Wortlaut wird abgestimmt. Kostenangaben folgen erst, wenn sie belegt sind.
-      </Unreleased>
+      <ul class="cards cards--2">
+        <li class="card">
+          <h3>Eigener Server oder virtuelle Maschine</h3>
+          <p>Die Organisation oder ihr Dienstleister betreibt PAOLO auf einem Server oder einer virtuellen Maschine, die sie selbst verwaltet. Das gibt viel Kontrolle über Daten und Umgebung, verlangt aber auch, Einrichtung, Aktualisierungen, Absicherung und Datensicherungen selbst zu übernehmen.</p>
+        </li>
+        <li class="card">
+          <h3>Cloud-Hosting</h3>
+          <p>Die Organisation nutzt Dienste eines Cloud-Anbieters. Ein Teil des Betriebs liegt dann beim Anbieter, der eigene Aufwand kann geringer sein. Dafür besteht eine Abhängigkeit vom Anbieter, und die Organisation muss prüfen, wo und wie ihre Daten verarbeitet werden.</p>
+        </li>
+      </ul>
+      <p>Welcher Weg passt, hängt von den eigenen Möglichkeiten, dem gewünschten Aufwand und den Anforderungen an die Kontrolle über die Daten ab. Eine Empfehlung gibt diese Seite nicht. Hinweise zur Installation stehen in der technischen Dokumentation, die während der Pilotphase auf Anfrage erhältlich ist (siehe <a href={url('/materialien/')}>Informationen &amp; Materialien</a>).</p>
+      <p>Die betreibende Organisation ist für den ordnungsgemäßen Betrieb ihrer Installation und für den Umgang mit den darin gespeicherten Daten verantwortlich. Dazu gehören zum Beispiel Impressum und Datenschutzangaben, die Verwaltung der Zugänge, Aktualisierungen und Datensicherungen. PAOLO bietet dafür Funktionen, etwa zur Anonymisierung und Löschung von Meldungen. Eine Rechtsberatung ersetzt PAOLO nicht.</p>
     </div>
   </section>
 
@@ -113,7 +108,7 @@ const variants = [
       <div class="faq">
         <details>
           <summary>Müssen wir eine eigene IT haben?</summary>
-          <p>Nicht unbedingt, aber jemand muss die Installation betreiben. Für den Docker-Weg braucht es eine Person mit Linux- und Docker-Kenntnissen oder einen beauftragten IT-Dienstleister.</p>
+          <p>Nicht unbedingt, aber jemand muss die Installation betreiben. Je nach Betriebsweg braucht es dafür technische Kenntnisse oder einen beauftragten IT-Dienstleister.</p>
         </details>
         <details>
           <summary>Was kostet PAOLO?</summary>
