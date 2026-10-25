@@ -80,9 +80,9 @@ export const materials: Material[] = [
     title: 'Video „PAOLO Promo1"',
     audience: 'Alle Interessierten',
     purpose: 'Kurzvorstellung von PAOLO im Video.',
-    availability: 'pending',
+    availability: 'external',
     format: 'Video (externer Link)',
-    releaseNote: 'Der Link wird nach Prüfung von Rechten, Untertiteln und Aktualität ergänzt.',
+    href: 'https://www.youtube.com/watch?v=6b8VwUDiiHQ',
   },
   {
     id: 'vorstellung',
