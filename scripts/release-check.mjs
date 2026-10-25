@@ -51,6 +51,9 @@ const FORBIDDEN = [
 ];
 const EMAIL = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g;
 const ALLOWED_EMAILS = new Set([SITE.email.toLowerCase()]);
+// Freigegebene externe Verweise: die öffentliche Demo-Installation (erfundene Daten, getrennt von jeder
+// Betreiberinstallation), vom Betreiber freigegeben am 25.10.2026.
+const ALLOWED_EXTERNAL_LINKS = new Set(['https://paolo-sms-demo.vercel.app']);
 const TEXT_EXT = new Set(['.astro', '.ts', '.mjs', '.js', '.json', '.md', '.yml', '.yaml', '.css', '.svg', '.html', '.txt']);
 
 // 1. Gebautes Ergebnis (dist) und Repository-Inhalt (ohne Ignoriertes) durchsuchen
@@ -99,8 +102,10 @@ for (const file of pages) {
   const page = '/' + relative(DIST, file).replaceAll('\\', '/').replace(/index\.html$/, '');
   const html = readFileSync(file, 'utf8');
 
-  // Externe Verweise: in der Review-Version keine (außer mailto)
-  for (const m of html.matchAll(/<a\b[^>]*\bhref="(https?:[^"]+)"/g)) addMust(`page ${page}`, `externer Link ${m[1]} (nicht freigegeben)`);
+  // Externe Verweise: in der Review-Version keine (außer mailto und freigegebene Verweise)
+  for (const m of html.matchAll(/<a\b[^>]*\bhref="(https?:[^"]+)"/g)) {
+    if (!ALLOWED_EXTERNAL_LINKS.has(m[1])) addMust(`page ${page}`, `externer Link ${m[1]} (nicht freigegeben)`);
+  }
 
   for (const m of html.matchAll(/<aside class="unreleased"[^>]*>([\s\S]*?)<\/aside>/g)) {
     unreleased++;
