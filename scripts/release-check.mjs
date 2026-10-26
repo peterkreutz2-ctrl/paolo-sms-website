@@ -25,7 +25,7 @@ if (!existsSync(DIST)) {
 }
 
 const { PROVIDER, SITE, PROTOTYPE } = await import('../src/config.ts');
-const { materials } = await import('../src/data/materials.ts');
+const { materials, releasePackage } = await import('../src/data/materials.ts');
 
 const walk = (d, skip = new Set()) =>
   readdirSync(d).flatMap((n) => {
@@ -80,6 +80,7 @@ const allowedAssets = new Set([
   'bilder/weg-zu-paolo-sms.png',
 ]);
 for (const m of materials) if (m.availability === 'download' && m.href?.startsWith('/')) allowedAssets.add(m.href.slice(1));
+for (const h of [releasePackage.packageHref, releasePackage.checksumHref]) allowedAssets.add(h.slice(1));
 const staticFiles = dist.filter((f) => !f.endsWith('.html') && !relative(DIST, f).replaceAll('\\', '/').startsWith('_astro/'));
 for (const f of staticFiles) {
   const r = relative(DIST, f).replaceAll('\\', '/');

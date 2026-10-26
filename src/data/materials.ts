@@ -34,6 +34,42 @@ export interface Material {
   releaseNote?: string;
 }
 
+/** Veröffentlichtes Quellpaket (Vorabversion). Dateien liegen unter public/downloads/. */
+export interface ReleasePackage {
+  title: string;
+  version: string;
+  stand: string;
+  format: string;
+  size: string;
+  description: string;
+  notice: string;
+  packageHref: string;
+  checksumHref: string;
+  checksumFile: string;
+  packageFile: string;
+  commit: string;
+  sha256: string;
+  license: string;
+}
+
+export const releasePackage: ReleasePackage = {
+  title: 'PAOLO SMS – Quellpaket',
+  version: '0.2.0-pilot.1',
+  stand: '26.10.2026',
+  format: 'TAR.GZ',
+  size: '3,0 MB',
+  description:
+    'Quellcode und Dokumentation, um PAOLO SMS ohne Zugang zum Entwicklungsrepository zu installieren, zu aktualisieren, zu sichern und wiederherzustellen.',
+  notice: 'Vorabversion – nicht für den Produktivbetrieb freigegeben. Ausschließlich Testdaten verwenden.',
+  packageHref: '/downloads/paolo-sms-0.2.0-pilot.1.tar.gz',
+  checksumHref: '/downloads/paolo-sms-0.2.0-pilot.1.SHA256SUMS',
+  packageFile: 'paolo-sms-0.2.0-pilot.1.tar.gz',
+  checksumFile: 'paolo-sms-0.2.0-pilot.1.SHA256SUMS',
+  commit: '8a2abb68a7b711790242253f7e673f4d34f20a1a',
+  sha256: '4d19961de36afcc5496dcf4d07fd87d0c44884ef30ab57f154e76960cb95c87c',
+  license: 'GPL-3.0-or-later',
+};
+
 export const groups: { id: GroupId; title: string; audience: string }[] = [
   {
     id: 'kennenlernen',
@@ -138,33 +174,6 @@ export const materials: Material[] = [
     purpose: 'Fertige Vorlagen für Sicherheitsrichtlinie, SMS-Handbuch, Notfallplan, Protokoll der Sicherheitsbesprechung, Sicherheitshinweis, Checkliste und Bedienungsanleitung.',
     availability: 'in-app',
     format: 'In der Anwendung nach Anmeldung',
-  },
-  {
-    id: 'quellpaket',
-    group: 'technik',
-    title: 'Quellpaket 0.2.0-pilot.1 – Vorabversion, nicht für den Produktivbetrieb freigegeben',
-    audience: 'IT-Dienstleister, Betreiber, Entwicklerinnen und Entwickler',
-    purpose:
-      'Vorabversion – nicht für den Produktivbetrieb freigegeben. Das Paket enthält Quellcode und Dokumentation, um PAOLO SMS ohne Zugang zum Entwicklungsrepository zu installieren, zu aktualisieren, zu sichern und wiederherzustellen. Verwende ausschließlich Testdaten: Noch nicht alle Sicherheits- und Betriebsprüfungen sind abgeschlossen, und das Paket ist nicht signiert. Prüfe nach dem Download die SHA-256. Quellcommit 8a2abb68a7b711790242253f7e673f4d34f20a1a, Lizenz GPL-3.0-or-later.',
-    availability: 'download',
-    format: 'TAR.GZ',
-    extent: '3,0 MB',
-    version: '0.2.0-pilot.1',
-    stand: '26.10.2026',
-    href: '/downloads/paolo-sms-0.2.0-pilot.1.tar.gz',
-  },
-  {
-    id: 'quellpaket-pruefsumme',
-    group: 'technik',
-    title: 'Prüfsumme (SHA-256) zum Quellpaket 0.2.0-pilot.1',
-    audience: 'IT-Dienstleister, Betreiber',
-    purpose:
-      'SHA-256 des Quellpakets: 4d19961de36afcc5496dcf4d07fd87d0c44884ef30ab57f154e76960cb95c87c. Lade die Datei in dasselbe Verzeichnis wie das Paket und prüfe mit „sha256sum -c“. Die Prüfsumme belegt die Unversehrtheit des Archivs, nicht die Herkunft.',
-    availability: 'download',
-    format: 'Text',
-    version: '0.2.0-pilot.1',
-    stand: '26.10.2026',
-    href: '/downloads/paolo-sms-0.2.0-pilot.1.SHA256SUMS',
   },
   {
     id: 'technik',
