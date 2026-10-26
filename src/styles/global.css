@@ -256,3 +256,24 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
   body { font-size: 11pt; }
   a { color: inherit; }
 }
+
+/* Downloadbereich Quellpaket */
+.release { border: 1px solid var(--line); border-top: 6px solid var(--petrol); border-radius: var(--radius); background: var(--paper); margin: 1.25rem 0; overflow: hidden; }
+.release__main { padding: 1.25rem 1.2rem; }
+.release__main h3 { font-size: 1.5rem; }
+.release__main > p:last-child { margin-bottom: 0; }
+.release__facts { display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; margin: 0 0 1rem; }
+.release__facts dt { font-size: .85rem; color: var(--muted); }
+.release__facts dd { margin: 0; font-weight: 700; }
+.release__notice { background: var(--warn-bg); border-left: 6px solid var(--warn-line); border-radius: 6px; padding: .6rem .9rem; margin: 0; }
+.release__tech { background: var(--paper-2); border-top: 1px solid var(--line); padding: 1.25rem 1.2rem; }
+.release__tech h4 { font-size: 1.1rem; margin-bottom: .75rem; }
+.release__data { display: grid; gap: .6rem; margin: 0 0 1rem; }
+.release__data dt { font-weight: 700; font-size: .95rem; }
+.release__data dd { margin: 0; min-width: 0; }
+.release code { overflow-wrap: anywhere; word-break: break-all; }
+.release__cmd { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: .6rem .8rem; margin: 0 0 .75rem; overflow-x: auto; }
+.release__cmd code { word-break: normal; overflow-wrap: normal; }
+@media (min-width: 48rem) {
+  .release__data > div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 1rem; }
+}
