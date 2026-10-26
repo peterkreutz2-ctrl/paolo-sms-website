@@ -44,7 +44,6 @@ export const FOOTER_NAV: NavItem[] = [
   { label: 'Einführen', href: '/einfuehren/' },
   { label: 'Materialien', href: '/materialien/' },
   { label: 'Mitmachen', href: '/mitmachen/' },
-  { label: 'Lizenz und Marke', href: '/mitmachen/#lizenz' },
   { label: 'Impressum', href: '/impressum/' },
   { label: 'Datenschutz', href: '/datenschutz/' },
 ];
