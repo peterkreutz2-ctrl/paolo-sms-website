@@ -20,6 +20,8 @@
   --warn-line: #c4620a;
   --radius: 10px;
   --measure: 68ch;
+  --text-w: 45rem; /* Lesebreite oberhalb der Säulengrafik, ca. 720 px */
+  --figure-w: 58rem; /* Maximale Breite der Säulengrafik, ca. 928 px */
   --wrap: 72rem;
   --gutter: 1rem;
   font-family: Arial, Helvetica, sans-serif;
@@ -84,18 +86,21 @@ a:hover { color: var(--petrol-dark); }
 .lead { font-size: 1.25rem; max-width: var(--measure); }
 
 /* Hero */
-.hero { padding-block: clamp(2rem, 6vw, 4.5rem); background: linear-gradient(180deg, #eef6fb 0, var(--paper) 100%); }
+.hero { padding-block: clamp(2rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 2.5rem); background: linear-gradient(180deg, #eef6fb 0, var(--paper) 100%); }
 .hero .wrap { display: grid; gap: 2rem; align-items: center; }
 .hero h1 { margin-bottom: .35em; }
 .hero .acronym { font-size: 1rem; color: var(--muted); margin: 0 0 .75rem; }
 .hero .acronym strong { color: var(--ink); }
 .hero .acronym__name { color: var(--petrol); }
 .hero .acronym__l { font-weight: 700; font-size: 1.15em; color: var(--petrol); }
-.hero .subtitle { font-size: clamp(1.25rem, 2.6vw, 1.6rem); color: var(--muted); margin-bottom: 1rem; max-width: 30ch; }
+.hero .subtitle { font-size: clamp(1.25rem, 2.6vw, 1.6rem); color: var(--muted); margin-bottom: 1rem; max-width: var(--text-w); }
+.hero .lead, .hero .small { max-width: var(--text-w); }
+.hero + .section { padding-top: clamp(1.25rem, 3vw, 2rem); }
 
 /* Säulen */
 .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .saeulen { margin: 1.5rem 0; }
+.saeulen.wide { width: min(100%, var(--figure-w)); margin-inline: auto; }
 .saeulen__img { display: none; width: 100%; height: auto; }
 .saeulen__list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 .saeule { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; }
