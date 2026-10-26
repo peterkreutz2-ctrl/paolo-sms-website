@@ -3,17 +3,24 @@ name: Review-Vorschau auf GitHub Pages
 # Vorläufige Review-Version (PROTOTYPE = true), keine Produktfreigabe.
 # Actions sind auf Commit-SHAs gepinnt; Dependabot hält sie aktuell.
 
+# Pull Requests führen nur Build und Prüfungen aus (Job `build`). Veröffentlicht
+# wird ausschließlich bei Push auf `main` und manuellem Start (Job `deploy`).
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
 
+# Veröffentlichungen laufen nacheinander und werden nie abgebrochen. Prüfläufe
+# eines Pull Requests stehen in einer eigenen Gruppe, damit sie keine
+# Veröffentlichung aufhalten; ein neuer Push ersetzt den älteren Prüflauf.
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.ref) || 'pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -43,12 +50,14 @@ jobs:
         run: npm run release:review
 
       - name: Seite als Pages-Artefakt hochladen
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: dist
 
   deploy:
     needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     permissions:
       pages: write

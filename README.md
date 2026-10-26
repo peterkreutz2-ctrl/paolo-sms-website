@@ -100,7 +100,8 @@ E2E-Tests mit Better Auth oder Clerk gehören ausschließlich zur Anwendung.
 
 ## Deployment (GitHub Pages)
 
-`.github/workflows/deploy.yml` baut bei jedem Push auf `main`, führt Audit,
+`.github/workflows/deploy.yml` baut bei jedem Pull Request gegen `main` und führt
+dieselben Prüfungen aus, ohne zu veröffentlichen. Bei jedem Push auf `main` baut es, führt Audit,
 `npm test` und `npm run release:review` aus und veröffentlicht `dist/` über die
 GitHub-Pages-Actions. Die Actions sind auf Commit-SHAs gepinnt. Die Seite wird
 unter der eigenen Domain https://paolo-sms.de/ ausgeliefert (`site` und
