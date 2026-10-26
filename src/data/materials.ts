@@ -149,4 +149,13 @@ export const materials: Material[] = [
     format: 'Zugriff während der Pilotphase auf Anfrage',
     href: 'mailto:info@paolo-sms.de?subject=Anfrage%20technische%20Dokumentation',
   },
+  {
+    id: 'repository',
+    group: 'technik',
+    title: 'GitHub-Repository',
+    audience: 'Entwicklerinnen, Entwickler, IT-Dienstleister',
+    purpose: 'Quellcode und Entwicklung von PAOLO SMS.',
+    availability: 'pending',
+    releaseNote: 'Das Entwicklungsrepository ist derzeit privat. Eine spätere öffentliche Freigabe ist geplant.',
+  },
 ];
