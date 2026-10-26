@@ -3,14 +3,15 @@ import { defineConfig } from 'astro/config';
 
 // Rein statische Ausgabe für GitHub Pages. Kein Adapter, keine Integrationen.
 //
-// `site` ist bewusst nicht gesetzt: Die Domain paolo-sms.de ist noch nicht
-// eingerichtet, und ohne `site` entstehen keine Canonical-/Sitemap-URLs auf
-// eine noch nicht betriebene Adresse. Beim Livegang setzen (siehe README).
+// `site` ist die Produktionsadresse: Die Seite wird unter https://paolo-sms.de/
+// ausgeliefert (GitHub Pages mit Custom Domain).
 //
-// `base`: Unter einer eigenen Domain bleibt es '/'. Unter der
-// GitHub-Projekt-Adresse (<konto>.github.io/<repo>/) vorab per Umgebungsvariable
-// SITE_BASE=/<repo>/ bauen. Alle Links laufen über src/lib/url.ts.
+// `base`: Unter der eigenen Domain bleibt es '/'. Nur für eine lokale Vorschau
+// unter einem Unterpfad per Umgebungsvariable SITE_BASE=/<pfad>/ bauen; der
+// Deploy-Workflow setzt sie bewusst nicht. Alle Links laufen über
+// src/lib/url.ts.
 export default defineConfig({
+  site: 'https://paolo-sms.de',
   base: process.env.SITE_BASE ?? '/',
   trailingSlash: 'always',
   build: { format: 'directory' },

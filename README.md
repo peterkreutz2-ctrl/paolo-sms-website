@@ -103,5 +103,7 @@ E2E-Tests mit Better Auth oder Clerk gehören ausschließlich zur Anwendung.
 `.github/workflows/deploy.yml` baut bei jedem Push auf `main`, führt Audit,
 `npm test` und `npm run release:review` aus und veröffentlicht `dist/` über die
 GitHub-Pages-Actions. Die Actions sind auf Commit-SHAs gepinnt. Die Seite wird
-zunächst nur unter der GitHub-Pages-Adresse ausgeliefert
-(`SITE_BASE=/<Repositoryname>/`). Eine eigene Domain ist nicht eingerichtet.
+unter der eigenen Domain https://paolo-sms.de/ ausgeliefert (`site` und
+`base: '/'` in `astro.config.mjs`); die Domain ist in den GitHub-Pages-
+Einstellungen hinterlegt. Der Workflow setzt `SITE_BASE` nicht. Die frühere
+Projektadresse leitet GitHub auf die Domain weiter.
