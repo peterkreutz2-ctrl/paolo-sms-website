@@ -77,6 +77,7 @@ a:hover { color: var(--petrol-dark); }
 .btn--ghost { background: transparent; color: var(--petrol); }
 .btn--ghost:hover { background: var(--paper-2); color: var(--petrol-dark); border-color: var(--petrol-dark); }
 .btn-row { display: flex; flex-wrap: wrap; gap: .75rem; margin-block: 1.25rem; }
+.hero .btn-row { margin-block: .75rem; }
 
 /* Abschnitte */
 .section { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
@@ -86,13 +87,14 @@ a:hover { color: var(--petrol-dark); }
 .lead { font-size: 1.25rem; max-width: var(--measure); }
 
 /* Hero */
-.hero { padding-block: clamp(2rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 2.5rem); background: linear-gradient(180deg, #eef6fb 0, var(--paper) 100%); }
-.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: center; }
-.hero h1 { font-size: clamp(2rem, 7vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: .45em; }
-.hero .subtitle { font-size: clamp(1.15rem, 2.4vw, 1.4rem); color: var(--muted); margin-bottom: 1.25rem; max-width: var(--text-w); }
-.hero .problem { font-size: 1.1rem; margin-bottom: 1.25rem; max-width: var(--text-w); }
-.hero .solution { max-width: var(--text-w); margin-bottom: 1.25rem; padding: 1rem 1.25rem; background: #fff; border: 1px solid var(--line); border-left: 6px solid var(--petrol); border-radius: 8px; }
-.hero .solution .lead { font-size: clamp(1.05rem, 2vw, 1.2rem); margin: 0 0 .75rem; max-width: none; }
+.hero { padding-block: clamp(1.25rem, 3vw, 2.25rem) clamp(1.25rem, 3vw, 2rem); background: linear-gradient(180deg, #eef6fb 0, var(--paper) 100%); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; align-items: center; }
+.hero h1 { font-size: clamp(1.85rem, 4.4vw, 2.75rem); font-weight: 800; line-height: 1.12; margin-bottom: .3em; }
+.hero .subtitle { font-size: clamp(1.1rem, 2.2vw, 1.3rem); color: var(--muted); margin-bottom: .75rem; max-width: var(--text-w); }
+.hero .problem { font-size: 1.05rem; margin-bottom: .9rem; max-width: var(--text-w); }
+.hero .solution { max-width: var(--text-w); margin-bottom: .75rem; padding: .85rem 1.25rem; background: #fff; border: 1px solid var(--line); border-left: 6px solid var(--petrol); border-radius: 8px; }
+.hero .solution .lead { font-size: clamp(1.1rem, 2vw, 1.25rem); margin: 0 0 .4rem; max-width: none; }
+.hero .solution__text { font-size: 1rem; margin: 0 0 .6rem; }
 .hero .solution .lead strong { color: var(--petrol-dark); }
 .hero .acronym { font-size: .9rem; color: var(--muted); margin: 0; }
 .hero .acronym__l { font-weight: 700; color: var(--ink); }
