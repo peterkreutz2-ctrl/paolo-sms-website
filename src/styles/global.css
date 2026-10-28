@@ -87,13 +87,15 @@ a:hover { color: var(--petrol-dark); }
 
 /* Hero */
 .hero { padding-block: clamp(2rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 2.5rem); background: linear-gradient(180deg, #eef6fb 0, var(--paper) 100%); }
-.hero .wrap { display: grid; gap: 2rem; align-items: center; }
-.hero h1 { margin-bottom: .35em; }
-.hero .acronym { font-size: 1rem; color: var(--muted); margin: 0 0 .75rem; }
-.hero .acronym strong { color: var(--ink); }
-.hero .acronym__name { color: var(--petrol); }
-.hero .acronym__l { font-weight: 700; font-size: 1.15em; color: var(--petrol); }
-.hero .subtitle { font-size: clamp(1.25rem, 2.6vw, 1.6rem); color: var(--muted); margin-bottom: 1rem; max-width: var(--text-w); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: center; }
+.hero h1 { font-size: clamp(2rem, 7vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: .45em; }
+.hero .subtitle { font-size: clamp(1.15rem, 2.4vw, 1.4rem); color: var(--muted); margin-bottom: 1.25rem; max-width: var(--text-w); }
+.hero .problem { font-size: 1.1rem; margin-bottom: 1.25rem; max-width: var(--text-w); }
+.hero .solution { max-width: var(--text-w); margin-bottom: 1.25rem; padding: 1rem 1.25rem; background: #fff; border: 1px solid var(--line); border-left: 6px solid var(--petrol); border-radius: 8px; }
+.hero .solution .lead { font-size: clamp(1.05rem, 2vw, 1.2rem); margin: 0 0 .75rem; max-width: none; }
+.hero .solution .lead strong { color: var(--petrol-dark); }
+.hero .acronym { font-size: .9rem; color: var(--muted); margin: 0; }
+.hero .acronym__l { font-weight: 700; color: var(--ink); }
 .hero .lead, .hero .small { max-width: var(--text-w); }
 .hero + .section { padding-top: clamp(1.25rem, 3vw, 2rem); }
 
