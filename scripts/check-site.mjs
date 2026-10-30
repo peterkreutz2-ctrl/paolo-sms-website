@@ -1,5 +1,5 @@
-// Strukturprüfung des gebauten Prototyps (dist/). Ohne Abhängigkeiten.
-// Prüft, was sich ohne Browser prüfen lässt; ersetzt keine Prüfung mit Screenreader
+﻿// StrukturprÃ¼fung des gebauten Prototyps (dist/). Ohne AbhÃ¤ngigkeiten.
+// PrÃ¼ft, was sich ohne Browser prÃ¼fen lÃ¤sst; ersetzt keine PrÃ¼fung mit Screenreader
 // oder einem Werkzeug wie axe/PAC.
 //
 // Aufruf: npm run build && npm run check
@@ -50,21 +50,22 @@ for (const file of pages) {
   if ((html.match(/<main[\s>]/g) ?? []).length !== 1) err(page, 'genau ein <main> erwartet');
   if (!/<nav[^>]*aria-label=/.test(html)) err(page, '<nav> ohne aria-label');
 
-  // Überschriftenreihenfolge: keine übersprungenen Ebenen
+  // Ãœberschriftenreihenfolge: keine Ã¼bersprungenen Ebenen
   const levels = [...html.matchAll(/<h([1-6])[\s>]/g)].map((m) => Number(m[1]));
   for (let i = 1; i < levels.length; i++) {
-    if (levels[i] > levels[i - 1] + 1) err(page, `Überschriftenebene übersprungen (h${levels[i - 1]} → h${levels[i]})`);
+    if (levels[i] > levels[i - 1] + 1) err(page, `Ãœberschriftenebene Ã¼bersprungen (h${levels[i - 1]} â†’ h${levels[i]})`);
   }
 
-  // Bilder: alt-Attribut vorhanden (leer erlaubt für dekorative Bilder)
+  // Bilder: alt-Attribut vorhanden (leer erlaubt fÃ¼r dekorative Bilder)
   for (const m of html.matchAll(/<img\b[^>]*>/g)) {
     if (!/\balt=/.test(m[0])) err(page, `<img> ohne alt: ${m[0].slice(0, 80)}`);
   }
 
   // Keine Ressourcen von Dritten, kein eingebetteter Fremdinhalt, kein Skript
   if (/<iframe\b/.test(html)) err(page, '<iframe> gefunden');
-  if (/<script\b/.test(html)) err(page, '<script> gefunden (Prototyp ist skriptfrei)');
+  if (/<script\b(?![^>]*type="application\/ld\+json")/.test(html)) err(page, 'ausfÃƒÂ¼hrbares <script> gefunden (Prototyp ist skriptfrei)');
   for (const m of html.matchAll(/<(?:link|img|source|video|audio)\b[^>]*\b(?:src|href|srcset)="(https?:)?\/\/[^"]+"/g)) {
+    if (/rel="canonical"/.test(m[0])) continue;
     if (!/rel="(?:noopener|noreferrer)/.test(m[0]) && !/<a\b/.test(m[0])) err(page, `externe Ressource: ${m[0].slice(0, 100)}`);
   }
   if (/url\(\s*['"]?https?:/.test(html)) err(page, 'externe url() im Inline-CSS');
@@ -83,7 +84,7 @@ for (const file of pages) {
       if (id && !new RegExp(`\\bid="${id}"`).test(html)) err(page, `Anker fehlt: ${href}`);
       continue;
     }
-    if (!href.startsWith(BASE)) { err(page, `Link außerhalb von base: ${href}`); continue; }
+    if (!href.startsWith(BASE)) { err(page, `Link auÃŸerhalb von base: ${href}`); continue; }
     const rel = href.slice(BASE.length);
     if (!exists(rel)) err(page, `toter Link: ${href}`);
     const [pathPart, anchor] = href.split('#');
@@ -97,20 +98,20 @@ for (const file of pages) {
   // Lokale Bilder/Assets
   for (const m of html.matchAll(/\b(?:src|href)="(\/[^"#?]*\.(?:png|svg|webp|jpg|jpeg|css|pdf))"/g)) {
     const ref = m[1];
-    if (!ref.startsWith(BASE)) { err(page, `Asset außerhalb von base: ${ref}`); continue; }
+    if (!ref.startsWith(BASE)) { err(page, `Asset auÃŸerhalb von base: ${ref}`); continue; }
     if (!exists(ref.slice(BASE.length))) err(page, `Asset fehlt: ${ref}`);
   }
   if (is404) continue;
 }
 
-// Dateigrößen
+// DateigrÃ¶ÃŸen
 const big = files.filter((f) => statSync(f).size > 500 * 1024);
-for (const f of big) warnings.push(`groß (> 500 KB): ${relative(DIST, f)} = ${(statSync(f).size / 1024).toFixed(0)} KB`);
+for (const f of big) warnings.push(`groÃŸ (> 500 KB): ${relative(DIST, f)} = ${(statSync(f).size / 1024).toFixed(0)} KB`);
 
-console.log(`Geprüft: ${pages.length} Seiten, ${files.length} Dateien.`);
+console.log(`GeprÃ¼ft: ${pages.length} Seiten, ${files.length} Dateien.`);
 if (externalLinks.size) {
-  console.log('\nExterne Links (verlassen die Website, manuell prüfen):');
-  for (const [h, p] of externalLinks) console.log(`  ${h}  ← ${[...p].join(', ')}`);
+  console.log('\nExterne Links (verlassen die Website, manuell prÃ¼fen):');
+  for (const [h, p] of externalLinks) console.log(`  ${h}  â† ${[...p].join(', ')}`);
 }
 if (warnings.length) console.log('\nHinweise:\n  ' + warnings.join('\n  '));
 if (errors.length) {
@@ -118,3 +119,4 @@ if (errors.length) {
   process.exit(1);
 }
 console.log('\nKeine Strukturfehler.');
+

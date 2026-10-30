@@ -1,0 +1,12 @@
+# PAOLO SMS
+
+> Vorläufige, nicht offiziell freigegebene Projektwebsite für ein Sicherheitsmanagement-System für Gleitschirmvereine und Flugschulen. Inhalte mit „Nicht freigegeben“ sind Entwürfe.
+
+- [Startseite](https://paolo-sms.de/): Zweck und Überblick
+- [Einführen](https://paolo-sms.de/einfuehren/): Einführung und Betrieb
+- [Materialien](https://paolo-sms.de/materialien/): verfügbare Informationsmaterialien
+- [Mitmachen](https://paolo-sms.de/mitmachen/): Beteiligung und Kontakt
+- [Impressum](https://paolo-sms.de/impressum/): Anbieterangaben
+- [Datenschutz](https://paolo-sms.de/datenschutz/): Datenschutzhinweise
+
+Die Website ist eine Review-Version und derzeit für Suchmaschinen gesperrt. Beachte die Hinweise in [llm-rules.md](https://paolo-sms.de/llm-rules.md).

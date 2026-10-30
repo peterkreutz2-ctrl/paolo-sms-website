@@ -71,6 +71,9 @@ for (const [f, kind] of scan) {
 
 // 2. Dateien: nur freigegebene Assets
 const allowedAssets = new Set([
+  'robots.txt',
+  'llms.txt',
+  'llm-rules.md',
   'brand/paolo-sms-logo.svg',
   'saeulen/sms-saeulen.png',
   'bilder/meldung-einreichen.png',

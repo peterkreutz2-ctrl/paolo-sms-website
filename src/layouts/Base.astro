@@ -12,6 +12,22 @@ const { title, description = SITE.description } = Astro.props;
 const fullTitle = title ? `${title} – ${SITE.name}` : SITE.titleDefault;
 const path = Astro.url.pathname;
 const current = (href: string) => !href.includes('#') && path === url(href);
+const canonical = new URL(path, Astro.site).href;
+const is404 = Astro.url.pathname.endsWith('/404.html');
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: fullTitle,
+  description,
+  url: canonical,
+  inLanguage: 'de',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: new URL('/', Astro.site).href,
+    inLanguage: 'de',
+  },
+};
 ---
 
 <!doctype html>
@@ -21,7 +37,16 @@ const current = (href: string) => !href.includes('#') && path === url(href);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    {PROTOTYPE && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={PROTOTYPE || is404 ? 'noindex, nofollow' : 'index, follow'} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />
     <meta name="generator" content={Astro.generator} />
     <!-- Kein Favicon im Prototyp: Das Bildmarken-Favicon ist noch nicht freigegeben. -->
     <link rel="icon" href="data:," />
