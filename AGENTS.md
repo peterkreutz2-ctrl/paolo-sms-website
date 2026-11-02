@@ -30,6 +30,9 @@ Anwendung. Wer unsicher ist, welches Repository gemeint ist, fragt nach, bevor e
   hier nichts, was getestet werden könnte.
 - Änderungen laufen über einen Feature-Branch; ein Merge auf `main` löst das
   Deployment auf GitHub Pages aus und erfolgt erst nach Freigabe des Betreibers.
+- Ausnahme: Aufgrund des Astro-Konzepts dürfen Rechtschreibänderungen und
+  inhaltliche Korrekturen, die keine Produktivfreigabe nach `npm run verify`
+  benötigen, direkt auf `main` gemacht werden.
 
 ## Freigaben
 
