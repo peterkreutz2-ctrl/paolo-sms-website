@@ -78,6 +78,9 @@ const allowedAssets = new Set([
   'bilder/meldung-klassifizieren.png',
   'bilder/massnahmen.png',
   'bilder/weg-zu-paolo-sms.png',
+  'contributors/contributor_peter.webp',
+  'contributors/contributor_rainer.webp',
+  'contributors/contributor_thomas.webp',
 ]);
 for (const m of materials) if (m.availability === 'download' && m.href?.startsWith('/')) allowedAssets.add(m.href.slice(1));
 for (const h of [releasePackage.packageHref, releasePackage.checksumHref]) allowedAssets.add(h.slice(1));

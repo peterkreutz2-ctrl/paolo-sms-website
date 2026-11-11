@@ -2,6 +2,24 @@
 import Base from '../layouts/Base.astro';
 import { url } from '../lib/url';
 import { SITE } from '../config';
+
+const contributors = [
+  {
+    name: 'Dr. Peter Kreutz',
+    image: 'contributor_peter.webp',
+    bio: 'Dr. Peter Kreutz war Physiker, Verkehrs- und Hubschrauberpilot. Jetzt arbeitet er als Fluglehrer für die Flugschule Hot Sport und spielt am liebsten mit seinem Schirm an der Düne.',
+  },
+  {
+    name: 'Rainer Poppl',
+    image: 'contributor_rainer.webp',
+    bio: 'Rainer Poppl lernte in den 80er-Jahren programmieren. Er arbeitet als Entwickler und IT-Verantwortlicher. Seit 2020 hat ihn das Gleitschirm-Virus gepackt.',
+  },
+  {
+    name: 'Thomas Behrens',
+    image: 'contributor_thomas.webp',
+    bio: 'Thomas Behrens war sein ganzes Berufsleben im Umfeld der Softwareentwicklung tätig. Die ersten Gleitschirmerlebnisse hatte er Mitte der 80er. Ein Tandemflug 2021 hat ihn wieder infiziert.',
+  },
+];
 ---
 
 <Base title="Mitmachen" description="PAOLO SMS ist ein kostenloses, nichtkommerzielles Gemeinschaftsprojekt. Pilotorganisationen und Rückmeldungen aus der Praxis sind willkommen.">
@@ -37,4 +55,30 @@ import { SITE } from '../config';
       <p class="measure">Auch unabhängig von einer Pilotinstallation sind fachliche Rückmeldungen, Verbesserungsvorschläge und technische Beiträge willkommen.</p>
     </div>
   </section>
+
+  <section class="section section--alt" id="paolinis" aria-labelledby="h-paolinis">
+    <div class="wrap">
+      <h2 id="h-paolinis">Die PAOLINIS hinter PAOLO</h2>
+      <p class="measure">Von Gleitschirmfliegern für Gleitschirmflieger!<br/> PAOLO entstand im Kopf von Peter. Rainer und Thomas waren <em>stets bemüht</em>, Peter bei der Umsetzung zu unterstützen.</p>
+      <ul class="cards cards--3">
+        {contributors.map(({ name, image, bio }) => (
+          <li class="card contributor">
+            <img src={url(`/contributors/${image}`)} alt="" width="800" height="800" decoding="async" />
+            <h3>{name}</h3>
+            <p>{bio}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="measure">Daneben haben uns Claude, Codex und Copilot bei der Implementierung maßgeblich unterstützt.</p>
+    </div>
+  </section>
 </Base>
+
+<style>
+  .contributor img {
+    display: block;
+    width: min(100%, 20rem);
+    margin: 0 auto 1rem;
+    border-radius: 6px;
+  }
+</style>
