@@ -94,10 +94,12 @@ a:hover { color: var(--petrol-dark); }
 .hero .acronym { font-size: .9rem; color: var(--muted); margin: 0; }
 .hero .acronym__l { font-weight: 700; color: var(--ink); }
 .hero .lead, .hero .small { max-width: var(--text-w); }
-.hero .partner { max-width: var(--text-w); margin: 1rem 0 0; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .95rem; line-height: 1.4; color: var(--ink); text-wrap: balance; }
-.hero .partner__end { white-space: nowrap; }
-.hero .partner__logo { display: inline-block; height: 2.75rem; width: auto; vertical-align: middle; margin: -.6rem 0 -.6rem .3rem; }
-@media (max-width: 30em) { .hero .partner { font-size: .9rem; } .hero .partner__logo { height: 2.25rem; margin-block: -.5rem; } }
+.hero .hero-info { max-width: var(--text-w); margin: 1rem 0 0; font-size: .95rem; line-height: 1.5; color: var(--muted); }
+.hero .hero-info p { margin: 0; text-wrap: balance; }
+.hero .hero-info p + p { margin-top: .4rem; }
+.hero .hero-info__end { white-space: nowrap; }
+.hero .hero-info__logo { display: inline-block; height: 2.25rem; width: auto; vertical-align: middle; margin: -.5rem 0 -.5rem .3rem; }
+@media (max-width: 30em) { .hero .hero-info { font-size: .9rem; } .hero .hero-info__logo { height: 2rem; margin-block: -.45rem; } }
 .hero + .section { padding-top: clamp(1.25rem, 3vw, 2rem); }
 
 /* Säulen */
