@@ -61,7 +61,6 @@ a:hover { color: var(--petrol-dark); }
 .logo img { height: 3rem; width: auto; }
 .nav { flex: 1 1 auto; }
 .nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0 1.75rem; padding: 0; margin: 0; align-items: center; }
-.nav li:last-child { margin-left: auto; }
 .nav a { display: inline-block; padding: .55rem .1rem; min-height: 44px; color: var(--ink); text-decoration: none; font-weight: 700; border-bottom: 3px solid transparent; }
 .nav a:hover { border-color: var(--line); }
 .nav a[aria-current='page'] { border-color: var(--orange); }
