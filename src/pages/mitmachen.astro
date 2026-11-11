@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import Unreleased from '../components/Unreleased.astro';
 import { url } from '../lib/url';
 import { SITE } from '../config';
 
@@ -18,7 +17,7 @@ const contributors = [
   {
     name: 'Thomas Behrens',
     image: 'contributor_thomas.webp',
-    bio: 'Thomas Behrens war sein ganzes Berufsleben im Umfeld der Softwareentwicklung tätig. Die ersten Gleitschirmerlebnisse hatte er Mitte der 80er mit seinem Steinbach Kondor. Ein Tandemflug 2021 hat ihn wieder infiziert.',
+    bio: 'Thomas Behrens war sein ganzes Berufsleben im Umfeld der Softwareentwicklung tätig. Die ersten Gleitschirmerlebnisse hatte er Mitte der 80er. Ein Tandemflug 2021 hat ihn wieder infiziert.',
   },
 ];
 ---
@@ -29,21 +28,6 @@ const contributors = [
       <p class="eyebrow">Gemeinschaftsprojekt</p>
       <h1 id="h-mit">Mitmachen</h1>
       <p class="lead">PAOLO SMS wird als kostenloses, nichtkommerzielles Gemeinschaftsprojekt entwickelt. Rückmeldungen aus der Praxis und Beiträge zur Weiterentwicklung sind willkommen.</p>
-
-      <section class="contributors" id="paolinis" aria-labelledby="h-paolinis">
-        <h2 id="h-paolinis">Die PAOLINIS hinter PAOLO</h2>
-        <p class="measure">Von Gleitschirmfliegern für Gleitschirmflieger!<br/> PAOLO entstand im Kopf von Peter. Rainer und Thomas waren <em>stets bemüht</em>, Peter bei der Umsetzung zu unterstützen.</p>
-        <ul class="cards cards--3">
-          {contributors.map(({ name, image, bio }) => (
-            <li class="card contributor">
-              <img src={url(`/contributors/${image}`)} alt="" width="800" height="800" decoding="async" />
-              <h3>{name}</h3>
-              <p>{bio}</p>
-            </li>
-          ))}
-        </ul>
-        <p class="measure">Daneben haben uns Claude, Codex und Copilot bei der Implementierung maßgeblich unterstützt.</p>
-      </section>
 
       <h2>Pilotorganisationen gesucht</h2>
       <p class="measure">Wir suchen Gleitschirmvereine und Flugschulen, die PAOLO SMS im eigenen Betrieb einsetzen und erproben möchten.</p>
@@ -71,13 +55,26 @@ const contributors = [
       <p class="measure">Auch unabhängig von einer Pilotinstallation sind fachliche Rückmeldungen, Verbesserungsvorschläge und technische Beiträge willkommen.</p>
     </div>
   </section>
+
+  <section class="section section--alt" id="paolinis" aria-labelledby="h-paolinis">
+    <div class="wrap">
+      <h2 id="h-paolinis">Die PAOLINIS hinter PAOLO</h2>
+      <p class="measure">Von Gleitschirmfliegern für Gleitschirmflieger!<br/> PAOLO entstand im Kopf von Peter. Rainer und Thomas waren <em>stets bemüht</em>, Peter bei der Umsetzung zu unterstützen.</p>
+      <ul class="cards cards--3">
+        {contributors.map(({ name, image, bio }) => (
+          <li class="card contributor">
+            <img src={url(`/contributors/${image}`)} alt="" width="800" height="800" decoding="async" />
+            <h3>{name}</h3>
+            <p>{bio}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="measure">Daneben haben uns Claude, Codex und Copilot bei der Implementierung maßgeblich unterstützt.</p>
+    </div>
+  </section>
 </Base>
 
 <style>
-  .contributors {
-    margin-block: 2.5rem;
-  }
-
   .contributor img {
     display: block;
     width: min(100%, 20rem);
