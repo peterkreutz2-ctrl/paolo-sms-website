@@ -54,11 +54,6 @@ a:hover { color: var(--petrol-dark); }
 .skip { position: absolute; left: .5rem; top: -4rem; background: var(--paper); color: var(--ink); padding: .6rem 1rem; border: 2px solid var(--ink); border-radius: 6px; z-index: 20; }
 .skip:focus { top: .5rem; }
 
-/* Prototyp-Hinweis */
-.proto { background: var(--ink); color: #fff; font-size: .95rem; padding: .5rem 0; }
-.proto p { margin: 0; }
-.proto strong { color: #fff; }
-
 /* Kopfzeile */
 .site-header { border-bottom: 1px solid var(--line); background: var(--paper); }
 .site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 2rem; padding-block: .9rem; }
@@ -99,6 +94,10 @@ a:hover { color: var(--petrol-dark); }
 .hero .acronym { font-size: .9rem; color: var(--muted); margin: 0; }
 .hero .acronym__l { font-weight: 700; color: var(--ink); }
 .hero .lead, .hero .small { max-width: var(--text-w); }
+.hero .partner { display: flex; align-items: center; gap: .85rem; max-width: var(--text-w); margin: 1rem 0 0; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .95rem; color: var(--ink); }
+.hero .partner__logo { flex: none; height: 2.25rem; width: auto; }
+.hero .partner__text { min-width: 0; }
+@media (max-width: 30em) { .hero .partner__logo { height: 1.75rem; } .hero .partner { font-size: .9rem; gap: .7rem; } }
 .hero + .section { padding-top: clamp(1.25rem, 3vw, 2rem); }
 
 /* Säulen */
@@ -256,7 +255,7 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
 }
 
 @media print {
-  .proto, .nav, .skip, .btn-row { display: none; }
+  .nav, .skip, .btn-row { display: none; }
   body { font-size: 11pt; }
   a { color: inherit; }
 }

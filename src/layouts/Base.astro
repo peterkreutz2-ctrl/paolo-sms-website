@@ -29,14 +29,6 @@ const current = (href: string) => !href.includes('#') && path === url(href);
   <body>
     <a class="skip" href="#inhalt">Zum Inhalt springen</a>
 
-    {PROTOTYPE && (
-      <div class="proto">
-        <div class="wrap">
-          <p><strong>Prototyp.</strong> Vorläufige Review-Version, nicht offiziell freigegeben. Mit „Nicht freigegeben" markierte Inhalte sind Entwürfe oder noch zu prüfen.</p>
-        </div>
-      </div>
-    )}
-
     <header class="site-header">
       <div class="wrap">
         <a class="logo" href={url('/')}>

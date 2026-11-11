@@ -2,7 +2,7 @@
 
 /**
  * Prototyp-Schalter. Solange `true`:
- *  - jede Seite trägt `noindex` und einen sichtbaren Hinweis „Prototyp",
+ *  - jede Seite trägt `noindex` (der sichtbare Prototyp-Hinweis ist seit 11.11.2026 entfernt),
  *  - `npm run release:check` schlägt fehl.
  * Erst nach Abarbeitung der Freigabepunkte (FREIGABE.md) auf `false` setzen.
  */

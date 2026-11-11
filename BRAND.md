@@ -87,3 +87,14 @@ Weitere Bilder oder Logo-Varianten sind nicht freigegeben.
 - **Ausrichtung (25.10.2026):** Die Marke ist nicht gespiegelt und nicht umgefärbt. Die
   Schritte 1 bis 4 folgen den Segmenten im Uhrzeigersinn: Orange (oben), Grün (rechts),
   Blau (unten), Gelb (links). Die Farben der Nummern in den Karten folgen dieser Zuordnung.
+
+## DHV-Logo (Zusammenarbeit mit dem Sicherheitsreferat)
+
+- **Datei:** `public/brand/dhv-logo.svg` (Wortmarke des DHV, Originalfarbe `#2D3C82`).
+- **Freigabe:** Die Verwendung wurde vom Betreiber der Website, Peter Kreutz, am 11.11.2026
+  bestätigt: Die Genehmigung des DHV liegt vor. Eine schriftliche Fassung liegt dem Betreiber vor, nicht diesem Repository.
+- **Verwendung:** Startseite, Kopfbereich, in der Zeile „In Zusammenarbeit mit dem Sicherheitsreferat des DHV“.
+  Keine Umfärbung, keine Verzerrung; das Logo steht neben dem Text und nicht an Stelle des PAOLO-Logos.
+- **Technische Aufbereitung:** Die Pfaddaten der Original-Vektordatei sind unverändert; entfernt wurden nur
+  XML-Kopf, DOCTYPE und Programm-Kommentar, ergänzt ein auf die Zeichnung zugeschnittener `viewBox`.
+- **Metadaten:** Die Datei enthält keine Text-, Autoren- oder Pfadmetadaten.
