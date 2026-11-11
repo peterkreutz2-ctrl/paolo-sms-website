@@ -99,11 +99,11 @@ Weitere Bilder oder Logo-Varianten sind nicht freigegeben.
 
 ## DHV-Logo (Zusammenarbeit mit dem Sicherheitsreferat)
 
-- **Datei:** `public/brand/dhv-logo.svg` (Wortmarke des DHV, Originalfarbe `#2D3C82`).
+- **Datei:** `public/brand/dhv-logo.svg` (Wortmarke des DHV, Originalfarbe `#2D3C82`; auf der Website in Grau `#55616a` dargestellt).
 - **Freigabe:** Die Verwendung wurde vom Betreiber der Website, Peter Kreutz, am 11.11.2026
   bestätigt: Die Genehmigung des DHV liegt vor. Eine schriftliche Fassung liegt dem Betreiber vor, nicht diesem Repository.
 - **Verwendung:** Startseite, Kopfbereich, in der Zeile „In Zusammenarbeit mit dem Sicherheitsreferat des DHV“.
-  Keine Umfärbung, keine Verzerrung; das Logo steht neben dem Text und nicht an Stelle des PAOLO-Logos.
+  Umfärbung von Blau auf das Textgrau `#55616a` auf Anweisung des Betreibers vom 11.11.2026 vorläufig akzeptiert (Kontrast auf Weiß etwa 6:1); keine Verzerrung; das Logo steht neben dem Text und nicht an Stelle des PAOLO-Logos.
 - **Technische Aufbereitung:** Die Pfaddaten der Original-Vektordatei sind unverändert; entfernt wurden nur
   XML-Kopf, DOCTYPE und Programm-Kommentar, ergänzt ein auf die Zeichnung zugeschnittener `viewBox`.
 - **Metadaten:** Die Datei enthält keine Text-, Autoren- oder Pfadmetadaten.
