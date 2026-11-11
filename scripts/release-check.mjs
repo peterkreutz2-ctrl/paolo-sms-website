@@ -145,6 +145,11 @@ if (allowedAssets.has('brand/dhv-logo.svg')) {
   if (!existsSync(brand) || !/dhv-logo.svg/.test(readFileSync(brand, 'utf8'))) addMust('BRAND.md', 'Dokumentation des DHV-Logos fehlt');
 }
 
+// 3b3. DHV-Logo: dokumentierte Farbe (BRAND.md) muss in der ausgelieferten Datei stehen
+if (allowedAssets.has('brand/dhv-logo.svg') && existsSync(join(DIST, 'brand/dhv-logo.svg'))) {
+  if (!/fill="#55616a"/i.test(readFileSync(join(DIST, 'brand/dhv-logo.svg'), 'utf8'))) addMust('dist: brand/dhv-logo.svg', 'DHV-Logo nicht in dokumentiertem Grau #55616a (siehe BRAND.md)');
+}
+
 // 3c. Säulengrafik (enthält das Logo): Freigabe muss in BRAND.md stehen
 if (allowedAssets.has('saeulen/sms-saeulen.png')) {
   const brand = join(ROOT, 'BRAND.md');

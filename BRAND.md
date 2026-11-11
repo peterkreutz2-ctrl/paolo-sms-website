@@ -103,7 +103,7 @@ Weitere Bilder oder Logo-Varianten sind nicht freigegeben.
 - **Freigabe:** Die Verwendung wurde vom Betreiber der Website, Peter Kreutz, am 11.11.2026
   bestätigt: Die Genehmigung des DHV liegt vor. Eine schriftliche Fassung liegt dem Betreiber vor, nicht diesem Repository.
 - **Verwendung:** Startseite, Kopfbereich, in der Zeile „In Zusammenarbeit mit dem Sicherheitsreferat des DHV“.
-  Umfärbung von Blau auf das Textgrau `#55616a` auf Anweisung des Betreibers vom 11.11.2026 vorläufig akzeptiert (Kontrast auf Weiß etwa 6:1); keine Verzerrung; das Logo steht neben dem Text und nicht an Stelle des PAOLO-Logos.
+  Das Logo wird mit Versionsparameter eingebunden (`?v=grau-55616a`), weil GitHub Pages Dateien bis zu 10 Minuten zwischenspeichert; bei jeder Farbänderung den Parameter ändern. Der Release-Check prüft die Farbe. Umfärbung von Blau auf das Textgrau `#55616a` auf Anweisung des Betreibers vom 11.11.2026 vorläufig akzeptiert (Kontrast auf Weiß etwa 6:1); keine Verzerrung; das Logo steht neben dem Text und nicht an Stelle des PAOLO-Logos.
 - **Technische Aufbereitung:** Die Pfaddaten der Original-Vektordatei sind unverändert; entfernt wurden nur
   XML-Kopf, DOCTYPE und Programm-Kommentar, ergänzt ein auf die Zeichnung zugeschnittener `viewBox`.
 - **Metadaten:** Die Datei enthält keine Text-, Autoren- oder Pfadmetadaten.
