@@ -71,6 +71,15 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
 
 Weitere Bilder oder Logo-Varianten sind nicht freigegeben.
 
+## Porträts „Die PAOLINIS hinter PAOLO“
+
+- `public/contributors/contributor_peter.webp`, `contributor_rainer.webp` und
+  `contributor_thomas.webp` sind für die Vorschau zur Abstimmung vorgesehen.
+- Die Scribbles wurden mit ImageGen aus den bereitgestellten Porträtfotos
+  erstellt. Die WebP-Dateien enthalten keine EXIF-, IPTC- oder XMP-Metadaten.
+- Die Zustimmung der Mitwirkenden zu ihren Porträts und Kurzbiografien steht
+  vor der Übernahme auf die Website aus.
+
 ## Kreislaufgrafik „Risikomanagement“
 
 - **Freigabe:** Auf Anweisung des Betreibers der Website, Peter Kreutz, vom 25.10.2026
