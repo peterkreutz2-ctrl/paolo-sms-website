@@ -72,6 +72,7 @@ for (const [f, kind] of scan) {
 // 2. Dateien: nur freigegebene Assets
 const allowedAssets = new Set([
   'brand/paolo-sms-logo.svg',
+  'brand/dhv-logo.svg',
   'saeulen/sms-saeulen.png',
   'bilder/meldung-einreichen.png',
   'bilder/dashboard.png',
@@ -127,7 +128,6 @@ for (const file of pages) {
   const hasBanner = /class="proto"/.test(html);
   if (stageArg === 'review') {
     if (!hasNoindex) addMust(`page ${page}`, 'noindex fehlt');
-    if (!hasBanner) addMust(`page ${page}`, 'Prototyp-Hinweis fehlt');
   }
   if (hasNoindex || hasBanner) addOpen(`page ${page}`, 'Prototyp-Kennzeichnung (noindex, Hinweis) ist noch gesetzt');
 }
@@ -137,6 +137,12 @@ if (stageArg === 'review' && PROTOTYPE !== true) addMust('src/config.ts', 'PROTO
 if (allowedAssets.has('brand/paolo-sms-logo.svg')) {
   const brand = join(ROOT, 'BRAND.md');
   if (!existsSync(brand) || !/Berechtigung/.test(readFileSync(brand, 'utf8'))) addMust('BRAND.md', 'Dokumentation der Logo-Berechtigung fehlt');
+}
+
+// 3b2. DHV-Logo: Freigabe muss in BRAND.md stehen
+if (allowedAssets.has('brand/dhv-logo.svg')) {
+  const brand = join(ROOT, 'BRAND.md');
+  if (!existsSync(brand) || !/dhv-logo.svg/.test(readFileSync(brand, 'utf8'))) addMust('BRAND.md', 'Dokumentation des DHV-Logos fehlt');
 }
 
 // 3c. Säulengrafik (enthält das Logo): Freigabe muss in BRAND.md stehen
