@@ -82,6 +82,9 @@ const allowedAssets = new Set([
   'contributors/contributor_peter.webp',
   'contributors/contributor_rainer.webp',
   'contributors/contributor_thomas.webp',
+  // hier kommen alte Downloads, die noch angeboten werden (auch ohne explizite Erwähnung)
+  'downloads/paolo-sms-0.2.0-pilot.1.tar.gz',
+  'downloads/paolo-sms-0.2.0-pilot.1.SHA256SUMS',
 ]);
 for (const m of materials) if (m.availability === 'download' && m.href?.startsWith('/')) allowedAssets.add(m.href.slice(1));
 for (const h of [releasePackage.packageHref, releasePackage.checksumHref]) allowedAssets.add(h.slice(1));
