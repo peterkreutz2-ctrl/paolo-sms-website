@@ -54,19 +54,19 @@ export interface ReleasePackage {
 
 export const releasePackage: ReleasePackage = {
   title: 'PAOLO SMS – Quellpaket',
-  version: '0.2.0-pilot.1',
-  stand: '26.10.2026',
+  version: 'R0.2.0-pilot-2',
+  stand: '12.11.2026',
   format: 'TAR.GZ',
-  size: '3,0 MB',
+  size: '3.211.280 Bytes',
   description:
     'Quellcode und Dokumentation, um PAOLO SMS ohne Zugang zum Entwicklungsrepository zu installieren, zu aktualisieren, zu sichern und wiederherzustellen.',
   notice: 'Vorabversion – nicht für den Produktivbetrieb freigegeben. Ausschließlich Testdaten verwenden.',
-  packageHref: '/downloads/paolo-sms-0.2.0-pilot.1.tar.gz',
-  checksumHref: '/downloads/paolo-sms-0.2.0-pilot.1.SHA256SUMS',
-  packageFile: 'paolo-sms-0.2.0-pilot.1.tar.gz',
-  checksumFile: 'paolo-sms-0.2.0-pilot.1.SHA256SUMS',
-  commit: '8a2abb68a7b711790242253f7e673f4d34f20a1a',
-  sha256: '4d19961de36afcc5496dcf4d07fd87d0c44884ef30ab57f154e76960cb95c87c',
+  packageHref: '/downloads/paolo-sms-R0.2.0-pilot-2.tar.gz',
+  checksumHref: '/downloads/paolo-sms-R0.2.0-pilot-2.SHA256SUMS',
+  packageFile: 'paolo-sms-R0.2.0-pilot-2.tar.gz',
+  checksumFile: 'paolo-sms-R0.2.0-pilot-2.SHA256SUMS',
+  commit: '826e8ec0282e169b7b07246fc01a960cb8220d81',
+  sha256: 'd27a311a2f53745b0090b961a999918b40304b50bad85a3a683bc660805f616b',
   license: 'GPL-3.0-or-later',
 };
 
