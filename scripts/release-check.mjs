@@ -47,8 +47,9 @@ const FORBIDDEN = [
 const EMAIL = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g;
 const ALLOWED_EMAILS = new Set([SITE.email.toLowerCase()]);
 // Freigegebene externe Verweise: die öffentliche Demo-Installation (erfundene Daten, getrennt von jeder
-// Betreiberinstallation), vom Betreiber freigegeben am 25.10.2026.
-const ALLOWED_EXTERNAL_LINKS = new Set(['https://demo.paolo-sms.de/', 'https://www.youtube.com/watch?v=6b8VwUDiiHQ']);
+// Betreiberinstallation), vom Betreiber freigegeben am 25.10.2026; Sicherheitsseite des DHV (Link am DHV-Logo
+// der Startseite), vom Betreiber am 18.11.2026 beauftragt.
+const ALLOWED_EXTERNAL_LINKS = new Set(['https://demo.paolo-sms.de/', 'https://www.youtube.com/watch?v=6b8VwUDiiHQ', 'https://www.dhv.de/sicherheit/']);
 const TEXT_EXT = new Set(['.astro', '.ts', '.mjs', '.js', '.json', '.md', '.yml', '.yaml', '.css', '.svg', '.html', '.txt']);
 
 // 1. Gebautes Ergebnis (dist) und Repository-Inhalt (ohne Ignoriertes) durchsuchen
