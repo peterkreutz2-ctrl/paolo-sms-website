@@ -63,7 +63,7 @@ for (const file of pages) {
 
   // Keine Ressourcen von Dritten, kein eingebetteter Fremdinhalt, kein Skript
   if (/<iframe\b/.test(html)) err(page, '<iframe> gefunden');
-  if (/<script\b/.test(html)) err(page, '<script> gefunden (Prototyp ist skriptfrei)');
+  if (/<script\b(?![^>]*type="application\/ld\+json")/.test(html)) err(page, 'ausführbares <script> gefunden (Prototyp ist skriptfrei)');
   for (const m of html.matchAll(/<(?:link|img|source|video|audio)\b[^>]*\b(?:src|href|srcset)="(https?:)?\/\/[^"]+"/g)) {
     // Die kanonische Adresse (rel="canonical") verweist auf die Seite selbst, sie ist keine Ressource.
     if (!/rel="(?:noopener|noreferrer|canonical)/.test(m[0]) && !/<a\b/.test(m[0])) err(page, `externe Ressource: ${m[0].slice(0, 100)}`);
@@ -119,3 +119,4 @@ if (errors.length) {
   process.exit(1);
 }
 console.log('\nKeine Strukturfehler.');
+
