@@ -1,6 +1,5 @@
-name: Review-Vorschau auf GitHub Pages
+name: Website auf GitHub Pages
 
-# Vorläufige Review-Version (PROTOTYPE = true), keine Produktfreigabe.
 # Actions sind auf Commit-SHAs gepinnt; Dependabot hält sie aktuell.
 
 # Pull Requests führen nur Build und Prüfungen aus (Job `build`). Veröffentlicht
@@ -46,8 +45,8 @@ jobs:
       - name: Bauen und Struktur prüfen
         run: npm test
 
-      - name: Review-Freigabeprüfung
-        run: npm run release:review
+      - name: Freigabeprüfung
+        run: npm run release:check
 
       - name: Seite als Pages-Artefakt hochladen
         if: github.event_name != 'pull_request'

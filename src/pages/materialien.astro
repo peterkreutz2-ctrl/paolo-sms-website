@@ -2,7 +2,6 @@
 import Base from '../layouts/Base.astro';
 import MaterialCard from '../components/MaterialCard.astro';
 import ReleaseDownload from '../components/ReleaseDownload.astro';
-import Unreleased from '../components/Unreleased.astro';
 import { groups, materials } from '../data/materials';
 import { SITE } from '../config';
 import { url } from '../lib/url';
@@ -69,9 +68,10 @@ import { url } from '../lib/url';
   <section class="section section--alt" id="nutzung" aria-labelledby="h-nutzung">
     <div class="wrap">
       <h2 id="h-nutzung">Nutzung der Materialien</h2>
-      <p>PAOLO SMS steht unter der GPL-3.0-or-later. Name und Logo sind vom Lizenzrecht ausgenommen und gesondert vorbehalten. Einzelne Dokumente wurden mit Hilfe künstlicher Intelligenz erstellt und werden damit auch aktualisiert; das steht im jeweiligen Dokument.</p>
+      <p>Die Software PAOLO SMS steht unter der GPL-3.0-or-later. Name und Logo sind vom Lizenzrecht ausgenommen und gesondert vorbehalten.</p>
+      <p>Die PDF-Dokumente auf dieser Seite dürfen unverändert weitergegeben werden, zum Beispiel an Vorstand, Mitglieder oder Schulleitung. Für das Bearbeiten, Auszüge und die Verwendung einzelner Bestandteile gibt es derzeit keine allgemeine Erlaubnis; frag dafür bitte nach. Die unveränderte Weitergabe gilt nicht für Rechte Dritter an enthaltenen Namen, Logos und Abbildungen; diese bleiben bei ihren Inhabern.</p>
+      <p>Einzelne Dokumente wurden mit Hilfe künstlicher Intelligenz erstellt und werden damit auch aktualisiert; das steht im jeweiligen Dokument.</p>
       <p>Fragen zu Materialien oder zur Weitergabe? <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
-      <Unreleased>Die Lizenz der Dokumente ist noch festzulegen.</Unreleased>
     </div>
   </section>
 </Base>

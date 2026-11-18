@@ -42,7 +42,7 @@ const linkLabel: Partial<Record<Material['availability'], string>> = {
       </a>
     </p>
   )}
-  {item.availability === 'pending' && <p class="muted small">Dieses Dokument wird nach Prüfung hier veröffentlicht.</p>}
+  {item.availability === 'pending' && <p class="muted small">Dieses Dokument steht noch nicht zur Verfügung.</p>}
   {item.availability === 'in-app' && <p class="muted small">Dieser Inhalt gehört zur jeweiligen Installation deines Vereins oder deiner Flugschule und ist nicht auf dieser Website abrufbar.</p>}
   {item.releaseNote && <Unreleased>{item.releaseNote}</Unreleased>}
 </li>

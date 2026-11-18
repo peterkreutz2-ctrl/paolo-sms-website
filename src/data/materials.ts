@@ -60,7 +60,7 @@ export const releasePackage: ReleasePackage = {
   size: '3.211.280 Bytes',
   description:
     'Quellcode und Dokumentation, um PAOLO SMS ohne Zugang zum Entwicklungsrepository zu installieren, zu aktualisieren, zu sichern und wiederherzustellen.',
-  notice: 'Vorabversion – nicht für den Produktivbetrieb freigegeben. Ausschließlich Testdaten verwenden.',
+  notice: 'Die Vorabversion ist nur für Tests gedacht und nicht für den Produktivbetrieb freigegeben. Verwende ausschließlich Testdaten.',
   packageHref: '/downloads/paolo-sms-R0.2.0-pilot-2.tar.gz',
   checksumHref: '/downloads/paolo-sms-R0.2.0-pilot-2.SHA256SUMS',
   packageFile: 'paolo-sms-R0.2.0-pilot-2.tar.gz',

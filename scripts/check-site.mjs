@@ -65,7 +65,8 @@ for (const file of pages) {
   if (/<iframe\b/.test(html)) err(page, '<iframe> gefunden');
   if (/<script\b/.test(html)) err(page, '<script> gefunden (Prototyp ist skriptfrei)');
   for (const m of html.matchAll(/<(?:link|img|source|video|audio)\b[^>]*\b(?:src|href|srcset)="(https?:)?\/\/[^"]+"/g)) {
-    if (!/rel="(?:noopener|noreferrer)/.test(m[0]) && !/<a\b/.test(m[0])) err(page, `externe Ressource: ${m[0].slice(0, 100)}`);
+    // Die kanonische Adresse (rel="canonical") verweist auf die Seite selbst, sie ist keine Ressource.
+    if (!/rel="(?:noopener|noreferrer|canonical)/.test(m[0]) && !/<a\b/.test(m[0])) err(page, `externe Ressource: ${m[0].slice(0, 100)}`);
   }
   if (/url\(\s*['"]?https?:/.test(html)) err(page, 'externe url() im Inline-CSS');
   if (/document\.cookie|localStorage|sessionStorage/.test(html)) err(page, 'Cookie-/Storage-Zugriff gefunden');

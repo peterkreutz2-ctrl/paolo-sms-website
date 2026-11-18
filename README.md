@@ -1,12 +1,11 @@
-# PAOLO SMS – Produktwebsite (Review-Version)
+# PAOLO SMS – Produktwebsite
 
 Statische Informationswebsite für PAOLO SMS, Zielgruppe Gleitschirmvereine und
 Flugschulen.
 
-> **Vorläufige Review-Version, keine offizielle Produktfreigabe.** Die Website
-> trägt auf jeder Seite einen Prototyp-Hinweis und `noindex`. Sie dient dazu,
-> dass Projektbeteiligte sie beurteilen können. Hinweise zum Review stehen in
-> [REVIEW.md](REVIEW.md).
+Die Seite ist öffentlich unter https://paolo-sms.de/ erreichbar und für
+Suchmaschinen freigegeben (Schalter `INDEXABLE` in `src/config.ts`). Hinweise für
+Rückmeldungen stehen in [REVIEW.md](REVIEW.md).
 
 Alle Rechte vorbehalten, bis eine Lizenz für Inhalte und Code festgelegt ist.
 Name und Logo von PAOLO sind vom Lizenzrecht der Anwendung ausgenommen und
@@ -18,7 +17,7 @@ gesondert vorbehalten; die Verwendung des Logos auf dieser Website ist in
 ```bash
 npm ci               # nur Astro 7.4.2 (exakt gepinnt)
 npm run dev          # http://localhost:4321
-npm run verify       # Build, Strukturprüfung und Review-Freigabeprüfung
+npm run verify       # Build, Strukturprüfung und Freigabeprüfung
 npm run preview      # gebaute Seite lokal ansehen
 ```
 
@@ -42,8 +41,8 @@ Tailwind, keine UI-Bibliothek, keine Webfonts, keine Integrationen.
 ## Aufbau
 
 ```
-src/config.ts            PROTOTYPE-Schalter, Name, E-Mail, Anbieter, Navigation
-src/layouts/Base.astro   Kopf, Navigation, Fuß, Prototyp-Hinweis, Sprungmarke
+src/config.ts            INDEXABLE-Schalter, Name, E-Mail, Anbieter, Navigation
+src/layouts/Base.astro   Kopf, Navigation, Fuß, Suchmaschinen-Metadaten, Sprungmarke
 src/pages/               Start, Einführen, Materialien, Mitmachen, Impressum, Datenschutz, 404
 src/components/          Saeulen, MaterialCard, Unreleased, Placeholder
 src/data/saeulen.ts      die vier Säulen eines SMS
@@ -79,15 +78,15 @@ E2E-Tests mit Better Auth oder Clerk gehören ausschließlich zur Anwendung.
 - `npm test`: Build und Strukturprüfung (`scripts/check-site.mjs`): Sprache,
   Titel, genau eine H1, Überschriftenreihenfolge, Textalternativen, tote Links,
   kein `<script>`, `<iframe>`, Cookie-/Storage-Zugriff oder Fremdressourcen.
-- `npm run release:review`: Voraussetzungen für die **öffentliche
-  Review-Version** (Pflicht). Bricht ab bei privaten Verweisen, lokalen Pfaden,
-  fremden E-Mail-Adressen, möglichen Zugangsschlüsseln, nicht freigegebenen
-  Dateien oder externen Links, fehlenden Anbieterangaben oder fehlender
-  Prototyp-Kennzeichnung. Offene Punkte der Produktivfreigabe werden nur
-  aufgelistet.
-- `npm run release:production`: strenge Stufe für die spätere Produktivfreigabe.
-  Schlägt fehl, solange Hinweise, Platzhalter oder die Prototyp-Kennzeichnung
-  bestehen.
+- `npm run release:check`: Freigabeprüfung des gebauten Ergebnisses. Bricht ab bei
+  privaten Verweisen, lokalen Pfaden, fremden E-Mail-Adressen, möglichen
+  Zugangsschlüsseln, nicht freigegebenen Dateien oder externen Links, fehlenden
+  Anbieterangaben und Widersprüchen zum Schalter `INDEXABLE` (`noindex`,
+  `robots.txt`, `sitemap.xml`, kanonische Adresse). Bei `INDEXABLE = true` sind
+  sichtbare Freigabehinweise (`Unreleased`) und Platzhalter Pflichtbefunde.
+  Hinweise ohne Blockade (zum Beispiel externe Medien) werden nur aufgelistet.
+  Nicht geprüft werden die Inhalte der PDFs unter `public/materialien/`; sie
+  stehen in der lokalen Freigabeliste.
 - In der GitHub-Action zusätzlich `npm audit --omit=dev --audit-level=high`.
 
 ## Datenschutz und Barrierefreiheit
@@ -102,7 +101,7 @@ E2E-Tests mit Better Auth oder Clerk gehören ausschließlich zur Anwendung.
 
 `.github/workflows/deploy.yml` baut bei jedem Pull Request gegen `main` und führt
 dieselben Prüfungen aus, ohne zu veröffentlichen. Bei jedem Push auf `main` baut es, führt Audit,
-`npm test` und `npm run release:review` aus und veröffentlicht `dist/` über die
+`npm test` und `npm run release:check` aus und veröffentlicht `dist/` über die
 GitHub-Pages-Actions. Die Actions sind auf Commit-SHAs gepinnt. Die Seite wird
 unter der eigenen Domain https://paolo-sms.de/ ausgeliefert (`site` und
 `base: '/'` in `astro.config.mjs`); die Domain ist in den GitHub-Pages-
