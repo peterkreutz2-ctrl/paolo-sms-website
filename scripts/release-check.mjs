@@ -1,30 +1,25 @@
-// Freigabeprüfung mit zwei Stufen. Ohne Abhängigkeiten.
+// Freigabeprüfung der öffentlichen Website. Ohne Abhängigkeiten.
 //
-//   --stage=review      Voraussetzungen für die öffentliche Review-Vorschau.
-//                       Bricht nur bei „Pflicht Review"-Befunden ab. Offene Punkte
-//                       der Produktivfreigabe werden nur aufgelistet.
-//   --stage=production  (Standard) Produktivfreigabe. Bricht bei jedem Befund ab,
-//                       also auch bei Prototyp-Kennzeichnung, Freigabehinweisen
-//                       und Platzhaltern.
+// Bricht bei Pflichtbefunden ab: private Verweise, lokale Pfade, fremde E-Mail-Adressen,
+// mögliche Zugangsschlüssel, nicht freigegebene Dateien oder externe Links, fehlende
+// Anbieterangaben sowie Widersprüche zwischen dem Schalter INDEXABLE (src/config.ts)
+// und dem gebauten Ergebnis (noindex, robots.txt, Sitemap, kanonische Adresse).
+// Ist INDEXABLE true, sind außerdem sichtbare Freigabehinweise und Platzhalter
+// Pflichtbefunde. Weitere Hinweise (zum Beispiel externe Medien) werden nur aufgelistet.
 //
-// Aufruf: npm run build && npm run release:review
+// Aufruf: npm run build && npm run release:check
 import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
-import { join, relative, extname } from 'node:path';
+import { join, relative, extname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const DIST = join(ROOT, 'dist');
-const stageArg = process.argv.find((a) => a.startsWith('--stage='))?.slice(8) ?? 'production';
-if (!['review', 'production'].includes(stageArg)) {
-  console.error(`Unbekannte Stufe: ${stageArg} (review|production)`);
-  process.exit(2);
-}
 if (!existsSync(DIST)) {
   console.error('dist/ fehlt. Zuerst: npm run build');
   process.exit(2);
 }
 
-const { PROVIDER, SITE, PROTOTYPE } = await import('../src/config.ts');
+const { PROVIDER, SITE, SITE_URL, INDEXABLE } = await import('../src/config.ts');
 const { materials, releasePackage } = await import('../src/data/materials.ts');
 
 const walk = (d, skip = new Set()) =>
@@ -37,7 +32,7 @@ const rel = (f) => relative(ROOT, f).replaceAll('\\', '/');
 const strip = (s) => s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').trim();
 
 const must = []; // Pflicht für die Review-Version
-const open = []; // offen für die Produktivfreigabe
+const open = []; // Hinweise, die nicht blockieren
 const addMust = (where, msg) => must.push({ where, msg });
 const addOpen = (where, msg) => open.push({ where, msg });
 
@@ -52,8 +47,9 @@ const FORBIDDEN = [
 const EMAIL = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g;
 const ALLOWED_EMAILS = new Set([SITE.email.toLowerCase()]);
 // Freigegebene externe Verweise: die öffentliche Demo-Installation (erfundene Daten, getrennt von jeder
-// Betreiberinstallation), vom Betreiber freigegeben am 25.10.2026.
-const ALLOWED_EXTERNAL_LINKS = new Set(['https://demo.paolo-sms.de/', 'https://www.youtube.com/watch?v=6b8VwUDiiHQ']);
+// Betreiberinstallation), vom Betreiber freigegeben am 25.10.2026; Sicherheitsseite des DHV (Link am DHV-Logo
+// der Startseite), vom Betreiber am 18.11.2026 beauftragt.
+const ALLOWED_EXTERNAL_LINKS = new Set(['https://demo.paolo-sms.de/', 'https://www.youtube.com/watch?v=6b8VwUDiiHQ', 'https://www.dhv.de/sicherheit/']);
 const TEXT_EXT = new Set(['.astro', '.ts', '.mjs', '.js', '.json', '.md', '.yml', '.yaml', '.css', '.svg', '.html', '.txt']);
 
 // 1. Gebautes Ergebnis (dist) und Repository-Inhalt (ohne Ignoriertes) durchsuchen
@@ -71,6 +67,8 @@ for (const [f, kind] of scan) {
 
 // 2. Dateien: nur freigegebene Assets
 const allowedAssets = new Set([
+  'robots.txt',
+  'sitemap.xml',
   'brand/paolo-sms-logo.svg',
   'brand/dhv-logo.svg',
   'saeulen/sms-saeulen.png',
@@ -110,31 +108,56 @@ for (const file of pages) {
   const page = '/' + relative(DIST, file).replaceAll('\\', '/').replace(/index\.html$/, '');
   const html = readFileSync(file, 'utf8');
 
-  // Externe Verweise: in der Review-Version keine (außer mailto und freigegebene Verweise)
+  // Externe Verweise: keine, außer mailto und freigegebene Verweise
   for (const m of html.matchAll(/<a\b[^>]*\bhref="(https?:[^"]+)"/g)) {
     if (!ALLOWED_EXTERNAL_LINKS.has(m[1])) addMust(`page ${page}`, `externer Link ${m[1]} (nicht freigegeben)`);
   }
 
   for (const m of html.matchAll(/<aside class="unreleased"[^>]*>([\s\S]*?)<\/aside>/g)) {
     unreleased++;
-    addOpen(`page ${page}`, `Freigabehinweis: ${strip(m[1])}`);
+    // Bei freigegebener Indexierung darf kein Freigabehinweis mehr öffentlich stehen.
+    (INDEXABLE ? addMust : addOpen)(`page ${page}`, `Freigabehinweis: ${strip(m[1])}`);
   }
   for (const m of html.matchAll(/<span class="platzhalter"[^>]*>([\s\S]*?)<\/span>/g)) {
     placeholders++;
     // Impressum und Datenschutz: ein offener Platzhalter ist ein Pflichtbefund
     if (page === '/impressum/' || page === '/datenschutz/') addMust(`page ${page}`, `rechtlich relevanter Platzhalter: ${strip(m[1])}`);
-    else addOpen(`page ${page}`, `Platzhalter: ${strip(m[1])}`);
+    else (INDEXABLE ? addMust : addOpen)(`page ${page}`, `Platzhalter: ${strip(m[1])}`);
   }
 
-  // Prototyp-Kennzeichnung: in der Review-Version Pflicht, in Produktion zu entfernen
+  // Suchmaschinenfreigabe: Schalter, noindex und kanonische Adresse müssen zusammenpassen
   const hasNoindex = /<meta name="robots" content="noindex/.test(html);
-  const hasBanner = /class="proto"/.test(html);
-  if (stageArg === 'review') {
-    if (!hasNoindex) addMust(`page ${page}`, 'noindex fehlt');
+  const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+  const is404 = page === '/404.html';
+  if (is404) {
+    if (!hasNoindex) addMust(`page ${page}`, '404-Seite muss noindex tragen');
+  } else if (INDEXABLE) {
+    if (hasNoindex) addMust(`page ${page}`, 'noindex trotz INDEXABLE = true');
+    if (canonical !== SITE_URL + page) addMust(`page ${page}`, `kanonische Adresse fehlt oder weicht ab (erwartet ${SITE_URL + page}, gefunden ${canonical ?? 'keine'})`);
+  } else if (!hasNoindex) {
+    addMust(`page ${page}`, 'noindex fehlt bei INDEXABLE = false');
   }
-  if (hasNoindex || hasBanner) addOpen(`page ${page}`, 'Prototyp-Kennzeichnung (noindex, Hinweis) ist noch gesetzt');
 }
-if (stageArg === 'review' && PROTOTYPE !== true) addMust('src/config.ts', 'PROTOTYPE muss in der Review-Version true bleiben');
+
+// 3a. robots.txt und Sitemap
+const robotsFile = join(DIST, 'robots.txt');
+const sitemapFile = join(DIST, 'sitemap.xml');
+if (!existsSync(robotsFile)) addMust('dist: robots.txt', 'fehlt');
+else {
+  const robots = readFileSync(robotsFile, 'utf8');
+  if (INDEXABLE) {
+    if (/^\s*Disallow:\s*\/\s*$/m.test(robots)) addMust('dist: robots.txt', 'sperrt die gesamte Seite trotz INDEXABLE = true');
+    if (!robots.includes(`Sitemap: ${SITE_URL}/sitemap.xml`)) addMust('dist: robots.txt', 'Verweis auf die Sitemap fehlt');
+  } else if (!/^\s*Disallow:\s*\/\s*$/m.test(robots)) addMust('dist: robots.txt', 'sperrt nicht alles bei INDEXABLE = false');
+}
+if (!existsSync(sitemapFile)) addMust('dist: sitemap.xml', 'fehlt');
+else {
+  const sitemap = readFileSync(sitemapFile, 'utf8');
+  const listed = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  const expected = pages.map((f) => '/' + relative(DIST, f).split(sep).join('/').replace(/index\.html$/, '')).filter((p) => p !== '/404.html').map((p) => SITE_URL + p);
+  for (const e of expected) if (!listed.includes(e)) addMust('dist: sitemap.xml', `Seite fehlt: ${e}`);
+  for (const l of listed) if (!expected.includes(l)) addMust('dist: sitemap.xml', `Eintrag ohne Seite: ${l}`);
+}
 
 // 3b. Logo: Verwendung muss dokumentiert sein
 if (allowedAssets.has('brand/paolo-sms-logo.svg')) {
@@ -178,20 +201,12 @@ const print = (title, list) => {
   console.log(`\n## ${title} (${list.length})`);
   for (const f of list) console.log(`- ${f.where}: ${f.msg}`);
 };
-console.log(`Stufe: ${stageArg}  |  Seiten: ${pages.length}  |  Freigabehinweise: ${unreleased}  |  Platzhalter: ${placeholders}`);
-print('Pflicht für die Review-Version', must);
-print('Offen für die Produktivfreigabe', open);
+console.log(`Seiten: ${pages.length}  |  Indexierbar: ${INDEXABLE}  |  Freigabehinweise: ${unreleased}  |  Platzhalter: ${placeholders}`);
+print('Pflichtbefunde', must);
+print('Hinweise (blockieren nicht)', open);
 
 if (must.length) {
-  console.error(`\nNICHT VERÖFFENTLICHBAR (Review-Version): ${must.length} Pflichtbefund(e).`);
+  console.error(`\nNICHT VERÖFFENTLICHBAR: ${must.length} Pflichtbefund(e).`);
   process.exit(1);
 }
-if (stageArg === 'review') {
-  console.log(`\nREVIEW-VERSION FREIGABEFÄHIG. ${open.length} Punkte bleiben für die Produktivfreigabe offen (nicht blockierend).`);
-  process.exit(0);
-}
-if (open.length) {
-  console.error(`\nNICHT PRODUKTIV FREIGABEFÄHIG: ${open.length} offene Punkte.`);
-  process.exit(1);
-}
-console.log('\nKeine offenen Befunde.');
+console.log('\nFREIGABEFÄHIG.');

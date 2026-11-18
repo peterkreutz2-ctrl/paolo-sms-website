@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import Unreleased from '../components/Unreleased.astro';
 import { SITE, PROVIDER } from '../config';
 ---
 
@@ -8,10 +7,6 @@ import { SITE, PROVIDER } from '../config';
   <section class="section" aria-labelledby="h-ds">
     <div class="wrap measure">
       <h1 id="h-ds">Datenschutzhinweise</h1>
-
-      <Unreleased label="Review-Version, rechtlich nicht geprüft">
-        Diese Hinweise gelten für die Review-Version. Die Angaben wurden anhand öffentlicher Quellen (Stand Oktober 2026) zusammengestellt, aber noch nicht rechtlich geprüft; die rechtliche Prüfung steht vor einer Produktivfreigabe aus.
-      </Unreleased>
 
       <h2>1. Verantwortlicher</h2>
       <p>
@@ -37,12 +32,15 @@ import { SITE, PROVIDER } from '../config';
 
       <h2>5. Externe Links</h2>
       <p>Wenn diese Website auf externe Seiten verweist (zum Beispiel auf ein Video bei YouTube), werden diese nicht eingebettet. Erst wenn du einen solchen Link anklickst, verlässt du diese Website, und der jeweilige Anbieter verarbeitet Daten nach seiner eigenen Datenschutzerklärung.</p>
+      <p>Das Demosystem unter demo.paolo-sms.de ist ein eigenständiges System, das nicht zu dieser Website gehört. Es wird bei einem anderen Hoster betrieben und hat eine eigene Datenschutzerklärung, die dort aufrufbar ist. Gib dort keine echten Daten ein.</p>
 
       <h2>6. Deine Rechte</h2>
-      <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren. Zuständig für den Verantwortlichen mit Sitz in Frankfurt am Main ist der Hessische Beauftragte für Datenschutz und Informationsfreiheit in Wiesbaden.</p>
+      <p>Du hast gegenüber dem Verantwortlichen das Recht auf Auskunft über die zu dir gespeicherten Daten (Art. 15 DSGVO), auf Berichtigung (Art. 16), auf Löschung (Art. 17), auf Einschränkung der Verarbeitung (Art. 18) und auf Datenübertragbarkeit (Art. 20). Schreib dazu an <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+      <p><strong>Widerspruchsrecht (Art. 21 DSGVO):</strong> Soweit wir Daten auf Grundlage eines berechtigten Interesses verarbeiten, kannst du dieser Verarbeitung aus Gründen widersprechen, die sich aus deiner besonderen Situation ergeben. Wir verarbeiten die Daten dann nicht mehr, außer wir können zwingende schutzwürdige Gründe dafür nachweisen.</p>
+      <p>Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren (Art. 77 DSGVO). Zuständig für den Verantwortlichen mit Sitz in Frankfurt am Main ist der Hessische Beauftragte für Datenschutz und Informationsfreiheit in Wiesbaden.</p>
 
       <h2>7. Stand</h2>
-      <p>Diese Hinweise sind ein Entwurf (Stand: {SITE.stand}).</p>
+      <p>Stand: {SITE.stand}.</p>
     </div>
   </section>
 </Base>

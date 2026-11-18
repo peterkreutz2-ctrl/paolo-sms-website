@@ -1,12 +1,16 @@
 // Zentrale Einstellungen. Die Website hat keine Laufzeit-Konfiguration.
 
 /**
- * Prototyp-Schalter. Solange `true`:
- *  - jede Seite trägt `noindex` (der sichtbare Prototyp-Hinweis ist seit 11.11.2026 entfernt),
- *  - `npm run release:check` schlägt fehl.
- * Erst nach Abarbeitung der Freigabepunkte (FREIGABE.md) auf `false` setzen.
+ * Suchmaschinenfreigabe. `true`: Die Seiten sind indexierbar, `robots.txt` und
+ * `sitemap.xml` werden ausgeliefert. `false`: Jede Seite trägt `noindex` und
+ * `robots.txt` sperrt alles. Der Release-Check (`npm run release:check`) prüft,
+ * dass Schalter, Seiten und Dateien zusammenpassen, und verlangt bei `true`, dass
+ * keine Freigabehinweise oder Platzhalter mehr sichtbar sind.
  */
-export const PROTOTYPE = true;
+export const INDEXABLE = true;
+
+/** Öffentliche Adresse (identisch mit `site` in astro.config.mjs, ohne Schrägstrich am Ende). */
+export const SITE_URL = 'https://paolo-sms.de';
 
 export const SITE = {
   name: 'PAOLO SMS',
@@ -14,7 +18,7 @@ export const SITE = {
   description:
     'PAOLO macht Sicherheitsmanagement einfach: Safety-Management-System für Gleitschirmvereine und Flugschulen. Sicherheit wird zu einem Teil des täglichen Betriebs.',
   email: 'info@paolo-sms.de',
-  stand: 'Oktober 2026',
+  stand: 'November 2026',
 } as const;
 
 /**

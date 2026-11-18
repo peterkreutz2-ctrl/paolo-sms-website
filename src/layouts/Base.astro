@@ -1,16 +1,20 @@
 ---
 import '../styles/global.css';
-import { PROTOTYPE, SITE, NAV, FOOTER_NAV } from '../config';
+import { INDEXABLE, SITE, SITE_URL, NAV, FOOTER_NAV } from '../config';
 import { url } from '../lib/url';
 
 interface Props {
   title?: string;
   description?: string;
+  /** Seite nie indexieren lassen (z. B. 404). */
+  noindex?: boolean;
 }
 
-const { title, description = SITE.description } = Astro.props;
+const { title, description = SITE.description, noindex = false } = Astro.props;
 const fullTitle = title ? `${title} – ${SITE.name}` : SITE.titleDefault;
 const path = Astro.url.pathname;
+const robotsNoindex = noindex || !INDEXABLE;
+const canonical = SITE_URL + path;
 const current = (href: string) => !href.includes('#') && path === url(href);
 ---
 
@@ -21,9 +25,9 @@ const current = (href: string) => !href.includes('#') && path === url(href);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    {PROTOTYPE && <meta name="robots" content="noindex, nofollow" />}
+    {robotsNoindex ? <meta name="robots" content="noindex, nofollow" /> : <link rel="canonical" href={canonical} />}
     <meta name="generator" content={Astro.generator} />
-    <!-- Kein Favicon im Prototyp: Das Bildmarken-Favicon ist noch nicht freigegeben. -->
+    <!-- Kein Favicon: Das Bildmarken-Favicon ist noch nicht freigegeben. -->
     <link rel="icon" href="data:," />
   </head>
   <body>
