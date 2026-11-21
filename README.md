@@ -15,7 +15,7 @@ gesondert vorbehalten; die Verwendung des Logos auf dieser Website ist in
 ## Schnellstart
 
 ```bash
-npm ci               # nur Astro 7.4.2 (exakt gepinnt)
+npm ci               # installiert die in package-lock.json festgelegten Versionen
 npm run dev          # http://localhost:4321
 npm run verify       # Build, Strukturprüfung und Freigabeprüfung
 npm run preview      # gebaute Seite lokal ansehen
