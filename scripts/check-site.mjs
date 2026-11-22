@@ -6,6 +6,9 @@
 import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
 import { join, relative, posix } from 'node:path';
 
+const { GOATCOUNTER } = await import('../src/config.ts');
+const GC_TAG = `<script data-goatcounter="${GOATCOUNTER.endpoint}" async src="${GOATCOUNTER.script}"></script>`;
+
 const DIST = new URL('../dist/', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const BASE = (process.env.SITE_BASE ?? '/').replace(/\/?$/, '/');
 
@@ -63,7 +66,12 @@ for (const file of pages) {
 
   // Keine Ressourcen von Dritten, kein eingebetteter Fremdinhalt, kein Skript
   if (/<iframe\b/.test(html)) err(page, '<iframe> gefunden');
-  if (/<script\b/.test(html)) err(page, '<script> gefunden (Prototyp ist skriptfrei)');
+  // Skripte: einzige Ausnahme ist der GoatCounter-Zählcode (src/config.ts, GOATCOUNTER), exakt
+  // in dieser Form und genau einmal. Jedes andere Skript, auch inline, ist ein Fehler.
+  const scripts = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/g)].map((m) => m[0]);
+  for (const s of scripts) if (s !== GC_TAG) err(page, `nicht erlaubtes <script>: ${s.slice(0, 100)}`);
+  if (scripts.filter((s) => s === GC_TAG).length !== 1) err(page, 'GoatCounter-Zählcode fehlt oder steht mehrfach');
+  if (/<script\b/.test(html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, ''))) err(page, 'nicht abgeschlossenes <script>');
   for (const m of html.matchAll(/<(?:link|img|source|video|audio)\b[^>]*\b(?:src|href|srcset)="(https?:)?\/\/[^"]+"/g)) {
     // Die kanonische Adresse (rel="canonical") verweist auf die Seite selbst, sie ist keine Ressource.
     if (!/rel="(?:noopener|noreferrer|canonical)/.test(m[0]) && !/<a\b/.test(m[0])) err(page, `externe Ressource: ${m[0].slice(0, 100)}`);

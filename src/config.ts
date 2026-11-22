@@ -12,6 +12,17 @@ export const INDEXABLE = true;
 /** Öffentliche Adresse (identisch mit `site` in astro.config.mjs, ohne Schrägstrich am Ende). */
 export const SITE_URL = 'https://paolo-sms.de';
 
+/**
+ * Besucherstatistik (GoatCounter, gehostet). Der Zählcode ist die einzige erlaubte
+ * Ausnahme von der Skriptfreiheit der Seite; `scripts/check-site.mjs` prüft, dass genau
+ * dieser Tag und kein anderes Skript im gebauten Ergebnis steht. Wer die Werte ändert,
+ * muss die Datenschutzerklärung (`src/pages/datenschutz.astro`) mit anpassen.
+ */
+export const GOATCOUNTER = {
+  endpoint: 'https://paolo-sms.goatcounter.com/count',
+  script: 'https://gc.zgo.at/count.js',
+} as const;
+
 export const SITE = {
   name: 'PAOLO SMS',
   titleDefault: 'PAOLO SMS – Sicherheitsmanagement für Gleitschirmvereine und Flugschulen',
