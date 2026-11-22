@@ -8,9 +8,13 @@ interface Props {
   description?: string;
   /** Seite nie indexieren lassen (z. B. 404). */
   noindex?: boolean;
+  /** Zusätzliche strukturierte Daten (JSON-LD), z. B. Article oder SoftwareApplication. */
+  extraSchema?: Record<string, unknown>[];
+  /** Open-Graph-Typ, Standard „website“. */
+  ogType?: 'website' | 'article';
 }
 
-const { title, description = SITE.description, noindex = false } = Astro.props;
+const { title, description = SITE.description, noindex = false, extraSchema = [], ogType = 'website' } = Astro.props;
 const fullTitle = title ? `${title} – ${SITE.name}` : SITE.titleDefault;
 const path = Astro.url.pathname;
 const robotsNoindex = noindex || !INDEXABLE;
@@ -41,7 +45,7 @@ const schema = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <meta name="robots" content={robotsNoindex ? 'noindex, nofollow' : 'index, follow'} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="de_DE" />
     <meta property="og:site_name" content={SITE.name} />
     <meta property="og:title" content={fullTitle} />
@@ -49,7 +53,10 @@ const schema = {
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary" />
     <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />
-    <meta name="generator" content={Astro.generator} />
+    {extraSchema.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', inLanguage: 'de', ...s }).replace(/</g, '\\u003c')} />
+    ))}
+    <meta name="generator"content={Astro.generator} />
     <!-- Kein Favicon: Das Bildmarken-Favicon ist noch nicht freigegeben. -->
     <link rel="icon" href="data:," />
     <!-- Besucherstatistik (Cloudflare Web Analytics): einziges Skript der Seite, siehe CLOUDFLARE_ANALYTICS in src/config.ts. -->

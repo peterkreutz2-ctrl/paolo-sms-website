@@ -288,3 +288,65 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
 @media (min-width: 48rem) {
   .release__data > div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 1rem; }
 }
+
+/* Startseite: Ikarus-Einstieg. Mobil in DOM-Reihenfolge, ab 56em zwei Spalten mit Bild rechts. */
+.hero--start .wrap { gap: .5rem 2.5rem; align-items: start; }
+.hero--start .hs-h { margin-bottom: .15em; }
+.hero--start .hs-img { margin: .25rem 0; justify-self: center; }
+.hero--start .hs-img img { display: block; width: auto; height: auto; max-width: 100%; max-height: min(27vh, 15rem); }
+.hero--start .hs-k { margin: .35rem 0 .25rem; padding-left: 1rem; border-left: 6px solid var(--orange); max-width: var(--text-w); }
+.hero--start .hs-kicker { margin: 0 0 .1rem; font-weight: 700; color: var(--muted); font-size: 1.05rem; }
+.hero--start .hs-frage { margin: 0; font-weight: 800; font-size: clamp(1.45rem, 3.2vw, 2.1rem); line-height: 1.2; text-wrap: balance; }
+.hero--start .hs-l { max-width: var(--text-w); margin: .25rem 0 .5rem; font-size: clamp(1.05rem, 2vw, 1.2rem); }
+.hero--start .hs-b { margin-block: .5rem; }
+.hero--start .hs-b .btn { font-size: 1.05rem; }
+.hero--start .hs-i { margin-top: .5rem; }
+/* Mobil: Schaltflächen vor den Nutzensatz, damit sie ohne Scrollen erreichbar sind. */
+.hero--start .hs-b { order: 1; }
+.hero--start .hs-l { order: 2; }
+.hero--start .hs-i { order: 3; }
+@media (max-width: 30em) { .site-header .logo img { height: 2.5rem; } .site-header .wrap { padding-block: .5rem; gap: .25rem 1rem; } }
+@media (min-width: 56em) {
+  .hero--start .hs-b, .hero--start .hs-l, .hero--start .hs-i { order: 0; }
+  .hero--start { padding-block: clamp(1.5rem, 3vw, 2.5rem); }
+  .hero--start .wrap { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); grid-template-rows: 1fr repeat(6, auto) 1fr; }
+  .hero--start .wrap > * { grid-column: 1; }
+  .hero--start .hs-h { grid-row: 2; }
+  .hero--start .hs-t { grid-row: 3; }
+  .hero--start .hs-k { grid-row: 4; }
+  .hero--start .hs-l { grid-row: 5; }
+  .hero--start .hs-b { grid-row: 6; }
+  .hero--start .hs-i { grid-row: 7; }
+  .hero--start .hs-img { grid-column: 2; grid-row: 1 / -1; margin: 0; }
+  .hero--start .hs-img img { max-height: min(64vh, 34rem); }
+}
+
+/* Produktseite: Hinweis auf „Die Idee“ */
+.hero .hero-idee { max-width: var(--text-w); margin: .5rem 0 0; font-size: 1rem; }
+
+/* Die Idee (Artikel) */
+.article__head { padding-bottom: 1rem; background: linear-gradient(180deg, #eef6fb 0, var(--paper) 100%); }
+.article__head-grid { display: grid; gap: 1.5rem 2.5rem; align-items: center; }
+.article__head .lead { margin-bottom: 1rem; }
+.article__fig { margin: 0; justify-self: center; }
+.article__fig img { display: block; width: auto; height: auto; max-width: 100%; max-height: min(34vh, 18rem); }
+.article__main { padding-top: 1.5rem; }
+.toc { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.25rem; max-width: var(--measure); margin-bottom: 2rem; }
+.toc__t { font-weight: 700; margin: 0 0 .25rem; }
+.toc ol { margin: 0; padding-left: 1.3em; }
+.toc a { display: inline-block; padding: .4rem 0; }
+.article__body { max-width: var(--measure); }
+.article__body p { margin-bottom: 1.1em; }
+.article__sec { margin-top: 2.75rem; }
+.article__sec h2 { margin-bottom: .5em; scroll-margin-top: 1rem; }
+.article__intro > p:first-child { font-size: 1.25rem; }
+.article__aside { font-style: italic; }
+.quote { margin: 1.25rem 0; padding: .6rem 1.25rem; border-left: 6px solid var(--yellow); background: var(--paper-2); border-radius: 0 6px 6px 0; font-style: italic; }
+.quote p { margin: 0; }
+.article__close { font-size: 1.3rem; line-height: 1.4; margin-top: 1.5rem; }
+.article__end { max-width: var(--measure); margin-top: 3rem; padding: 1.25rem 1.4rem; background: var(--paper-2); border-left: 6px solid var(--petrol); border-radius: 6px; }
+.article__end > :last-child { margin-bottom: 0; }
+@media (min-width: 48em) {
+  .article__head-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); }
+  .article__fig img { max-height: min(46vh, 24rem); }
+}

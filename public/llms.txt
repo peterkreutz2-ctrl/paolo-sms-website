@@ -4,7 +4,9 @@
 
 ## Seiten
 
-- [Startseite](https://paolo-sms.de/): Zweck und Überblick
+- [Startseite](https://paolo-sms.de/): Einstieg, Leitgedanke und Weg zu den Erklärungsseiten
+- [Die Idee](https://paolo-sms.de/idee/): Warum Sicherheit beim Gleitschirmfliegen nicht allein Sache des Piloten ist (Sicherheitskultur, Lernen statt Schuldzuweisung)
+- [Was ist PAOLO?](https://paolo-sms.de/paolo/): Das Werkzeug zur Einführung und zum Betrieb eines Sicherheitsmanagementsystems
 - [Einführen](https://paolo-sms.de/einfuehren/): Einführung und Betrieb
 - [Materialien](https://paolo-sms.de/materialien/): Informationsmaterialien und Downloads
 - [Mitmachen](https://paolo-sms.de/mitmachen/): Beteiligung und Kontakt

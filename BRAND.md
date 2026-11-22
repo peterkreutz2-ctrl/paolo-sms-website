@@ -69,6 +69,21 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
 - **Metadaten:** Die Datei enthält keine Text-, Autoren- oder Pfadmetadaten
   (nur Gamma, Farbraum und Auflösungsangabe).
 
+## Illustration „Daidalos und Ikarus“
+
+- **Datei:** `public/bilder/daidalos-ikarus.svg` (Vektorgrafik, 24 Pfade, Farben des PAOLO-Rings;
+  verwendet auf der Startseite und der Seite „Die Idee“).
+- **Herkunft:** Nach dem Gemälde „The Fall of Icarus“ von Peter Paul Rubens (1636) in mehreren
+  Abstraktions- und Vereinfachungsschritten mit Hilfe von KI nach gestalterischen Vorgaben des
+  Betreibers für PAOLO erstellt. Die Datei ist unverändert aus der vom Betreiber bereitgestellten
+  Original-SVG übernommen.
+- **Freigabe:** Die Nutzung im lokalen Prototyp ist vom Betreiber, Peter Kreutz, freigegeben. Die
+  **Veröffentlichung ist noch nicht freigegeben**; sie bleibt einer gesonderten Freigabe
+  vorbehalten (Seite „Die Idee“ trägt bis dahin den Freigabehinweis).
+- **Logo:** Die Grafik enthält kein Logo und keinen Text.
+- **Metadaten:** Die Datei enthält keine Text-, Autoren- oder Pfadmetadaten (Pfadkennungen wie
+  „Daedalos_1“, „Ikarus_2“, „Fluegel_3“, „Feder_n“ sind reine Bezeichner).
+
 Weitere Bilder oder Logo-Varianten sind nicht freigegeben.
 
 ## Porträts „Die PAOLINIS hinter PAOLO“
