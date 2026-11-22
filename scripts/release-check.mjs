@@ -198,7 +198,7 @@ else {
   // Der Zählcode (CLOUDFLARE_ANALYTICS) und seine Erklärung müssen zusammenpassen: Wer zählt, muss es sagen.
   const gcPages = pages.filter((f) => readFileSync(f, 'utf8').includes(CLOUDFLARE_ANALYTICS.script));
   if (gcPages.length > 0 && gcPages.length !== pages.length) addMust('dist', 'Cloudflare-Zählcode nicht auf allen Seiten');
-  for (const v of gcPages.length > 0 ? ['Cloudflare Web Analytics', 'cloudflareinsights.com', 'Art. 6 Abs. 1 Buchst. f'] : [])
+  for (const v of gcPages.length > 0 ? ['Cloudflare Web Analytics', 'Cloudflare, Inc.', 'Art. 6 Abs. 1 Buchst. f'] : [])
     if (!t.includes(v)) addMust('dist: datenschutz', `Zählcode eingebunden, aber in der Datenschutzerklärung fehlt: ${v}`);
   if (gcPages.length === 0 && t.includes('Cloudflare Web Analytics')) addMust('dist: datenschutz', 'erwähnt Cloudflare Web Analytics, aber kein Zählcode eingebunden');
 }
