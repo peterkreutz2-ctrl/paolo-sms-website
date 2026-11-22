@@ -6,6 +6,10 @@
 import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
 import { join, relative, posix } from 'node:path';
 
+const { CLOUDFLARE_ANALYTICS } = await import('../src/config.ts');
+// So rendert Astro den Tag (Anführungszeichen im Attribut als &quot;).
+const CF_TAG = `<script type="module" src="${CLOUDFLARE_ANALYTICS.script}" data-cf-beacon="{&quot;token&quot;:&quot;${CLOUDFLARE_ANALYTICS.token}&quot;}"></script>`;
+
 const DIST = new URL('../dist/', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const BASE = (process.env.SITE_BASE ?? '/').replace(/\/?$/, '/');
 
@@ -63,7 +67,14 @@ for (const file of pages) {
 
   // Keine Ressourcen von Dritten, kein eingebetteter Fremdinhalt, kein Skript
   if (/<iframe\b/.test(html)) err(page, '<iframe> gefunden');
-  if (/<script\b(?![^>]*type="application\/ld\+json")/.test(html)) err(page, 'ausführbares <script> gefunden (Prototyp ist skriptfrei)');
+  // Skripte: Datenblöcke (type="application/ld+json") sind nicht ausführbar und erlaubt. Einzige
+  // ausführbare Ausnahme ist der Cloudflare-Zählcode (src/config.ts, CLOUDFLARE_ANALYTICS), exakt
+  // in dieser Form und genau einmal. Jedes andere Skript, auch inline, ist ein Fehler.
+  const isData = (s) => /^<script\b[^>]*type="application\/ld\+json"/.test(s);
+  const scripts = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/g)].map((m) => m[0]).filter((s) => !isData(s));
+  for (const s of scripts) if (s !== CF_TAG) err(page, `nicht erlaubtes <script>: ${s.slice(0, 100)}`);
+  if (scripts.filter((s) => s === CF_TAG).length !== 1) err(page, 'Cloudflare-Zählcode fehlt oder steht mehrfach');
+  if (/<script\b/.test(html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, ''))) err(page, 'nicht abgeschlossenes <script>');
   for (const m of html.matchAll(/<(?:link|img|source|video|audio)\b[^>]*\b(?:src|href|srcset)="(https?:)?\/\/[^"]+"/g)) {
     // Die kanonische Adresse (rel="canonical") verweist auf die Seite selbst, sie ist keine Ressource.
     if (!/rel="(?:noopener|noreferrer|canonical)/.test(m[0]) && !/<a\b/.test(m[0])) err(page, `externe Ressource: ${m[0].slice(0, 100)}`);

@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { INDEXABLE, SITE, SITE_URL, NAV, FOOTER_NAV } from '../config';
+import { CLOUDFLARE_ANALYTICS, INDEXABLE, SITE, SITE_URL, NAV, FOOTER_NAV } from '../config';
 import { url } from '../lib/url';
 
 interface Props {
@@ -52,6 +52,8 @@ const schema = {
     <meta name="generator" content={Astro.generator} />
     <!-- Kein Favicon: Das Bildmarken-Favicon ist noch nicht freigegeben. -->
     <link rel="icon" href="data:," />
+    <!-- Besucherstatistik (Cloudflare Web Analytics): einziges Skript der Seite, siehe CLOUDFLARE_ANALYTICS in src/config.ts. -->
+    <script is:inline type="module" src={CLOUDFLARE_ANALYTICS.script} data-cf-beacon={JSON.stringify({ token: CLOUDFLARE_ANALYTICS.token })}></script>
   </head>
   <body>
     <a class="skip" href="#inhalt">Zum Inhalt springen</a>

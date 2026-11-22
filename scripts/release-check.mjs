@@ -19,7 +19,7 @@ if (!existsSync(DIST)) {
   process.exit(2);
 }
 
-const { PROVIDER, SITE, SITE_URL, INDEXABLE } = await import('../src/config.ts');
+const { PROVIDER, SITE, SITE_URL, INDEXABLE, CLOUDFLARE_ANALYTICS } = await import('../src/config.ts');
 const { materials, releasePackage } = await import('../src/data/materials.ts');
 
 const walk = (d, skip = new Set()) =>
@@ -48,8 +48,9 @@ const EMAIL = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g;
 const ALLOWED_EMAILS = new Set([SITE.email.toLowerCase()]);
 // Freigegebene externe Verweise: die öffentliche Demo-Installation (erfundene Daten, getrennt von jeder
 // Betreiberinstallation), vom Betreiber freigegeben am 25.10.2026; Sicherheitsseite des DHV (Link am DHV-Logo
-// der Startseite), vom Betreiber am 18.11.2026 beauftragt.
-const ALLOWED_EXTERNAL_LINKS = new Set(['https://demo.paolo-sms.de/', 'https://www.youtube.com/watch?v=6b8VwUDiiHQ', 'https://www.dhv.de/sicherheit/']);
+// der Startseite), vom Betreiber am 18.11.2026 beauftragt; Cloudflare-Dokumente zur Datenverarbeitung (Verweise in der
+// eigenen Datenschutzerklärung zur Reichweitenmessung).
+const ALLOWED_EXTERNAL_LINKS = new Set(['https://demo.paolo-sms.de/', 'https://www.youtube.com/watch?v=6b8VwUDiiHQ', 'https://www.dhv.de/sicherheit/', 'https://www.cloudflare.com/cloudflare-customer-dpa/', 'https://www.cloudflare.com/gdpr/subprocessors/']);
 const TEXT_EXT = new Set(['.astro', '.ts', '.mjs', '.js', '.json', '.md', '.yml', '.yaml', '.css', '.svg', '.html', '.txt']);
 
 // 1. Gebautes Ergebnis (dist) und Repository-Inhalt (ohne Ignoriertes) durchsuchen
@@ -196,6 +197,12 @@ if (!existsSync(ds)) addMust('dist: datenschutz', 'Datenschutzerklärung fehlt')
 else {
   const t = strip(readFileSync(ds, 'utf8'));
   for (const v of [PROVIDER.name, PROVIDER.city, 'weitergeleitet']) if (!t.includes(v)) addMust('dist: datenschutz', `Angabe fehlt: ${v}`);
+  // Der Zählcode (CLOUDFLARE_ANALYTICS) und seine Erklärung müssen zusammenpassen: Wer zählt, muss es sagen.
+  const gcPages = pages.filter((f) => readFileSync(f, 'utf8').includes(CLOUDFLARE_ANALYTICS.script));
+  if (gcPages.length > 0 && gcPages.length !== pages.length) addMust('dist', 'Cloudflare-Zählcode nicht auf allen Seiten');
+  for (const v of gcPages.length > 0 ? ['Cloudflare Web Analytics', 'Cloudflare, Inc.', 'Art. 6 Abs. 1 Buchst. f'] : [])
+    if (!t.includes(v)) addMust('dist: datenschutz', `Zählcode eingebunden, aber in der Datenschutzerklärung fehlt: ${v}`);
+  if (gcPages.length === 0 && t.includes('Cloudflare Web Analytics')) addMust('dist: datenschutz', 'erwähnt Cloudflare Web Analytics, aber kein Zählcode eingebunden');
 }
 
 // Ausgabe
