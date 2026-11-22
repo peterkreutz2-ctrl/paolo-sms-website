@@ -67,9 +67,11 @@ for (const file of pages) {
 
   // Keine Ressourcen von Dritten, kein eingebetteter Fremdinhalt, kein Skript
   if (/<iframe\b/.test(html)) err(page, '<iframe> gefunden');
-  // Skripte: einzige Ausnahme ist der Cloudflare-Zählcode (src/config.ts, CLOUDFLARE_ANALYTICS), exakt
+  // Skripte: Datenblöcke (type="application/ld+json") sind nicht ausführbar und erlaubt. Einzige
+  // ausführbare Ausnahme ist der Cloudflare-Zählcode (src/config.ts, CLOUDFLARE_ANALYTICS), exakt
   // in dieser Form und genau einmal. Jedes andere Skript, auch inline, ist ein Fehler.
-  const scripts = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/g)].map((m) => m[0]);
+  const isData = (s) => /^<script\b[^>]*type="application\/ld\+json"/.test(s);
+  const scripts = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/g)].map((m) => m[0]).filter((s) => !isData(s));
   for (const s of scripts) if (s !== CF_TAG) err(page, `nicht erlaubtes <script>: ${s.slice(0, 100)}`);
   if (scripts.filter((s) => s === CF_TAG).length !== 1) err(page, 'Cloudflare-Zählcode fehlt oder steht mehrfach');
   if (/<script\b/.test(html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, ''))) err(page, 'nicht abgeschlossenes <script>');
@@ -128,3 +130,4 @@ if (errors.length) {
   process.exit(1);
 }
 console.log('\nKeine Strukturfehler.');
+

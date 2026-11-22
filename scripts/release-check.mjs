@@ -70,6 +70,8 @@ for (const [f, kind] of scan) {
 const allowedAssets = new Set([
   'robots.txt',
   'sitemap.xml',
+  'llms.txt',
+  'llm-rules.md',
   'brand/paolo-sms-logo.svg',
   'brand/dhv-logo.svg',
   'saeulen/sms-saeulen.png',

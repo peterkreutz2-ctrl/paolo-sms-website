@@ -15,7 +15,7 @@ gesondert vorbehalten; die Verwendung des Logos auf dieser Website ist in
 ## Schnellstart
 
 ```bash
-npm ci               # nur Astro 7.4.2 (exakt gepinnt)
+npm ci               # installiert die in package-lock.json festgelegten Versionen
 npm run dev          # http://localhost:4321
 npm run verify       # Build, Strukturprüfung und Freigabeprüfung
 npm run preview      # gebaute Seite lokal ansehen
@@ -35,7 +35,7 @@ Voraussetzung: Node.js >= 22.23.4 (getestet mit 24).
 | GitHub Pages | trivial | statischer Ordner `dist/` | möglich, mit Eigenheiten |
 
 Gewählt wurde Astro: statischer Inhalt, Komponenten und eine Datendatei für
-Materialien, ohne Laufzeit-JavaScript und mit minimalen Abhängigkeiten. Kein
+Materialien, ohne eigenes Laufzeit-JavaScript und mit minimalen Abhängigkeiten. Kein
 Tailwind, keine UI-Bibliothek, keine Webfonts, keine Integrationen.
 
 ## Aufbau
