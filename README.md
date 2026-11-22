@@ -31,7 +31,7 @@ Voraussetzung: Node.js >= 22.23.4 (getestet mit 24).
 | Wiederholte Teile | doppelt gepflegt | Komponenten und Layout | Komponenten, React-Laufzeit |
 | Neue Materialien | HTML je Seite | **ein Eintrag** in `src/data/materials.ts` | Daten plus React-Code |
 | Abhängigkeiten | keine | **eine** (`astro`) | React, Next und Kette |
-| Ausgeliefertes JavaScript | keines | **keines eigenes** (nur der Zählcode von GoatCounter) | Next-Laufzeit |
+| Ausgeliefertes JavaScript | keines | **keines eigenes** (nur der Zählcode von Cloudflare Web Analytics) | Next-Laufzeit |
 | GitHub Pages | trivial | statischer Ordner `dist/` | möglich, mit Eigenheiten |
 
 Gewählt wurde Astro: statischer Inhalt, Komponenten und eine Datendatei für
@@ -78,7 +78,7 @@ E2E-Tests mit Better Auth oder Clerk gehören ausschließlich zur Anwendung.
 - `npm test`: Build und Strukturprüfung (`scripts/check-site.mjs`): Sprache,
   Titel, genau eine H1, Überschriftenreihenfolge, Textalternativen, tote Links,
   kein `<iframe>`, Cookie-/Storage-Zugriff oder Fremdressourcen und kein `<script>`
-  außer dem GoatCounter-Zählcode (genau dieser Tag, genau einmal je Seite).
+  außer dem Cloudflare-Zählcode (genau dieser Tag, genau einmal je Seite).
 - `npm run release:check`: Freigabeprüfung des gebauten Ergebnisses. Bricht ab bei
   privaten Verweisen, lokalen Pfaden, fremden E-Mail-Adressen, möglichen
   Zugangsschlüsseln, nicht freigegebenen Dateien oder externen Links, fehlenden
@@ -95,13 +95,13 @@ E2E-Tests mit Better Auth oder Clerk gehören ausschließlich zur Anwendung.
 - Keine Cookies, kein `localStorage`, kein `<iframe>`, keine Ressourcen von
   Dritten; Schrift: Arial-Stack. Einzige Ausnahme ist die Besucherstatistik
   (siehe unten).
-- Besucherstatistik: gehostetes GoatCounter (`paolo-sms.goatcounter.com`),
-  eingebunden als ein Skript-Tag im Layout (`GOATCOUNTER` in `src/config.ts`).
-  Es zählt Seitenaufrufe aggregiert, ohne Cookies und Besucherprofile. Der
+- Besucherstatistik: Cloudflare Web Analytics, eingebunden als ein Skript-Tag im
+  Layout (`CLOUDFLARE_ANALYTICS` in `src/config.ts`). Die Seite läuft weiter über
+  GitHub Pages; es gibt keinen Cloudflare-Proxy und keine DNS-Änderung. Der
   Strukturtest lässt genau diesen Tag zu und sonst kein Skript; der Release-Check
   verlangt, dass die Datenschutzerklärung den Dienst nennt. Wer Adresse oder
   Skript ändert, passt `src/pages/datenschutz.astro` mit an. Auswertung nur im
-  GoatCounter-Dashboard; Export oder Archivierung sind nicht vorgesehen.
+  Cloudflare-Dashboard; Export oder Archivierung sind nicht vorgesehen.
 - Sprungmarke, Landmarken, sichtbarer Fokus, Zielgrößen ab 44 px, `lang="de"`,
   `prefers-reduced-motion`; kein horizontaler Überlauf von 320 bis 1280 px.
 - Nicht geprüft: Screenreader, axe oder PAC, echte Smartphones, Druckausgabe.

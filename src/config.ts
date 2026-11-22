@@ -13,14 +13,16 @@ export const INDEXABLE = true;
 export const SITE_URL = 'https://paolo-sms.de';
 
 /**
- * Besucherstatistik (GoatCounter, gehostet). Der Zählcode ist die einzige erlaubte
- * Ausnahme von der Skriptfreiheit der Seite; `scripts/check-site.mjs` prüft, dass genau
- * dieser Tag und kein anderes Skript im gebauten Ergebnis steht. Wer die Werte ändert,
- * muss die Datenschutzerklärung (`src/pages/datenschutz.astro`) mit anpassen.
+ * Besucherstatistik (Cloudflare Web Analytics, ohne Cloudflare-Proxy und ohne DNS-Änderung).
+ * Der Zählcode ist die einzige erlaubte Ausnahme von der Skriptfreiheit der Seite;
+ * `scripts/check-site.mjs` prüft, dass genau dieser Tag und kein anderes Skript im gebauten
+ * Ergebnis steht. Der Token ist die öffentliche Kennung der Website und kein Geheimnis.
+ * Wer die Werte ändert, muss die Datenschutzerklärung (`src/pages/datenschutz.astro`) mit
+ * anpassen.
  */
-export const GOATCOUNTER = {
-  endpoint: 'https://paolo-sms.goatcounter.com/count',
-  script: 'https://gc.zgo.at/count.js',
+export const CLOUDFLARE_ANALYTICS = {
+  script: 'https://static.cloudflareinsights.com/beacon.min.js',
+  token: '42c1c463df814edeafedef3b77b5594a',
 } as const;
 
 export const SITE = {
