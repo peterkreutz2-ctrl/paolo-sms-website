@@ -132,6 +132,35 @@ for (const file of pages) {
   if (!text.includes(SITE.email)) err(page, `Zielseite der Schaltfläche „Kontakt“ nennt ${SITE.email} nicht als Klartext`);
 }
 
+// Kontaktlinks einheitlich: Schaltflächen führen auf /kontakt/ (nie direkt auf mailto:), die Fußzeile
+// hat „Kontakt“ als letzten Navigationspunkt und keinen mailto:-Link, und jeder mailto:-Link im Text
+// zeigt die Adresse sichtbar und kopierbar als Linktext. Nur /kontakt/ darf eine mailto:-Schaltfläche
+// haben (dort steht die Adresse daneben als Klartext).
+for (const file of pages) {
+  const page = relative(DIST, file).replaceAll('\\', '/');
+  if (page === '404.html') continue;
+  const html = readFileSync(file, 'utf8');
+  const isKontakt = page === 'kontakt/index.html';
+  for (const m of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)) {
+    const href = m[1].match(/\bhref="([^"]*)"/)?.[1] ?? '';
+    if (!/^mailto:/i.test(href)) continue;
+    const address = href.slice('mailto:'.length);
+    const label = m[2].replace(/<[^>]+>/g, '').trim();
+    if (address !== SITE.email) err(page, `mailto:-Link mit fremder Adresse: ${address}`);
+    if (/\bclass="[^"]*\bbtn\b/.test(m[1]) && !isKontakt) err(page, `mailto:-Schaltfläche „${label}“: Schaltflächen müssen auf /kontakt/ führen`);
+    if (!isKontakt && !label.includes(SITE.email)) err(page, `mailto:-Link „${label}“ zeigt die Adresse nicht als Linktext`);
+  }
+  if (isKontakt) {
+    const plain = html.replace(/<a\b[^>]*>[\s\S]*?<\/a>/g, ' ').replace(/<[^>]+>/g, ' ');
+    if (!plain.includes(SITE.email)) err(page, `${SITE.email} steht nicht als Klartext (außerhalb von Links) auf der Kontaktseite`);
+  }
+  const footer = html.match(/<footer\b[\s\S]*?<\/footer>/)?.[0] ?? '';
+  const items = [...footer.matchAll(/<li><a href="([^"]*)">([^<]*)<\/a><\/li>/g)].map((x) => [x[1], x[2]]);
+  const last = items.at(-1);
+  if (!last || last[0] !== `${BASE}kontakt/` || last[1] !== 'Kontakt') err(page, 'Fußzeile: „Kontakt“ (/kontakt/) fehlt als letzter Navigationspunkt');
+  if (/mailto:/i.test(footer)) err(page, 'Fußzeile enthält einen mailto:-Link (statt „Kontakt“ auf /kontakt/)');
+}
+
 // Gestaltung: Das Stylesheet muss in jeder Seite eingebettet sein. GitHub Pages liefert HTML bis zu
 // 10 Minuten aus dem Cache. Ein zwischengespeichertes HTML, das auf eine ausgelagerte, mit Hash
 // benannte Datei (/_astro/Base.<Hash>.css) verweist, zeigt nach einer Veröffentlichung die Seite

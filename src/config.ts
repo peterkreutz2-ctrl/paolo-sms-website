@@ -66,4 +66,5 @@ export const FOOTER_NAV: NavItem[] = [
   { label: 'Mitmachen', href: '/mitmachen/' },
   { label: 'Impressum', href: '/impressum/' },
   { label: 'Datenschutz', href: '/datenschutz/' },
+  { label: 'Kontakt', href: '/kontakt/' },
 ];

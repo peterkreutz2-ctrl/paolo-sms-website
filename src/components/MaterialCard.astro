@@ -7,7 +7,7 @@ interface Props {
   item: Material;
 }
 const { item } = Astro.props;
-// Interne Dateien (z. B. /materialien/x.pdf) laufen über den Basispfad, externe und mailto: nicht.
+// Interne Dateien (z. B. /materialien/x.pdf) laufen über den Basispfad, externe nicht (mailto:-Schaltflächen gibt es nicht, siehe check-site.mjs: sie führen auf /kontakt/).
 const href = item.href?.startsWith('/') ? url(item.href) : item.href;
 
 const badge: Record<Material['availability'], { text: string; cls: string }> = {

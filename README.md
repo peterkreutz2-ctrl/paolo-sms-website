@@ -105,9 +105,15 @@ kein E-Mail-Programm eingerichtet hat, sieht beim Klick ebenfalls keine Reaktion
 nicht.
 
 **Absicherung:** `scripts/check-site.mjs` bricht ab, wenn die Schaltfläche „Kontakt“ wieder ein
-`mailto:`-Link ist, ihr Ziel fehlt oder die Zielseite die Adresse nicht als Klartext nennt. Weitere
-`mailto:`-Schaltflächen im Inhalt (Seiten „Einführen“ und „Mitmachen“) haben dieselbe Eigenschaft;
-dort steht die Adresse aber nicht immer im Text neben der Schaltfläche.
+`mailto:`-Link ist, ihr Ziel fehlt oder die Zielseite die Adresse nicht als Klartext nennt.
+
+**Einheitliche Kontaktlinks:** Alle Schaltflächen zum Kontakt führen auf `/kontakt/` (Navigation, „Fragen?
+Schreib uns“ auf „Einführen“, „E-Mail schreiben“ auf „Mitmachen“, „Per E-Mail anfragen“ bei der
+technischen Dokumentation auf „Materialien“). Die Fußzeile hat „Kontakt“ als letzten Navigationspunkt
+und keinen `mailto:`-Link. `mailto:`-Links im Text (Impressum, Datenschutz, Materialien) zeigen die
+Adresse als Linktext. `check-site.mjs` prüft das: keine `mailto:`-Schaltfläche außerhalb von
+`/kontakt/`, jede `mailto:`-Adresse ist `SITE.email`, „Kontakt“ ist in jeder Fußzeile der letzte Punkt, und
+die Adresse steht auf `/kontakt/` als Klartext.
 
 ## Gestaltung ohne ausgelagerte Stylesheet-Datei
 
