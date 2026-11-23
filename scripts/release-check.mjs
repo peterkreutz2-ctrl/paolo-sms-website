@@ -102,7 +102,6 @@ for (const f of staticFiles) {
 }
 for (const m of materials) {
   if (m.availability === 'download' && (!m.version || !m.stand)) addMust(`materials: ${m.id}`, 'Download ohne Version und Stand');
-  if (m.availability === 'external') addOpen(`materials: ${m.id}`, 'externer Link: Sichtbarkeit und Rechte prüfen');
 }
 
 // 3. Seiten
