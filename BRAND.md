@@ -117,6 +117,20 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
 - **Metadaten:** Aus der Originaldatei wurde der Metadatenblock „caBX“ (30 KB, Inhaltsnachweis nach
   dem C2PA-Standard) entfernt; die Bilddaten sind unverändert. Die Originaldatei liegt beim Betreiber.
 
+## Favicon
+
+- **Dateien:** `public/favicon.svg`, `public/favicon.ico` (16, 32 und 48 Pixel) und
+  `public/apple-touch-icon.png` (180 Pixel).
+- **Ableitung (23.11.2026):** Ausschnitt aus `public/bilder/daidalos-ikarus.svg`: nur die Pfade
+  `Daedalos_1`, `Fluegel_3` und `Fluegel_4`, unverändert, auf weißem Quadrat mit abgerundeten Ecken
+  (Variante „E“). Ikarus und die Federn entfallen. Das Apple-Touch-Icon ist dasselbe Motiv auf
+  vollflächig weißem Quadrat. Keine Umfärbung, keine Verzerrung.
+- **Zweck:** Unterscheidbarkeit der Browser-Tabs der Produktwebsite vom mehrfarbigen Kreissymbol der
+  PAOLO-Anwendung und der Demo. Anwendung und Demo behalten ihr Favicon.
+- **Freigabe:** Vom Betreiber, Peter Kreutz, am 23.11.2026 für diese Website freigegeben.
+- **Logo:** Das Favicon enthält weder das PAOLO-Logo noch Text.
+- **Metadaten:** Keine Text-, Autoren- oder Pfadmetadaten.
+
 Weitere Bilder oder Logo-Varianten sind nicht freigegeben.
 
 ## Porträts „Die PAOLINIS hinter PAOLO“
