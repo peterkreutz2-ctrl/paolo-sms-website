@@ -71,8 +71,17 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
 
 ## Illustration „Daidalos und Ikarus“
 
-- **Datei:** `public/bilder/daidalos-ikarus.svg` (Vektorgrafik, 24 Pfade, Farben des PAOLO-Rings;
+- **Datei:** `public/bilder/daidalos-ikarus.svg` (Vektorgrafik, 18 Pfade, Farben des PAOLO-Rings;
   verwendet auf der Startseite und der Seite „Die Idee“).
+- **Fassung (23.11.2026):** Entspricht der im Flyer (R1.0 V3.4) verwendeten Fassung. Gegenüber der
+  Quelldatei `daidalos-ikaros-paolo-farben-v4.svg` (20 Federn) wurden nur die gelben Federn
+  geändert; Daidalos, Ikarus und die beiden Flügel sind unverändert. Der Flyer hat 14 Federn:
+  acht Federn der v4 sind unverändert (v4: Feder_2, 3, 4, 5, 7, 8, 13, 16), zwölf entfallen
+  (v4: Feder_1, 6, 9, 10, 11, 12, 14, 15, 17, 18, 19, 20), sechs sind in Lage oder Ausrichtung
+  geändert beziehungsweise neu. Deren Umrisse wurden aus den Vektordaten des Flyers übernommen
+  (auf das Koordinatensystem der SVG umgerechnet, Abweichung der Umrechnung höchstens etwa
+  3 Einheiten bei 3962 Breite) und anschließend neu nummeriert (Feder_1 bis Feder_14). Die
+  Quelldatei v4 blieb unverändert; die neue Fassung liegt daneben als `…-v5.svg`.
 - **Herkunft:** Nach dem Gemälde „The Fall of Icarus“ von Peter Paul Rubens (1636) in mehreren
   Abstraktions- und Vereinfachungsschritten mit Hilfe von KI nach gestalterischen Vorgaben des
   Betreibers für PAOLO erstellt. Die Datei ist unverändert aus der vom Betreiber bereitgestellten
@@ -83,6 +92,19 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
 - **Logo:** Die Grafik enthält kein Logo und keinen Text.
 - **Metadaten:** Die Datei enthält keine Text-, Autoren- oder Pfadmetadaten (Pfadkennungen wie
   „Daedalos_1“, „Ikarus_2“, „Fluegel_3“, „Feder_n“ sind reine Bezeichner).
+
+## Illustration „Verhänger“
+
+- **Datei:** `public/bilder/verhaenger.png` (Rasterbild, 336 × 320 Pixel, transparenter Hintergrund;
+  verwendet im Kopfbereich der Seite „Was ist PAOLO?“).
+- **Zweck:** Gleitschirmbezug auf der Produktseite. Nicht auf der Startseite, nicht bei „Die Idee“.
+- **Herkunft:** Vom Betreiber bereitgestellt; die Art der Erstellung ist hier nicht dokumentiert
+  und vor der Veröffentlichung zu ergänzen.
+- **Freigabe:** Nutzung im lokalen Prototyp auf Anweisung des Betreibers; **Veröffentlichung noch
+  nicht freigegeben**.
+- **Logo:** Die Grafik enthält kein Logo und keinen Text.
+- **Metadaten:** Aus der Originaldatei wurde der Metadatenblock „caBX“ (30 KB, Inhaltsnachweis nach
+  dem C2PA-Standard) entfernt; die Bilddaten sind unverändert. Die Originaldatei liegt beim Betreiber.
 
 Weitere Bilder oder Logo-Varianten sind nicht freigegeben.
 

@@ -350,3 +350,12 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
   .article__head-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); }
   .article__fig img { max-height: min(46vh, 24rem); }
 }
+
+/* Produktseite: Gleitschirm-Illustration (Verhänger) im Kopfbereich */
+.hero--paolo .hero-bild { margin: 0; justify-self: center; }
+.hero--paolo .hero-bild img { mix-blend-mode: multiply; }
+.hero--paolo .hero-bild img { display: block; width: auto; height: auto; max-width: 100%; max-height: 11rem; }
+@media (min-width: 56em) {
+  .hero--paolo .wrap { grid-template-columns: minmax(0, 1fr) 21rem; gap: 2.5rem; align-items: start; }
+  .hero--paolo .hero-bild img { max-height: none; width: 100%; max-width: 21rem; }
+}
