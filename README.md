@@ -109,6 +109,23 @@ nicht.
 `mailto:`-Schaltflächen im Inhalt (Seiten „Einführen“ und „Mitmachen“) haben dieselbe Eigenschaft;
 dort steht die Adresse aber nicht immer im Text neben der Schaltfläche.
 
+## Gestaltung ohne ausgelagerte Stylesheet-Datei
+
+Das Stylesheet ist in jede Seite eingebettet (`build.inlineStylesheets: 'always'` in
+`astro.config.mjs`).
+
+**Ursache eines Ausfalls am 23.11.2026:** Astro legt das Stylesheet sonst als
+`/_astro/Base.<Hash>.css` ab; der Hash ändert sich mit jeder Änderung am CSS. GitHub Pages liefert HTML
+bis zu 10 Minuten aus dem Cache (`max-age=600`). Ein Besucher mit zwischengespeichertem HTML verwies
+nach einer neuen Veröffentlichung auf eine inzwischen gelöschte Datei (404): Die Seite erschien ohne
+Gestaltung (Navigation als Aufzählung, Grafiken in voller Breite).
+
+**Absicherung:** `scripts/check-site.mjs` bricht ab, wenn eine Seite ein ausgelagertes Stylesheet oder
+einen Verweis auf `/_astro/` enthält oder das eingebettete Stylesheet fehlt. `scripts/live-check.mjs`
+prüft nach jeder Veröffentlichung die Live-Seite (Job `live-check` im Workflow): Status 200,
+eingebettetes Stylesheet, erreichbare Bilder und Dateien. Lokal:
+`node scripts/live-check.mjs https://paolo-sms.de`.
+
 ## Datenschutz und Barrierefreiheit
 
 - Keine Cookies, kein `localStorage`, kein `<iframe>`, keine Ressourcen von

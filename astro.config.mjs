@@ -14,7 +14,11 @@ export default defineConfig({
   site: 'https://paolo-sms.de',
   base: process.env.SITE_BASE ?? '/',
   trailingSlash: 'always',
-  build: { format: 'directory' },
+  // Stylesheet in jede Seite einbetten: GitHub Pages liefert HTML bis zu 10 Minuten aus dem Cache. Ein
+  // zwischengespeichertes HTML verwies nach einer Veröffentlichung auf eine gelöschte Datei
+  // /_astro/Base.<Hash>.css (404), die Seite erschien ohne Gestaltung. Eingebettet gibt es diese
+  // Abhängigkeit nicht.
+  build: { format: 'directory', inlineStylesheets: 'always' },
   compressHTML: true,
   devToolbar: { enabled: false },
 });
