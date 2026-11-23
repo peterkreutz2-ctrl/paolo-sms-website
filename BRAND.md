@@ -97,10 +97,13 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
 
 - **Datei:** `public/bilder/verhaenger.png` (Rasterbild, 336 × 320 Pixel, transparenter Hintergrund;
   verwendet im Kopfbereich der Seite „Was ist PAOLO?“).
-- **Farbanpassung (23.11.2026):** Jacke und Zierstreifen des Piloten (vorher Orange) sind auf
-  Anweisung des Betreibers in PAOLO-Grün (#6CB324) umgefärbt; Schattierung und Transparenz
-  blieben erhalten. Untersegel (weiß), Obersegel, Leinen und alle übrigen Bildteile sind
-  unverändert.
+- **Farbanpassung (23.11.2026):** Jacke und Zierstreifen des Piloten (vorher Orange) wurden auf
+  Anweisung des Betreibers zunächst in PAOLO-Grün (#6CB324) umgefärbt; Schattierung und
+  Transparenz blieben erhalten. Untersegel (weiß), Obersegel, Leinen und alle übrigen Bildteile
+  sind unverändert. Der Zierstreifen am Gurtzeug ist inzwischen gelb (siehe unten).
+- **Farbanpassung Zierstreifen (23.11.2026):** Der Streifen im Gurtzeug ist auf Anweisung des
+  Betreibers in PAOLO-Gelb (#FDB205) umgefärbt (84 Pixel, Schattierung erhalten). Die Jacke bleibt
+  grün.
 - **Farbanpassung Helm (23.11.2026):** Der Helm des Piloten (vorher Dunkelblau) ist auf Anweisung
   des Betreibers in PAOLO-Gelb (#FDB205) umgefärbt, mit erhaltener Schattierung (nur ein Bereich
   von 22 × 16 Pixeln um den Helm). Alle übrigen Bildteile sind gegenüber der Fassung mit grüner
