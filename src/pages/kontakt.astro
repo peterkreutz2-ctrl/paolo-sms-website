@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../config';
+import { url } from '../lib/url';
+---
+
+<Base title="Kontakt" description={`So erreichst du das PAOLO-Team: per E-Mail an ${SITE.email}. Fragen, Rückmeldungen und das Interesse an einer Pilotorganisation sind willkommen.`}>
+  <section class="section" aria-labelledby="h-kontakt">
+    <div class="wrap">
+      <p class="eyebrow">Kontakt</p>
+      <h1 id="h-kontakt">Schreib uns</h1>
+      <p class="lead">Du hast Fragen, möchtest Rückmeldung geben oder PAOLO in deinem Verein oder deiner Flugschule erproben? Wir freuen uns über deine Nachricht.</p>
+      <p class="kontakt__zeile">E-Mail: <strong class="kontakt__adr">{SITE.email}</strong></p>
+      <div class="btn-row">
+        <a class="btn" href={`mailto:${SITE.email}`}>E-Mail-Programm öffnen</a>
+      </div>
+      <p class="small muted measure">Öffnet sich kein E-Mail-Programm, markiere die Adresse mit einem Klick und kopiere sie (Strg+C, am Mac Cmd+C). Dann fügst du sie in dein E-Mail-Programm oder deinen Webmail-Dienst ein.</p>
+      <p class="small muted measure">Hinweise zur Verarbeitung deiner Nachricht stehen in der <a href={url('/datenschutz/')}>Datenschutzerklärung</a>. Wie du mitmachen kannst, steht unter <a href={url('/mitmachen/')}>Mitmachen</a>.</p>
+    </div>
+  </section>
+</Base>

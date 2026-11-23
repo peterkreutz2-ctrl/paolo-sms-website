@@ -79,6 +79,7 @@ E2E-Tests mit Better Auth oder Clerk gehören ausschließlich zur Anwendung.
   Titel, genau eine H1, Überschriftenreihenfolge, Textalternativen, tote Links,
   kein `<iframe>`, Cookie-/Storage-Zugriff oder Fremdressourcen und kein `<script>`
   außer dem Cloudflare-Zählcode (genau dieser Tag, genau einmal je Seite).
+  Dazu gehört die Kontaktprüfung (siehe „Kontakt“ unten).
 - `npm run release:check`: Freigabeprüfung des gebauten Ergebnisses. Bricht ab bei
   privaten Verweisen, lokalen Pfaden, fremden E-Mail-Adressen, möglichen
   Zugangsschlüsseln, nicht freigegebenen Dateien oder externen Links, fehlenden
@@ -89,6 +90,24 @@ E2E-Tests mit Better Auth oder Clerk gehören ausschließlich zur Anwendung.
   Nicht geprüft werden die Inhalte der PDFs unter `public/materialien/`; sie
   stehen in der lokalen Freigabeliste.
 - In der GitHub-Action zusätzlich `npm audit --omit=dev --audit-level=high`.
+
+## Kontakt
+
+Die Schaltfläche „Kontakt“ der Hauptnavigation führt auf die Seite `/kontakt/`
+(`src/pages/kontakt.astro`). Dort steht die Adresse aus `SITE.email` als Klartext, mit einem
+Klick markierbar (`user-select: all`, ohne JavaScript), dazu ein `mailto:`-Link.
+
+**Ursache des früheren Fehlers (23.11.2026):** Die Schaltfläche war ein reiner
+`mailto:info@paolo-sms.de`-Link. Der Link war technisch korrekt und nichts überdeckte ihn; der Browser
+übergibt `mailto:` aber an das Betriebssystem oder verwaltet es selbst. Auf dem geprüften Rechner ist
+Chrome selbst als Standard für `mailto:` eingetragen, ohne Webmail-Dienst, und tut deshalb nichts. Wer
+kein E-Mail-Programm eingerichtet hat, sieht beim Klick ebenfalls keine Reaktion und kennt die Adresse
+nicht.
+
+**Absicherung:** `scripts/check-site.mjs` bricht ab, wenn die Schaltfläche „Kontakt“ wieder ein
+`mailto:`-Link ist, ihr Ziel fehlt oder die Zielseite die Adresse nicht als Klartext nennt. Weitere
+`mailto:`-Schaltflächen im Inhalt (Seiten „Einführen“ und „Mitmachen“) haben dieselbe Eigenschaft;
+dort steht die Adresse aber nicht immer im Text neben der Schaltfläche.
 
 ## Datenschutz und Barrierefreiheit
 

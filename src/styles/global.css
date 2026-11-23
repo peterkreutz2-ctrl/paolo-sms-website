@@ -328,7 +328,8 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
 .article__head { padding-bottom: 1rem; background: linear-gradient(180deg, #eef6fb 0, var(--paper) 100%); }
 .article__head-grid { display: grid; gap: 1.5rem 2.5rem; align-items: center; }
 .article__head .lead { margin-bottom: 1rem; }
-.article__head .byline { margin: 0 0 .5rem; color: var(--muted); font-weight: 700; }
+.article__head .byline { margin: 0 0 .5rem; font-size: .95rem; }
+.article__head .byline a { color: var(--muted); }
 .article__fig { margin: 0; justify-self: center; }
 .article__fig img { display: block; width: auto; height: auto; max-width: 100%; max-height: min(34vh, 18rem); }
 .article__main { padding-top: 1.5rem; }
@@ -368,3 +369,7 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
   .hero--paolo .hero-bild img { max-height: none; width: 100%; max-width: none; }
 }
 .toc { margin-top: 2rem; }
+
+/* Kontaktseite: Adresse als Klartext, mit einem Klick markierbar */
+.kontakt__zeile { font-size: 1.25rem; margin: 1.5rem 0 .5rem; }
+.kontakt__adr { display: inline-block; padding: .2rem .6rem; background: var(--paper-2); border: 1px solid var(--line); border-radius: 6px; -webkit-user-select: all; user-select: all; overflow-wrap: anywhere; }

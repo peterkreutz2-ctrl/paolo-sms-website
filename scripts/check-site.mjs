@@ -6,7 +6,7 @@
 import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
 import { join, relative, posix } from 'node:path';
 
-const { CLOUDFLARE_ANALYTICS } = await import('../src/config.ts');
+const { CLOUDFLARE_ANALYTICS, SITE } = await import('../src/config.ts');
 // So rendert Astro den Tag (Anführungszeichen im Attribut als &quot;).
 const CF_TAG = `<script type="module" src="${CLOUDFLARE_ANALYTICS.script}" data-cf-beacon="{&quot;token&quot;:&quot;${CLOUDFLARE_ANALYTICS.token}&quot;}"></script>`;
 
@@ -113,6 +113,23 @@ for (const file of pages) {
     if (!exists(ref.slice(BASE.length))) err(page, `Asset fehlt: ${ref}`);
   }
   if (is404) continue;
+}
+
+// Kontakt: Die Schaltfläche „Kontakt“ der Hauptnavigation darf kein reiner mailto:-Link sein. Ohne
+// registriertes E-Mail-Programm (oder wenn der Browser mailto: selbst verwaltet, aber nichts damit
+// anfangen kann) passiert beim Klick nichts. Sie muss auf eine Seite führen, auf der die Adresse als
+// Klartext steht und kopierbar ist.
+for (const file of pages) {
+  const page = relative(DIST, file).replaceAll('\\', '/');
+  if (page === '404.html') continue;
+  const html = readFileSync(file, 'utf8');
+  const m = html.match(/<a class="btn" href="([^"]*)"[^>]*>Kontakt<\/a>/);
+  if (!m) { err(page, 'Schaltfläche „Kontakt“ in der Hauptnavigation fehlt'); continue; }
+  if (/^mailto:/i.test(m[1])) { err(page, 'Schaltfläche „Kontakt“ ist ein reiner mailto:-Link (ohne E-Mail-Programm passiert beim Klick nichts)'); continue; }
+  const target = join(DIST, m[1].slice(BASE.length).split('#')[0], 'index.html');
+  if (!existsSync(target)) { err(page, `Ziel der Schaltfläche „Kontakt“ fehlt: ${m[1]}`); continue; }
+  const text = readFileSync(target, 'utf8').replace(/<[^>]+>/g, ' ');
+  if (!text.includes(SITE.email)) err(page, `Zielseite der Schaltfläche „Kontakt“ nennt ${SITE.email} nicht als Klartext`);
 }
 
 // Dateigrößen
