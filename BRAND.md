@@ -69,6 +69,54 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
 - **Metadaten:** Die Datei enthält keine Text-, Autoren- oder Pfadmetadaten
   (nur Gamma, Farbraum und Auflösungsangabe).
 
+## Illustration „Daidalos und Ikarus“
+
+- **Datei:** `public/bilder/daidalos-ikarus.svg` (Vektorgrafik, 18 Pfade, Farben des PAOLO-Rings;
+  verwendet auf der Startseite und der Seite „Die Idee“).
+- **Fassung (23.11.2026):** Entspricht der im Flyer (R1.0 V3.4) verwendeten Fassung. Gegenüber der
+  Quelldatei `daidalos-ikaros-paolo-farben-v4.svg` (20 Federn) wurden nur die gelben Federn
+  geändert; Daidalos, Ikarus und die beiden Flügel sind unverändert. Der Flyer hat 14 Federn:
+  acht Federn der v4 sind unverändert (v4: Feder_2, 3, 4, 5, 7, 8, 13, 16), zwölf entfallen
+  (v4: Feder_1, 6, 9, 10, 11, 12, 14, 15, 17, 18, 19, 20), sechs sind in Lage oder Ausrichtung
+  geändert beziehungsweise neu. Deren Umrisse wurden aus den Vektordaten des Flyers übernommen
+  (auf das Koordinatensystem der SVG umgerechnet, Abweichung der Umrechnung höchstens etwa
+  3 Einheiten bei 3962 Breite) und anschließend neu nummeriert (Feder_1 bis Feder_14). Die
+  Quelldatei v4 blieb unverändert; die neue Fassung liegt daneben als `…-v5.svg`.
+- **Herkunft:** Nach dem Gemälde „The Fall of Icarus“ von Peter Paul Rubens (1636) in mehreren
+  Abstraktions- und Vereinfachungsschritten mit Hilfe von KI nach gestalterischen Vorgaben des
+  Betreibers für PAOLO erstellt. Die Datei ist unverändert aus der vom Betreiber bereitgestellten
+  Original-SVG übernommen.
+- **Freigabe:** Vom Betreiber, Peter Kreutz, am 23.11.2026 redaktionell für die Veröffentlichung
+  auf dieser Website freigegeben (Startseite und Seite „Die Idee“).
+- **Logo:** Die Grafik enthält kein Logo und keinen Text.
+- **Metadaten:** Die Datei enthält keine Text-, Autoren- oder Pfadmetadaten (Pfadkennungen wie
+  „Daedalos_1“, „Ikarus_2“, „Fluegel_3“, „Feder_n“ sind reine Bezeichner).
+
+## Illustration „Verhänger“
+
+- **Datei:** `public/bilder/verhaenger.png` (Rasterbild, 336 × 320 Pixel, transparenter Hintergrund;
+  verwendet im Kopfbereich der Seite „Was ist PAOLO?“).
+- **Farbanpassung (23.11.2026):** Jacke und Zierstreifen des Piloten (vorher Orange) wurden auf
+  Anweisung des Betreibers zunächst in PAOLO-Grün (#6CB324) umgefärbt; Schattierung und
+  Transparenz blieben erhalten. Untersegel (weiß), Obersegel, Leinen und alle übrigen Bildteile
+  sind unverändert. Der Zierstreifen am Gurtzeug ist inzwischen gelb (siehe unten).
+- **Farbanpassung Zierstreifen (23.11.2026):** Der Streifen im Gurtzeug ist auf Anweisung des
+  Betreibers in PAOLO-Gelb (#FDB205) umgefärbt (84 Pixel, Schattierung erhalten). Die Jacke bleibt
+  grün.
+- **Farbanpassung Helm (23.11.2026):** Der Helm des Piloten (vorher Dunkelblau) ist auf Anweisung
+  des Betreibers in PAOLO-Gelb (#FDB205) umgefärbt, mit erhaltener Schattierung (nur ein Bereich
+  von 22 × 16 Pixeln um den Helm). Alle übrigen Bildteile sind gegenüber der Fassung mit grüner
+  Jacke unverändert.
+- **Zweck:** Gleitschirmbezug auf der Produktseite. Nicht auf der Startseite, nicht bei „Die Idee“.
+- **Herkunft:** KI-generierte Illustration nach Vorgaben von Peter Kreutz, anschließend in den
+  Farben an die PAOLO-CI angepasst (siehe die Farbanpassungen oben). Die bearbeitete Fassung liegt
+  beim Betreiber als `VerhängerCI.png` neben dem unveränderten Original `Verhänger.png`.
+- **Freigabe:** Vom Betreiber, Peter Kreutz, am 23.11.2026 redaktionell für die Veröffentlichung
+  auf dieser Website freigegeben (Seite „Was ist PAOLO?“).
+- **Logo:** Die Grafik enthält kein Logo und keinen Text.
+- **Metadaten:** Aus der Originaldatei wurde der Metadatenblock „caBX“ (30 KB, Inhaltsnachweis nach
+  dem C2PA-Standard) entfernt; die Bilddaten sind unverändert. Die Originaldatei liegt beim Betreiber.
+
 Weitere Bilder oder Logo-Varianten sind nicht freigegeben.
 
 ## Porträts „Die PAOLINIS hinter PAOLO“

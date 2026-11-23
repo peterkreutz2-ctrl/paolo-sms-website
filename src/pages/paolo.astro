@@ -1,0 +1,253 @@
+---
+import Base from '../layouts/Base.astro';
+import Saeulen from '../components/Saeulen.astro';
+import Risikomanagement from '../components/Risikomanagement.astro';
+import Praxisbeispiel from '../components/Praxisbeispiel.astro';
+import { SITE, SITE_URL } from '../config';
+import { url } from '../lib/url';
+
+const shots = [
+  {
+    t: 'Meldeformular',
+    d: 'Meldung ohne Anmeldung einreichen: wenige Pflichtfelder, auf Wunsch anonym.',
+    src: '/bilder/meldung-einreichen.png',
+    w: 840,
+    h: 987,
+    alt: 'Illustration des öffentlichen Meldeformulars „Sicherheitsmeldung einreichen“: links Hinweise (nicht zurechtweisend, kein offizieller Bericht, anonym möglich), rechts die Felder Art der Meldung, Kurzbeschreibung und ausführliche Beschreibung.',
+  },
+  {
+    t: 'Dashboard',
+    d: 'Überblick über neue Meldungen sowie offene und überfällige Maßnahmen.',
+    src: '/bilder/dashboard.png',
+    w: 944,
+    h: 720,
+    alt: 'Illustration des Dashboards: Hinweis zur nächsten Sicherheitsbesprechung, Kennzahlen zu Meldungen (neue, in Prüfung, kritische, offene) und zu Maßnahmen (offene, überfällige).',
+  },
+  {
+    t: 'Meldung bewerten',
+    d: 'Meldungsdetail mit Priorität und Risikobewertung nach Risikomatrix.',
+    src: '/bilder/meldung-klassifizieren.png',
+    w: 390,
+    h: 720,
+    alt: 'Illustration einer Meldung in der Bearbeitung: Meldungsdaten, Angaben zur meldenden Person und Klassifizierung mit Risikobewertung nach Risikomatrix aus Eintrittswahrscheinlichkeit und Schweregrad.',
+  },
+  {
+    t: 'Maßnahmen',
+    d: 'Maßnahmenliste mit Verantwortlichen, Fälligkeitsdatum und Status.',
+    src: '/bilder/massnahmen.png',
+    w: 388,
+    h: 720,
+    alt: 'Illustration einer Meldung mit Maßnahme: vorhandene Maßnahme mit Status, Fälligkeitsdatum und Verantwortlichem sowie Formular zum Anlegen einer neuen Maßnahme.',
+  },
+];
+---
+
+<Base
+  title="Was ist PAOLO? Sicherheitsmanagement für Gleitschirmvereine und Flugschulen"
+  description="PAOLO ist das Werkzeug, mit dem Gleitschirmvereine und Flugschulen ein Sicherheitsmanagementsystem einführen und betreiben: Meldungen, Risikobewertung, Maßnahmen und Sicherheitsbesprechungen an einem Ort."
+  extraSchema={[
+    {
+      '@type': 'SoftwareApplication',
+      name: 'PAOLO SMS',
+      description: 'Webanwendung, mit der Gleitschirmvereine und Flugschulen ein Sicherheitsmanagementsystem einführen und betreiben: Sicherheitsmeldungen, Risikobewertung, Maßnahmen und Sicherheitsbesprechungen.',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Webbrowser',
+      isAccessibleForFree: true,
+      url: SITE_URL + '/paolo/',
+    },
+  ]}
+>
+  <!-- A. Kopfbereich -->
+  <section class="hero hero--paolo" aria-labelledby="h-hero">
+    <div class="wrap">
+      <div>
+        <h1 id="h-hero">Was ist PAOLO?</h1>
+        <p class="hero-topic">Sicherheitsmanagement für Gleitschirmvereine und Flugschulen</p>
+        <p class="subtitle">Gefahren frühzeitig erkennen, Risiken bewerten, Maßnahmen umsetzen und aus Erfahrungen lernen: Das sollte nicht dem Zufall überlassen bleiben.</p>
+        <p class="problem">Viele Gefahren und sicherheitsrelevante Zwischenfälle bleiben den Verantwortlichen unbekannt, weil Beobachtungen und Erfahrungen nicht weitergegeben werden.</p>
+        <div class="solution">
+          <p class="lead lead--key"><strong>PAOLO macht es einfach, Gefahren, Zwischenfälle und Beobachtungen zu melden – auch anonym.</strong></p>
+          <p class="solution__text">Die Software unterstützt Gleitschirmvereine und Flugschulen dabei, Meldungen systematisch zu bewerten, Maßnahmen nachzuverfolgen und Erkenntnisse mit allen zu teilen. So hilft PAOLO, ein Sicherheits&shy;management&shy;system einzuführen und dauerhaft zu betreiben.</p>
+          <p class="acronym">PAOLO SMS – <span lang="en"><span class="acronym__l">P</span>ilot <span class="acronym__l">A</span>wareness and <span class="acronym__l">O</span>ccurrence <span class="acronym__l">L</span>earning <span class="acronym__l">O</span>nline</span></p>
+        </div>
+        <div class="btn-row">
+          <a class="btn" href="#saeulen">So funktioniert es</a>
+          <a class="btn btn--ghost" href={url('/einfuehren/')}>Für Verein oder Flugschule</a>
+          <a class="btn btn--ghost" href="https://demo.paolo-sms.de/" rel="noopener">Demo ausprobieren</a>
+        </div>
+        <p class="small">Die Demo enthält nur erfundene Beispieldaten und wird täglich zurückgesetzt. Bitte gib dort keine echten personenbezogenen Daten ein.</p>
+        <p class="hero-idee">PAOLO ist das Werkzeug. Die Haltung dahinter erklärt <a href={url('/idee/')}>Die Idee: Was hätte Daidalos besser machen können?</a></p>
+        <div class="hero-info">
+          <p>Kostenlos und nichtkommerziell – ein Gemeinschaftsprojekt.</p>
+          <p>In Zusammenarbeit mit dem Sicherheitsreferat <span class="hero-info__end">des <a class="hero-info__link" href="https://www.dhv.de/sicherheit/" target="_blank" rel="noopener noreferrer"><img class="hero-info__logo" src={url('/brand/dhv-logo.svg') + '?v=grau-55616a'} alt="DHV" width="90" height="47" /><span class="visually-hidden"> – Sicherheitsseite auf dhv.de (öffnet in neuem Tab)</span></a></span></p>
+        </div>
+      </div>
+      <figure class="hero-bild">
+        <img src={url('/bilder/verhaenger.png')} alt="Illustration eines Gleitschirms im Flug, dessen linke Flügelspitze sich in den Leinen verhängt hat (Verhänger)." width="336" height="320" decoding="async" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- B. Worum geht es? Die vier Säulen eines SMS -->
+  <section class="section" id="saeulen" aria-labelledby="h-sms">
+    <div class="wrap">
+      <h2 id="h-sms">Was ist ein Sicherheits&shy;management&shy;system?</h2>
+      <p class="lead">
+        Ein Sicherheits&shy;management&shy;system ist mehr als ein Meldeverfahren. Es erkennt Gefahren systematisch, bewertet Risiken, überprüft die Wirksamkeit von Maßnahmen und lernt gemeinsam aus Ereignissen.
+      </p>
+      <p>Dabei geht es um Verständnis und Verbesserung statt Schuld.</p>
+      <p class="muted small">SMS steht hier für Safety Management System, nicht für Kurznachrichten.</p>
+      <Saeulen />
+      <div class="callout">
+        <h3>Deine Organisation gestaltet das SMS – PAOLO unterstützt dabei.</h3>
+        <p>
+          Das Sicherheits&shy;management&shy;system ist das organisatorische Managementsystem deines Vereins oder deiner Flugschule. Sicherheitsrichtlinie, Rollen, Entscheidungen, Schulung und gelebte Sicherheitskultur liegen bei deiner Organisation.
+        </p>
+        <p>
+          PAOLO unterstützt dich bei der Einführung und beim laufenden Betrieb deines SMS. Die Software bietet dafür strukturierte Prozesse, praktische Werkzeuge und eine zentrale Dokumentation. Die Verantwortung für das Sicherheitsmanagement bleibt bei deiner Organisation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- D. Teamarbeit -->
+  <section class="section" id="team" aria-labelledby="h-team">
+    <div class="wrap">
+      <h2 id="h-team">Sicherheit ist Teamarbeit</h2>
+      <p class="lead">Ein Sicherheits&shy;management&shy;system funktioniert nur, wenn alle ihren Teil beitragen.</p>
+      <ul class="cards cards--3">
+        <li class="card" style="--accent: var(--orange)">
+          <h3>Accountable Executive</h3>
+          <p class="role">Gesamtverantwortung</p>
+          <ul>
+            <li>Sicherheit ist Chefsache.</li>
+            <li>Stellt Ressourcen bereit.</li>
+            <li>Schafft die Voraussetzungen für eine Redlichkeitskultur (Just Culture).</li>
+          </ul>
+          <p class="small muted">Im Verein üblicherweise der Vorstand, in der Flugschule die Schulleitung.</p>
+        </li>
+        <li class="card" style="--accent: var(--yellow)">
+          <h3>Safety Manager</h3>
+          <p class="role">Koordination</p>
+          <ul>
+            <li>Organisiert die Sicherheitsarbeit.</li>
+            <li>Berät und moderiert.</li>
+            <li>Ist Schnittstelle zum Management.</li>
+          </ul>
+        </li>
+        <li class="card" style="--accent: var(--green)">
+          <h3>Team</h3>
+          <p class="role">Sicherheitskultur</p>
+          <ul>
+            <li>Meldet ohne Angst vor Strafe oder Blamage.</li>
+            <li>Lernt aus Erfahrungen.</li>
+            <li>Trägt Verbesserungen mit.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Risikomanagement -->
+  <section class="section" id="risikomanagement" aria-labelledby="h-risiko">
+    <div class="wrap">
+      <h2 id="h-risiko">Risikomanagement – die Kernfunktion von PAOLO</h2>
+      <p class="lead">
+        Risikomanagement ist eine der vier Säulen deines Sicherheits&shy;management&shy;systems, und genau diesen Prozess unterstützt PAOLO am stärksten. Er ist ein Kreislauf aus vier Schritten, der nie abgeschlossen ist: Erkennen, Bewerten, Mindern, Kommunizieren.
+      </p>
+      <Risikomanagement />
+      <div class="callout">
+        <h3>Ein durchgängiger Ablauf an einem Ort</h3>
+        <p>
+          In PAOLO führt jede Meldung ohne Medienbruch von der ersten Beobachtung über die Bewertung und die Maßnahme bis zur Information des Teams. Rollen, Fristen und Status bleiben dabei nachvollziehbar. Die Entscheidungen treffen weiterhin die Menschen in deiner Organisation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Risikomanagement in der Praxis -->
+  <section class="section section--praxis" id="praxisbeispiel" aria-labelledby="h-praxis">
+    <div class="wrap">
+      <h2 id="h-praxis">Risikomanagement in der Praxis – ein Beispiel</h2>
+      <p class="lead">
+        Das Beispiel eines Risikos durch eine zu hohe Hecke im Abflugbereich des Vereinsstartplatzes zeigt, wie die vier Schritte im Alltag ineinandergreifen.
+      </p>
+      <Praxisbeispiel />
+    </div>
+  </section>
+
+  <!-- E. Einblicke -->
+  <section class="section section--alt" id="einblicke" aria-labelledby="h-einblicke">
+    <div class="wrap">
+      <h2 id="h-einblicke">So sieht PAOLO aus</h2>
+      <p class="lead">Die Bilder sind anonymisierte, vereinfachte Illustrationen. Sie zeigen die wesentlichen Funktionen, entsprechen aber nicht exakt der Benutzeroberfläche.</p>
+      <div class="shots wide">
+        {shots.map((s) => (
+          <figure class="shot">
+            <div class="shot__frame">
+              <img src={url(s.src)} alt={s.alt} width={s.w} height={s.h} style={`--w:${s.w}px`} loading="lazy" decoding="async" />
+            </div>
+            <figcaption><strong>{s.t}.</strong> {s.d}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- G. Eigene Installation -->
+  <section class="section section--alt" id="betrieb" aria-labelledby="h-betrieb">
+    <div class="wrap">
+      <h2 id="h-betrieb">Jede Organisation betreibt ihr eigenes PAOLO</h2>
+      <p class="lead">
+        PAOLO SMS ist keine zentrale Plattform. Dein Verein oder deine Flugschule betreibt eine eigene Installation, selbst oder mit einem IT-Dienstleister. Deine Organisation entscheidet, wo die Daten liegen, und verantwortet Datenschutz, Zugänge, Updates und Backups. Die Software ist unentgeltlich. Je nach Betriebsweise können Kosten für Hosting oder Dienste entstehen.
+      </p>
+      <p>Meldungen gibst du in der Installation deiner Organisation ab, nicht auf dieser Website.</p>
+      <p><a href={url('/einfuehren/#betrieb')}>Technischer Betrieb im Überblick</a> · <a href={url('/materialien/')}>Factsheet, Vorstellung und Leitfäden</a></p>
+    </div>
+  </section>
+
+  <!-- H. Stand und Grenzen -->
+  <section class="section" id="stand" aria-labelledby="h-stand">
+    <div class="wrap">
+      <h2 id="h-stand">Stand und Grenzen</h2>
+      <div class="cards cards--2">
+        <div class="card" style="--accent: var(--petrol)">
+          <h3>Entwicklungsstand</h3>
+          <p>PAOLO SMS befindet sich in der Pilotphase und ist für kleine, bekannte Gruppen ausgelegt. Stand: {SITE.stand}.</p>
+          <h3>Funktionsumfang</h3>
+          <ul class="tick">
+            <li>Anonymes Meldeformular ohne Anmeldung</li>
+            <li>Bewertung mit Risikomatrix</li>
+            <li>Maßnahmen mit Fristen</li>
+            <li>Sicherheitsbesprechungen</li>
+            <li>SMS-Dokumente mit Vorlagen</li>
+            <li>Rollen und Zugriffsrechte</li>
+            <li>Datenschutzwerkzeuge und Audit-Log</li>
+            <li>Backups</li>
+          </ul>
+        </div>
+        <div class="card" style="--accent: var(--orange)">
+          <h3>Grenzen</h3>
+          <ul>
+            <li>Eine Organisation je Installation, keine zentrale Plattform.</li>
+            <li>PAOLO ist ein Werkzeug und garantiert keine Sicherheit. Die Sicherheitsarbeit leisten die Menschen in deiner Organisation.</li>
+            <li>PAOLO ersetzt keine Meldung an den DHV über FIDA, keine Meldungen an Versicherungen und keine anderen gesetzlich vorgeschriebenen Meldungen.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Weiterführend -->
+  <section class="section section--alt" id="weiter" aria-labelledby="h-weiter">
+    <div class="wrap">
+      <h2 id="h-weiter">Wie geht es weiter?</h2>
+      <p class="lead">Probiere PAOLO in der Demo aus, lies, wie du es in deiner Organisation einführst, oder verstehe zuerst die Idee dahinter.</p>
+      <div class="btn-row">
+        <a class="btn" href="https://demo.paolo-sms.de/" rel="noopener">Demo ausprobieren</a>
+        <a class="btn btn--ghost" href={url('/einfuehren/')}>Für Verein oder Flugschule</a>
+        <a class="btn btn--ghost" href={url('/idee/')}>Die Idee verstehen</a>
+      </div>
+    </div>
+  </section>
+</Base>

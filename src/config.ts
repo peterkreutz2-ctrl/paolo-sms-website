@@ -51,13 +51,16 @@ export interface NavItem {
 
 /** Hauptnavigation. „Kontakt" wird im Layout als Schaltfläche gesetzt. */
 export const NAV: NavItem[] = [
-  { label: 'So funktioniert es', href: '/#saeulen' },
+  { label: 'Die Idee', href: '/idee/' },
+  { label: 'Was ist PAOLO?', href: '/paolo/' },
   { label: 'Einführen', href: '/einfuehren/' },
   { label: 'Materialien', href: '/materialien/' },
   { label: 'Mitmachen', href: '/mitmachen/' },
 ];
 
 export const FOOTER_NAV: NavItem[] = [
+  { label: 'Die Idee', href: '/idee/' },
+  { label: 'Was ist PAOLO?', href: '/paolo/' },
   { label: 'Einführen', href: '/einfuehren/' },
   { label: 'Materialien', href: '/materialien/' },
   { label: 'Mitmachen', href: '/mitmachen/' },

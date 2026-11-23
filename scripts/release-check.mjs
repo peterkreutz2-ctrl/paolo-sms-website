@@ -80,6 +80,8 @@ const allowedAssets = new Set([
   'bilder/meldung-klassifizieren.png',
   'bilder/massnahmen.png',
   'bilder/weg-zu-paolo-sms.png',
+  'bilder/daidalos-ikarus.svg',
+  'bilder/verhaenger.png',
   'contributors/contributor_peter.webp',
   'contributors/contributor_rainer.webp',
   'contributors/contributor_thomas.webp',
