@@ -57,8 +57,10 @@ const schema = {
       <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', inLanguage: 'de', ...s }).replace(/</g, '\\u003c')} />
     ))}
     <meta name="generator"content={Astro.generator} />
-    <!-- Kein Favicon: Das Bildmarken-Favicon ist noch nicht freigegeben. -->
-    <link rel="icon" href="data:," />
+    <!-- Favicon: vereinfachter Ausschnitt der Illustration „Daidalos und Ikarus“ (siehe BRAND.md). -->
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={url('/favicon.ico')} sizes="48x48" />
+    <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
     <!-- Besucherstatistik (Cloudflare Web Analytics): einziges Skript der Seite, siehe CLOUDFLARE_ANALYTICS in src/config.ts. -->
     <script is:inline type="module" src={CLOUDFLARE_ANALYTICS.script} data-cf-beacon={JSON.stringify({ token: CLOUDFLARE_ANALYTICS.token })}></script>
   </head>
