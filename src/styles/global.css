@@ -354,8 +354,8 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
 /* Produktseite: Gleitschirm-Illustration (Verhänger) im Kopfbereich */
 .hero--paolo .hero-bild { margin: 0; justify-self: center; }
 .hero--paolo .hero-bild img { mix-blend-mode: multiply; }
-.hero--paolo .hero-bild img { display: block; width: auto; height: auto; max-width: 100%; max-height: 11rem; }
+.hero--paolo .hero-bild img { display: block; width: auto; height: auto; max-width: 100%; max-height: 7.5rem; }
 @media (min-width: 56em) {
-  .hero--paolo .wrap { grid-template-columns: minmax(0, 1fr) 21rem; gap: 2.5rem; align-items: start; }
-  .hero--paolo .hero-bild img { max-height: none; width: 100%; max-width: 21rem; }
+  .hero--paolo .wrap { grid-template-columns: minmax(0, 1fr) 14rem; gap: 2.5rem; align-items: start; }
+  .hero--paolo .hero-bild img { max-height: none; width: 100%; max-width: 14rem; }
 }

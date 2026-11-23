@@ -97,6 +97,10 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
 
 - **Datei:** `public/bilder/verhaenger.png` (Rasterbild, 336 × 320 Pixel, transparenter Hintergrund;
   verwendet im Kopfbereich der Seite „Was ist PAOLO?“).
+- **Farbanpassung (23.11.2026):** Jacke und Zierstreifen des Piloten (vorher Orange) sind auf
+  Anweisung des Betreibers in PAOLO-Grün (#6CB324) umgefärbt; Schattierung und Transparenz
+  blieben erhalten. Untersegel (weiß), Obersegel, Leinen und alle übrigen Bildteile sind
+  unverändert.
 - **Zweck:** Gleitschirmbezug auf der Produktseite. Nicht auf der Startseite, nicht bei „Die Idee“.
 - **Herkunft:** Vom Betreiber bereitgestellt; die Art der Erstellung ist hier nicht dokumentiert
   und vor der Veröffentlichung zu ergänzen.
