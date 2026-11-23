@@ -101,6 +101,10 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
   Anweisung des Betreibers in PAOLO-Grün (#6CB324) umgefärbt; Schattierung und Transparenz
   blieben erhalten. Untersegel (weiß), Obersegel, Leinen und alle übrigen Bildteile sind
   unverändert.
+- **Farbanpassung Helm (23.11.2026):** Der Helm des Piloten (vorher Dunkelblau) ist auf Anweisung
+  des Betreibers in PAOLO-Gelb (#FDB205) umgefärbt, mit erhaltener Schattierung (nur ein Bereich
+  von 22 × 16 Pixeln um den Helm). Alle übrigen Bildteile sind gegenüber der Fassung mit grüner
+  Jacke unverändert.
 - **Zweck:** Gleitschirmbezug auf der Produktseite. Nicht auf der Startseite, nicht bei „Die Idee“.
 - **Herkunft:** Vom Betreiber bereitgestellt; die Art der Erstellung ist hier nicht dokumentiert
   und vor der Veröffentlichung zu ergänzen.
