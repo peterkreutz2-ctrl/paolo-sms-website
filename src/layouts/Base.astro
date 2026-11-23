@@ -77,7 +77,7 @@ const schema = {
                 <a href={url(item.href)} aria-current={current(item.href) ? 'page' : undefined}>{item.label}</a>
               </li>
             ))}
-            <li><a class="btn" href={`mailto:${SITE.email}`}>Kontakt</a></li>
+            <li><a class="btn" href={url('/kontakt/')} aria-current={current('/kontakt/') ? 'page' : undefined}>Kontakt</a></li>
           </ul>
         </nav>
       </div>

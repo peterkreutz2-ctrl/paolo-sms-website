@@ -10,6 +10,7 @@
 - [Einführen](https://paolo-sms.de/einfuehren/): Einführung und Betrieb
 - [Materialien](https://paolo-sms.de/materialien/): Informationsmaterialien und Downloads
 - [Mitmachen](https://paolo-sms.de/mitmachen/): Beteiligung und Kontakt
+- [Kontakt](https://paolo-sms.de/kontakt/): E-Mail-Adresse und Hinweise zur Kontaktaufnahme
 - [Impressum](https://paolo-sms.de/impressum/): Anbieterangaben
 - [Datenschutz](https://paolo-sms.de/datenschutz/): Datenschutzhinweise
 
