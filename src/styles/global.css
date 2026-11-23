@@ -328,6 +328,7 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
 .article__head { padding-bottom: 1rem; background: linear-gradient(180deg, #eef6fb 0, var(--paper) 100%); }
 .article__head-grid { display: grid; gap: 1.5rem 2.5rem; align-items: center; }
 .article__head .lead { margin-bottom: 1rem; }
+.article__head .byline { margin: 0 0 .5rem; color: var(--muted); font-weight: 700; }
 .article__fig { margin: 0; justify-self: center; }
 .article__fig img { display: block; width: auto; height: auto; max-width: 100%; max-height: min(34vh, 18rem); }
 .article__main { padding-top: 1.5rem; }
