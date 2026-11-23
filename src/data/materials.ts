@@ -183,6 +183,6 @@ export const materials: Material[] = [
     purpose: 'Installation, Datenbankmigrationen, Updates, Backup und Architektur.',
     availability: 'on-request',
     format: 'Zugriff während der Pilotphase auf Anfrage',
-    href: 'mailto:info@paolo-sms.de?subject=Anfrage%20technische%20Dokumentation',
+    href: '/kontakt/',
   },
 ];
