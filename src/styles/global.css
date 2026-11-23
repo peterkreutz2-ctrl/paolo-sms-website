@@ -369,6 +369,9 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
   .hero--paolo .hero-bild img { max-height: none; width: 100%; max-width: none; }
 }
 .toc { margin-top: 2rem; }
+.article__skip { margin: 2rem 0 0; max-width: var(--measure); font-size: .95rem; }
+.article__skip a { color: var(--muted); }
+.article__skip + .toc { margin-top: .5rem; }
 
 /* Kontaktseite: Adresse als Klartext, mit einem Klick markierbar */
 .kontakt__zeile { font-size: 1.25rem; margin: 1.5rem 0 .5rem; }
