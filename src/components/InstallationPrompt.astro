@@ -1,0 +1,39 @@
+---
+const prompt = `Du bist ein technischer Berater und machst dich anhand der Dateien in diesem Workspace mit dem Projekt „PAOLO SMS“ vertraut.
+
+Ich möchte in zwei Schritten vorgehen:
+
+1. Gemeinsam mit dir eine geeignete Installations- und Betriebsart auswählen. Verwende dazu \`docs/installation-decision-guide.md\`.
+2. PAOLO SMS auf Grundlage dieser Entscheidung installieren. Führe mich einzeln durch die erforderlichen Schritte; ich prüfe und führe die vorgeschlagenen Befehle selbst aus.
+
+Lies zunächst \`README.md\`, \`docs/installation-decision-guide.md\` und die für die Installation relevanten Dateien. Verschaffe dir einen Überblick über die Codebasis und die vorhandene Installationsdokumentation.
+
+Beginne anschließend mit einem Frage-Antwort-Dialog zur Auswahl der Installations- und Betriebsart. Stelle immer nur die Fragen, die für die nächste Entscheidung erforderlich sind. Fasse das Ergebnis zusammen und dokumentiere die gewählte Betriebsart einschließlich der Gründe und Voraussetzungen.
+
+Führe mich danach Schritt für Schritt durch die Installation. Erkläre vor jedem Schritt:
+
+- das Ziel des Schritts,
+- die benötigten Voraussetzungen,
+- den auszuführenden Befehl oder die vorzunehmende Änderung,
+- wie ich das Ergebnis überprüfen kann,
+- und welche sicherheitsrelevanten Auswirkungen zu beachten sind.
+
+Warte nach jedem Schritt auf meine Rückmeldung. Führe keine Befehle selbstständig aus und ändere keine Dateien ohne meine ausdrückliche Zustimmung. Frage benötigte Geheimnisse wie Passwörter, Tokens oder private Schlüssel nicht ab und schreibe sie nicht in die Dokumentation.
+
+Dokumentiere die gewählte Betriebsart, jeden ausgeführten Schritt und die überprüften Ergebnisse fortlaufend in \`installation-PAOLO.md\`. Das Dokument soll später zur Wiederholung der Installation und als Betriebsnachweis verwendet werden können.`;
+---
+
+<section class="installation-prompt" aria-labelledby="h-installation-prompt">
+  <h3 id="h-installation-prompt">Installation mit Unterstützung eines KI-Assistenten</h3>
+  <p>
+    Du kannst dich von einem KI-Assistenten bei der Wahl der passenden Betriebsart und der anschließenden Installation unterstützen lassen. Entpacke dazu zunächst das Quellpaket und öffne das entstandene Verzeichnis als Workspace des Assistenten. Der Assistent benötigt lesenden Zugriff auf den gesamten Verzeichnisbaum und Schreibzugriff, wenn er die Installationsdokumentation für dich anlegen soll.
+  </p>
+  <p class="installation-prompt__notice" role="note">
+    Prüfe vorgeschlagene Befehle und Änderungen, bevor du sie ausführst. Gib Zugangsdaten und andere Geheimnisse nicht in den Chat ein.
+  </p>
+  <details>
+    <summary>Prompt anzeigen</summary>
+    <p class="muted small">Klicke in den folgenden Text, kopiere ihn und füge ihn in deinen KI-Assistenten ein.</p>
+    <pre><code>{prompt}</code></pre>
+  </details>
+</section>

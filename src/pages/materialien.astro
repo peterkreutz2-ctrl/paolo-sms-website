@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import InstallationPrompt from '../components/InstallationPrompt.astro';
 import MaterialCard from '../components/MaterialCard.astro';
 import ReleaseDownload from '../components/ReleaseDownload.astro';
 import { groups, materials } from '../data/materials';
@@ -38,7 +39,12 @@ import { url } from '../lib/url';
       <div class="wrap">
         <h2 id={`h-${g.id}`}>{g.title}</h2>
         <p class="muted">{g.audience}</p>
-        {g.id === 'technik' && <ReleaseDownload />}
+        {g.id === 'technik' && (
+          <>
+            <ReleaseDownload />
+            <InstallationPrompt />
+          </>
+        )}
         <ul class="cards cards--2">
           {materials.filter((m) => m.group === g.id).map((m) => <MaterialCard item={m} />)}
         </ul>
