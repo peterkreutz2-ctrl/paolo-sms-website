@@ -68,3 +68,18 @@ jobs:
       - name: Auf GitHub Pages veröffentlichen
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+
+  # Prüft die veröffentlichte Website (Status, eingebettetes Stylesheet, Bilder und Dateien).
+  # Schlägt der Lauf fehl, ist die Seite veröffentlicht, aber fehlerhaft: sofort prüfen.
+  live-check:
+    needs: deploy
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Quellcode holen
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Live-Prüfung der veröffentlichten Website
+        run: node scripts/live-check.mjs https://paolo-sms.de

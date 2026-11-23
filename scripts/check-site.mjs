@@ -132,6 +132,19 @@ for (const file of pages) {
   if (!text.includes(SITE.email)) err(page, `Zielseite der Schaltfläche „Kontakt“ nennt ${SITE.email} nicht als Klartext`);
 }
 
+// Gestaltung: Das Stylesheet muss in jeder Seite eingebettet sein. GitHub Pages liefert HTML bis zu
+// 10 Minuten aus dem Cache. Ein zwischengespeichertes HTML, das auf eine ausgelagerte, mit Hash
+// benannte Datei (/_astro/Base.<Hash>.css) verweist, zeigt nach einer Veröffentlichung die Seite
+// ohne Gestaltung, weil die alte Datei dann nicht mehr existiert (404).
+for (const file of pages) {
+  const page = relative(DIST, file).replaceAll('\\', '/');
+  const html = readFileSync(file, 'utf8');
+  if (/<link\b[^>]*rel="stylesheet"/.test(html)) err(page, 'ausgelagertes Stylesheet (<link rel="stylesheet">): Gestaltung muss eingebettet sein');
+  if (/\/_astro\//.test(html)) err(page, 'Verweis auf /_astro/ (Dateiname mit Hash, nach einer neuen Veröffentlichung nicht mehr vorhanden)');
+  const css = [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/g)].map((m) => m[1]).join('');
+  if (css.length < 5000 || !css.includes('.nav') || !css.includes('.site-header') || !css.includes('.wrap')) err(page, `eingebettetes Stylesheet fehlt oder ist unvollständig (${css.length} Zeichen)`);
+}
+
 // Dateigrößen
 const big = files.filter((f) => statSync(f).size > 500 * 1024);
 for (const f of big) warnings.push(`groß (> 500 KB): ${relative(DIST, f)} = ${(statSync(f).size / 1024).toFixed(0)} KB`);
