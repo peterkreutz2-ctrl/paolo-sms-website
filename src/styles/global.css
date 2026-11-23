@@ -334,7 +334,7 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
 .toc { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.25rem; max-width: var(--measure); margin-bottom: 2rem; }
 .toc__t { font-weight: 700; margin: 0 0 .25rem; }
 .toc ol { margin: 0; padding-left: 1.3em; }
-.toc a { display: inline-block; padding: .4rem 0; }
+.toc a { display: block; padding: .4rem 0; }
 .article__body { max-width: var(--measure); }
 .article__body p { margin-bottom: 1.1em; }
 .article__sec { margin-top: 2.75rem; }
@@ -366,3 +366,5 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
   .hero--paolo .hero-bild { justify-self: end; width: var(--bild-w); margin-right: calc(var(--bild-w) * -0.0149); }
   .hero--paolo .hero-bild img { max-height: none; width: 100%; max-width: none; }
 }
+.article__head .byline { margin: 0 0 .5rem; color: var(--muted); font-weight: 700; }
+.toc { margin-top: 2rem; }

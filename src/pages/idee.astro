@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import Unreleased from '../components/Unreleased.astro';
 import { SITE_URL } from '../config';
 import { url } from '../lib/url';
 
@@ -29,9 +28,7 @@ const untertitel = 'Warum Sicherheit beim Gleitschirmfliegen nicht allein Sache 
           <p class="eyebrow">Die Idee</p>
           <h1 id="h-idee">{titel}</h1>
           <p class="lead">{untertitel}</p>
-          <Unreleased label="Entwurf – Freigabe offen">
-            <p>Artikeltext (nach dem Entwurf des Betreibers, mit korrigiertem Tippfehler und aktualisiertem Hinweis zum Entwicklungsstand), Illustration und Angabe von Peter Kreutz als Autor sind noch nicht für die Veröffentlichung freigegeben.</p>
-          </Unreleased>
+          <p class="byline">Von Peter Kreutz</p>
         </div>
         <figure class="article__fig">
           <img
@@ -47,20 +44,6 @@ const untertitel = 'Warum Sicherheit beim Gleitschirmfliegen nicht allein Sache 
 
     <div class="section article__main">
       <div class="wrap">
-        <nav class="toc" aria-label="Inhalt dieses Artikels">
-          <p class="toc__t">In diesem Artikel</p>
-          <ol>
-          <li><a href="#selbst-schuld">Selbst schuld?</a></li>
-          <li><a href="#was-haetten-wir-aendern-koennen">Was hätten wir ändern können?</a></li>
-          <li><a href="#sicherheit-entsteht-auch-zwischen-den-piloten">Sicherheit entsteht auch zwischen den Piloten</a></li>
-          <li><a href="#ueber-fehler-reden-ohne-jemanden-vorzufuehren">Über Fehler reden, ohne jemanden vorzuführen</a></li>
-          <li><a href="#was-weiss-eigentlich-unser-verein">Was weiß eigentlich unser Verein?</a></li>
-          <li><a href="#braucht-unser-verein-jetzt-auch-noch-ein-managementsystem">Braucht unser Verein jetzt auch noch ein Managementsystem?</a></li>
-          <li><a href="#von-der-guten-absicht-zur-gelebten-praxis">Von der guten Absicht zur gelebten Praxis</a></li>
-          <li><a href="#und-was-haette-daidalos-nun-tun-sollen">Und was hätte Daidalos nun tun sollen?</a></li>
-          </ol>
-        </nav>
-
         <div class="article__body">
           <div class="article__intro">
           <p>Die Geschichte kennt jeder: Daidalos baut seinem Sohn Ikarus Flügel aus Federn und Wachs. Er erklärt ihm, wie er damit fliegen soll, und warnt ihn eindringlich davor, der Sonne zu nahe zu kommen. Doch Ikarus wird übermütig. Er steigt immer höher, das Wachs schmilzt, die Flügel zerfallen. Ikarus stürzt ins Meer und ertrinkt.</p>
@@ -70,6 +53,19 @@ const untertitel = 'Warum Sicherheit beim Gleitschirmfliegen nicht allein Sache 
           <p>Vielleicht hätte Daidalos nach dem Unfall einiges an seiner Konstruktion und Ausbildung geändert. Vielleicht auch nicht. Der Mythos erzählt uns das nicht.</p>
           <p>Er zeigt aber, wie unterschiedlich wir über einen Unfall nachdenken können.</p>
           </div>
+          <nav class="toc" aria-label="Inhalt dieses Artikels">
+            <p class="toc__t">In diesem Artikel</p>
+            <ol>
+            <li><a href="#selbst-schuld">Selbst schuld?</a></li>
+            <li><a href="#was-haetten-wir-aendern-koennen">Was hätten wir ändern können?</a></li>
+            <li><a href="#sicherheit-entsteht-auch-zwischen-den-piloten">Sicherheit entsteht auch zwischen den Piloten</a></li>
+            <li><a href="#ueber-fehler-reden-ohne-jemanden-vorzufuehren">Über Fehler reden, ohne jemanden vorzuführen</a></li>
+            <li><a href="#was-weiss-eigentlich-unser-verein">Was weiß eigentlich unser Verein?</a></li>
+            <li><a href="#braucht-unser-verein-jetzt-auch-noch-ein-managementsystem">Braucht unser Verein jetzt auch noch ein Managementsystem?</a></li>
+            <li><a href="#von-der-guten-absicht-zur-gelebten-praxis">Von der guten Absicht zur gelebten Praxis</a></li>
+            <li><a href="#und-was-haette-daidalos-nun-tun-sollen">Und was hätte Daidalos nun tun sollen?</a></li>
+            </ol>
+          </nav>
           <section class="article__sec" id="selbst-schuld" aria-labelledby="h-selbst-schuld">
           <h2 id="h-selbst-schuld">Selbst schuld?</h2>
           <p>Wenn beim Gleitschirmfliegen etwas passiert, lässt sich häufig eine Entscheidung finden, die der Pilot besser hätte treffen können. Er ist bei zu viel Wind gestartet, hat einen Klapper falsch beantwortet, die Landeeinteilung vermasselt oder einen wichtigen Check vergessen.</p>

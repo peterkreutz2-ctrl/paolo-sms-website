@@ -86,9 +86,8 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
   Abstraktions- und Vereinfachungsschritten mit Hilfe von KI nach gestalterischen Vorgaben des
   Betreibers für PAOLO erstellt. Die Datei ist unverändert aus der vom Betreiber bereitgestellten
   Original-SVG übernommen.
-- **Freigabe:** Die Nutzung im lokalen Prototyp ist vom Betreiber, Peter Kreutz, freigegeben. Die
-  **Veröffentlichung ist noch nicht freigegeben**; sie bleibt einer gesonderten Freigabe
-  vorbehalten (Seite „Die Idee“ trägt bis dahin den Freigabehinweis).
+- **Freigabe:** Vom Betreiber, Peter Kreutz, am 23.11.2026 redaktionell für die Veröffentlichung
+  auf dieser Website freigegeben (Startseite und Seite „Die Idee“).
 - **Logo:** Die Grafik enthält kein Logo und keinen Text.
 - **Metadaten:** Die Datei enthält keine Text-, Autoren- oder Pfadmetadaten (Pfadkennungen wie
   „Daedalos_1“, „Ikarus_2“, „Fluegel_3“, „Feder_n“ sind reine Bezeichner).
@@ -109,10 +108,11 @@ Marke werden vor einer Produktivfreigabe abschließend geklärt.
   von 22 × 16 Pixeln um den Helm). Alle übrigen Bildteile sind gegenüber der Fassung mit grüner
   Jacke unverändert.
 - **Zweck:** Gleitschirmbezug auf der Produktseite. Nicht auf der Startseite, nicht bei „Die Idee“.
-- **Herkunft:** Vom Betreiber bereitgestellt; die Art der Erstellung ist hier nicht dokumentiert
-  und vor der Veröffentlichung zu ergänzen.
-- **Freigabe:** Nutzung im lokalen Prototyp auf Anweisung des Betreibers; **Veröffentlichung noch
-  nicht freigegeben**.
+- **Herkunft:** KI-generierte Illustration nach Vorgaben von Peter Kreutz, anschließend in den
+  Farben an die PAOLO-CI angepasst (siehe die Farbanpassungen oben). Die bearbeitete Fassung liegt
+  beim Betreiber als `VerhängerCI.png` neben dem unveränderten Original `Verhänger.png`.
+- **Freigabe:** Vom Betreiber, Peter Kreutz, am 23.11.2026 redaktionell für die Veröffentlichung
+  auf dieser Website freigegeben (Seite „Was ist PAOLO?“).
 - **Logo:** Die Grafik enthält kein Logo und keinen Text.
 - **Metadaten:** Aus der Originaldatei wurde der Metadatenblock „caBX“ (30 KB, Inhaltsnachweis nach
   dem C2PA-Standard) entfernt; die Bilddaten sind unverändert. Die Originaldatei liegt beim Betreiber.
