@@ -10,11 +10,16 @@ const bust = `live=${Date.now()}`;
 const errors = [];
 const err = (where, msg) => errors.push(`${where}: ${msg}`);
 
+// Jede Anfrage sendet `Connection: close`. Ohne das hält Nodes fetch (undici) die TLS-Verbindungen zu
+// GitHub Pages als Keep-Alive offen (am Ende 14 Sockets zu Port 443) und beendet den Prozess erst nach
+// dem Keep-Alive-Höchstwert von 600 s. Der Job live-check blieb dadurch nach bestandener Prüfung etwa
+// 10 Minuten auf „in_progress“. Nachgewiesen am 23.11.2026 auf dem GitHub-Runner (Node 24.22.3):
+// Prozessende 602 s nach Start statt nach 5 s; mit `Connection: close` endet der Prozess nach 5 s.
 async function get(path, tries = 4) {
   let last;
   for (let i = 0; i < tries; i++) {
     try {
-      const r = await fetch(`${base}${path}${path.includes('?') ? '&' : '?'}${bust}`, { redirect: 'follow' });
+      const r = await fetch(`${base}${path}${path.includes('?') ? '&' : '?'}${bust}`, { redirect: 'follow', headers: { connection: 'close' } });
       if (r.status === 200) return r;
       last = r;
     } catch (e) {
