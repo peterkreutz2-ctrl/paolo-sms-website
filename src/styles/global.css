@@ -289,6 +289,16 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
   .release__data > div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 1rem; }
 }
 
+/* Kopierbarer Prompt zur begleiteten Installation */
+.installation-prompt { border: 1px solid var(--line); border-left: 6px solid var(--orange); border-radius: var(--radius); background: var(--paper); margin: 1.25rem 0 2rem; padding: 1.25rem 1.2rem; }
+.installation-prompt h3 { font-size: 1.35rem; }
+.installation-prompt__notice { background: var(--warn-bg); border-radius: 6px; padding: .7rem .9rem; }
+.installation-prompt details { border-top: 1px solid var(--line); margin-top: 1rem; padding-top: 1rem; }
+.installation-prompt summary { color: var(--petrol); cursor: pointer; font-weight: 700; }
+.installation-prompt summary:hover { text-decoration: underline; }
+.installation-prompt pre { background: var(--paper-2); border: 1px solid var(--line); border-radius: 6px; max-width: 100%; overflow-x: auto; padding: .9rem; user-select: all; white-space: pre-wrap; }
+.installation-prompt code { overflow-wrap: anywhere; }
+
 /* Startseite: Ikarus-Einstieg. Mobil in DOM-Reihenfolge, ab 56em zwei Spalten mit Bild rechts. */
 .hero--start .wrap { gap: .5rem 2.5rem; align-items: start; }
 .hero--start .hs-h { margin-bottom: .15em; }
