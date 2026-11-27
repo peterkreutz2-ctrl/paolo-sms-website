@@ -1,0 +1,38 @@
+Lizenzinformation zu den PAOLO-SMS-Materialien
+===============================================
+
+Stand: 27.11.2026
+
+Die PDF-Dokumente in diesem Verzeichnis stehen, soweit im jeweiligen
+Dokument nicht anders gekennzeichnet, unter der Lizenz Creative Commons
+Namensnennung 4.0 International (CC BY 4.0):
+
+https://creativecommons.org/licenses/by/4.0/
+
+Namensnennung
+-------------
+
+PAOLO-Team – paolo-sms.de
+
+Bei einer Weitergabe oder Bearbeitung sind außerdem ein Hinweis auf die
+Lizenz und eine Kennzeichnung eigener Änderungen erforderlich. Eine
+Namensnennung darf nicht den Eindruck erwecken, dass das PAOLO-Team die
+jeweilige Nutzung oder Bearbeitung unterstützt.
+
+Umfang
+------
+
+Die Lizenz gilt für alle urheberrechtlich geschützten Bestandteile der
+Dokumente, soweit sie nicht gesondert gekennzeichnet sind. Marken- und
+Kennzeichenrechte an den Namen und Logos von PAOLO, PAOLO SMS und DHV
+werden durch die Lizenz nicht eingeräumt. Gesondert gekennzeichnete Inhalte
+Dritter sind nicht von der Lizenz umfasst.
+
+KI-generierte Inhalte
+---------------------
+
+Dokumente mit KI-generierten Diagrammen oder Illustrationen weisen dies im
+Dokument und auf der Materialseite aus. Diese Inhalte wurden vom PAOLO-Team
+ausgewählt, geprüft und redaktionell bearbeitet. Soweit an einem
+KI-generierten Bestandteil kein Urheberrecht oder verwandtes Schutzrecht
+besteht, wird seine Nutzung durch diese Lizenz nicht eingeschränkt.

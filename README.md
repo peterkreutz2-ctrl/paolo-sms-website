@@ -7,10 +7,12 @@ Die Seite ist öffentlich unter https://paolo-sms.de/ erreichbar und für
 Suchmaschinen freigegeben (Schalter `INDEXABLE` in `src/config.ts`). Hinweise für
 Rückmeldungen stehen in [REVIEW.md](REVIEW.md).
 
-Alle Rechte vorbehalten, bis eine Lizenz für Inhalte und Code festgelegt ist.
-Name und Logo von PAOLO sind vom Lizenzrecht der Anwendung ausgenommen und
-gesondert vorbehalten; die Verwendung des Logos auf dieser Website ist in
-[BRAND.md](BRAND.md) dokumentiert.
+Die PDF-Dokumente unter `public/materialien/` stehen unter den dort angegebenen
+Lizenzbedingungen (CC BY 4.0). Diese Lizenz gilt nicht für den Quelltext und die
+übrigen Inhalte dieser Website. Für das separat angebotene PAOLO-SMS-Quellpaket
+gilt die darin enthaltene Softwarelizenz. Name und Logo von PAOLO sind gesondert
+vorbehalten; ihre Verwendung auf dieser Website ist in [BRAND.md](BRAND.md)
+dokumentiert.
 
 ## Schnellstart
 
@@ -56,13 +58,19 @@ scripts/                 check-site.mjs, release-check.mjs
 
 ## Ein Material ergänzen
 
-1. Freigegebene Datei (PDF bevorzugt, ohne Autoren- und Pfad-Metadaten) nach
+1. Freigegebene Datei (PDF bevorzugt, ohne persönliche Autoren- und Pfad-Metadaten) mit
+   einem im Dokument lesbaren Lizenzhinweis nach
    `public/materialien/` legen.
 2. In `src/data/materials.ts` `availability: 'download'`, `href`
    (`/materialien/<datei>.pdf`; der Basispfad wird ergänzt), `version` und
    `stand` setzen und `releaseNote` entfernen.
-3. In der Tabelle „Versionen und Änderungen" auf der Materialseite ergänzen.
-4. `npm run verify`.
+3. In der Tabelle „Versionen und Änderungen" auf der Materialseite ergänzen;
+   dort höchstens die aktuelle und die unmittelbar vorherige Fassung je Dokument
+   aufführen.
+4. Lizenz und gewünschte Namensnennung im Materialeintrag setzen; bei
+   KI-generierten Diagrammen oder Illustrationen `aiGeneratedContent: true` setzen
+   und den KI-Hinweis in das Dokument aufnehmen.
+5. `npm run verify`.
 
 Der Release-Check lässt nur Dateien zu, die auf seiner Freigabeliste stehen
 (Logo, Säulengrafik und als `download` eingetragene Materialien).
@@ -87,8 +95,10 @@ E2E-Tests mit Better Auth oder Clerk gehören ausschließlich zur Anwendung.
   `robots.txt`, `sitemap.xml`, kanonische Adresse). Bei `INDEXABLE = true` sind
   sichtbare Freigabehinweise (`Unreleased`) und Platzhalter Pflichtbefunde.
   Hinweise ohne Blockade (zum Beispiel externe Medien) werden nur aufgelistet.
-  Nicht geprüft werden die Inhalte der PDFs unter `public/materialien/`; sie
-  stehen in der lokalen Freigabeliste.
+  Nicht technisch geprüft werden die Inhalte der PDFs unter `public/materialien/`;
+  der lesbare Lizenzhinweis und gegebenenfalls der KI-Hinweis werden deshalb vor
+  dem Eintrag als Download manuell geprüft. Die interne Rechtefreigabe wird
+  außerhalb dieses öffentlichen Repositorys aufbewahrt.
 - In der GitHub-Action zusätzlich `npm audit --omit=dev --audit-level=high`.
 
 ## Kontakt
