@@ -310,13 +310,14 @@ dl.roles dd { margin: 0; max-width: var(--measure); }
 .hero--start .hs-b { margin-block: .75rem; }
 .hero--start .hs-b .btn { font-size: 1.05rem; }
 .hero--start .hs-i { margin-top: 1rem; }
-/* Mobil: Schaltflächen vor den Nutzensatz, damit sie ohne Scrollen erreichbar sind. */
-.hero--start .hs-b { order: 1; }
-.hero--start .hs-l { order: 2; }
-.hero--start .hs-i { order: 3; }
+/* Mobil: etwas engere Abstände um Grafik und Frage (Desktop-Abstände siehe unten). */
+@media (max-width: 55.99em) {
+  .hero--start .wrap { gap: .25rem; }
+  .hero--start .hs-img { margin: 0; }
+  .hero--start .hs-k { margin: .25rem 0; }
+}
 @media (max-width: 30em) { .site-header .logo img { height: 2.5rem; } .site-header .wrap { padding-block: .5rem; gap: .25rem 1rem; } }
 @media (min-width: 56em) {
-  .hero--start .hs-b, .hero--start .hs-l, .hero--start .hs-i { order: 0; }
   .hero--start { padding-block: clamp(1.5rem, 3vw, 2.5rem); }
   .hero--start .wrap { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); grid-template-rows: 1fr repeat(6, auto) 1fr; }
   .hero--start .wrap > * { grid-column: 1; }
