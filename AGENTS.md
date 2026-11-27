@@ -38,7 +38,9 @@ Anwendung. Wer unsicher ist, welches Repository gemeint ist, fragt nach, bevor e
 
 - Neue oder geänderte, nicht freigegebene Inhalte werden mit `Unreleased`
   gekennzeichnet.
-- Neue Bilddateien stehen erst nach Eintrag in `BRAND.md` und in der Freigabeliste
-  von `scripts/release-check.mjs` im gebauten Ergebnis.
+- Neue Bilddateien stehen erst nach dokumentierter interner Rechte- und
+  Markenfreigabe sowie nach Eintrag in der Freigabeliste von
+  `scripts/release-check.mjs` im gebauten Ergebnis.
 - Name und Logo von PAOLO bleiben reserviert; das Logo wird nur als unveränderte
-  Original-Vektordatei eigenständig verwendet (siehe `BRAND.md`).
+  Original-Vektordatei eigenständig verwendet. Die zugehörige Rechte- und
+  Markendokumentation wird außerhalb dieses öffentlichen Repositorys aufbewahrt.

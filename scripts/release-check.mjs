@@ -20,7 +20,7 @@ if (!existsSync(DIST)) {
 }
 
 const { PROVIDER, SITE, SITE_URL, INDEXABLE, CLOUDFLARE_ANALYTICS } = await import('../src/config.ts');
-const { materials, releasePackage } = await import('../src/data/materials.ts');
+const { materials, releasePackage, MATERIAL_LICENSE } = await import('../src/data/materials.ts');
 
 const walk = (d, skip = new Set()) =>
   readdirSync(d).flatMap((n) => {
@@ -50,7 +50,7 @@ const ALLOWED_EMAILS = new Set([SITE.email.toLowerCase()]);
 // Betreiberinstallation), vom Betreiber freigegeben am 25.10.2026; Sicherheitsseite des DHV (Link am DHV-Logo
 // der Startseite), vom Betreiber am 18.11.2026 beauftragt; Cloudflare-Dokumente zur Datenverarbeitung (Verweise in der
 // eigenen Datenschutzerklärung zur Reichweitenmessung).
-const ALLOWED_EXTERNAL_LINKS = new Set(['https://demo.paolo-sms.de/', 'https://www.youtube.com/watch?v=6b8VwUDiiHQ', 'https://www.dhv.de/sicherheit/', 'https://www.cloudflare.com/cloudflare-customer-dpa/', 'https://www.cloudflare.com/gdpr/subprocessors/']);
+const ALLOWED_EXTERNAL_LINKS = new Set(['https://demo.paolo-sms.de/', 'https://www.youtube.com/watch?v=6b8VwUDiiHQ', 'https://www.dhv.de/sicherheit/', 'https://www.cloudflare.com/cloudflare-customer-dpa/', 'https://www.cloudflare.com/gdpr/subprocessors/', MATERIAL_LICENSE.href]);
 const TEXT_EXT = new Set(['.astro', '.ts', '.mjs', '.js', '.json', '.md', '.yml', '.yaml', '.css', '.svg', '.html', '.txt']);
 
 // 1. Gebautes Ergebnis (dist) und Repository-Inhalt (ohne Ignoriertes) durchsuchen
@@ -88,6 +88,7 @@ const allowedAssets = new Set([
   'contributors/contributor_peter.webp',
   'contributors/contributor_rainer.webp',
   'contributors/contributor_thomas.webp',
+  'materialien/LIZENZ.txt',
   // hier kommen alte Downloads, die noch angeboten werden (auch ohne explizite Erwähnung)
   'downloads/paolo-sms-0.2.0-pilot.1.tar.gz',
   'downloads/paolo-sms-0.2.0-pilot.1.SHA256SUMS',
@@ -105,6 +106,10 @@ for (const f of staticFiles) {
 }
 for (const m of materials) {
   if (m.availability === 'download' && (!m.version || !m.stand)) addMust(`materials: ${m.id}`, 'Download ohne Version und Stand');
+  if (m.availability === 'download' && m.license?.id !== MATERIAL_LICENSE.id) addMust(`materials: ${m.id}`, `Download ohne Dokumentlizenz ${MATERIAL_LICENSE.id}`);
+  if (m.availability === 'download' && m.license?.href !== MATERIAL_LICENSE.href) addMust(`materials: ${m.id}`, 'Download mit abweichendem oder fehlendem Lizenzlink');
+  if (m.availability === 'download' && m.license?.attribution !== MATERIAL_LICENSE.attribution) addMust(`materials: ${m.id}`, 'Download mit abweichender oder fehlender Namensnennung');
+  if (m.availability === 'download' && typeof m.aiGeneratedContent !== 'boolean') addMust(`materials: ${m.id}`, 'Download ohne explizite Angabe zu KI-generierten Inhalten');
 }
 
 // 3. Seiten
@@ -166,27 +171,10 @@ else {
   for (const l of listed) if (!expected.includes(l)) addMust('dist: sitemap.xml', `Eintrag ohne Seite: ${l}`);
 }
 
-// 3b. Logo: Verwendung muss dokumentiert sein
-if (allowedAssets.has('brand/paolo-sms-logo.svg')) {
-  const brand = join(ROOT, 'BRAND.md');
-  if (!existsSync(brand) || !/Berechtigung/.test(readFileSync(brand, 'utf8'))) addMust('BRAND.md', 'Dokumentation der Logo-Berechtigung fehlt');
-}
-
-// 3b2. DHV-Logo: Freigabe muss in BRAND.md stehen
-if (allowedAssets.has('brand/dhv-logo.svg')) {
-  const brand = join(ROOT, 'BRAND.md');
-  if (!existsSync(brand) || !/dhv-logo.svg/.test(readFileSync(brand, 'utf8'))) addMust('BRAND.md', 'Dokumentation des DHV-Logos fehlt');
-}
-
-// 3b3. DHV-Logo: dokumentierte Farbe (BRAND.md) muss in der ausgelieferten Datei stehen
+// 3b. DHV-Logo: freigegebene graue Fassung muss unverändert ausgeliefert werden.
+// Die Rechte- und Markenfreigaben werden außerhalb des öffentlichen Repositorys aufbewahrt.
 if (allowedAssets.has('brand/dhv-logo.svg') && existsSync(join(DIST, 'brand/dhv-logo.svg'))) {
-  if (!/fill="#55616a"/i.test(readFileSync(join(DIST, 'brand/dhv-logo.svg'), 'utf8'))) addMust('dist: brand/dhv-logo.svg', 'DHV-Logo nicht in dokumentiertem Grau #55616a (siehe BRAND.md)');
-}
-
-// 3c. Säulengrafik (enthält das Logo): Freigabe muss in BRAND.md stehen
-if (allowedAssets.has('saeulen/sms-saeulen.png')) {
-  const brand = join(ROOT, 'BRAND.md');
-  if (!existsSync(brand) || !/sms-saeulen\.png/.test(readFileSync(brand, 'utf8'))) addMust('BRAND.md', 'Dokumentation der Säulengrafik (mit Logo) fehlt');
+  if (!/fill="#55616a"/i.test(readFileSync(join(DIST, 'brand/dhv-logo.svg'), 'utf8'))) addMust('dist: brand/dhv-logo.svg', 'DHV-Logo nicht in freigegebenem Grau #55616a');
 }
 
 // 4. Impressum: festgelegte Anbieterangaben müssen im gebauten Impressum stehen

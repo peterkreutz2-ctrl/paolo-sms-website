@@ -31,8 +31,25 @@ export interface Material {
   version?: string;
   stand?: string;
   href?: string;
+  license?: MaterialLicense;
+  /** Kennzeichnet Dokumente mit KI-generierten Diagrammen oder Illustrationen. */
+  aiGeneratedContent?: boolean;
   releaseNote?: string;
 }
+
+export interface MaterialLicense {
+  id: 'CC-BY-4.0';
+  name: string;
+  href: string;
+  attribution: string;
+}
+
+export const MATERIAL_LICENSE: MaterialLicense = {
+  id: 'CC-BY-4.0',
+  name: 'CC BY 4.0',
+  href: 'https://creativecommons.org/licenses/by/4.0/',
+  attribution: 'PAOLO-Team – paolo-sms.de',
+};
 
 /** Veröffentlichtes Quellpaket (Vorabversion). Dateien liegen unter public/downloads/. */
 export interface ReleasePackage {
@@ -60,7 +77,7 @@ export const releasePackage: ReleasePackage = {
   size: '3.211.280 Bytes',
   description:
     'Quellcode und Dokumentation, um PAOLO SMS ohne Zugang zum Entwicklungsrepository zu installieren, zu aktualisieren, zu sichern und wiederherzustellen.',
-  notice: 'Die Vorabversion ist nur für Tests gedacht und nicht für den Produktivbetrieb freigegeben. Verwende ausschließlich Testdaten.\nDer erste Release Candidate 1.0 ist als Weihnachtsgeschenk für den 24.12.2026 geplant. .',
+  notice: 'Die Vorabversion ist nur für Tests gedacht und nicht für den Produktivbetrieb freigegeben. Verwende ausschließlich Testdaten.\nDer erste Release Candidate 1.0 ist als Weihnachtsgeschenk für den 24.12.2026 geplant.',
   packageHref: '/downloads/paolo-sms-R0.2.0-pilot-2.tar.gz',
   checksumHref: '/downloads/paolo-sms-R0.2.0-pilot-2.SHA256SUMS',
   packageFile: 'paolo-sms-R0.2.0-pilot-2.tar.gz',
@@ -108,9 +125,11 @@ export const materials: Material[] = [
     availability: 'download',
     format: 'PDF',
     extent: '1 Seite',
-    version: '1.4',
-    stand: '18.11.2026',
-    href: '/materialien/PAOLO-SMS_Factsheet_R1.0_V1.4.pdf',
+    version: '1.5',
+    stand: '27.11.2026',
+    href: '/materialien/PAOLO-SMS_Factsheet_R1.0_V1.5.pdf',
+    license: MATERIAL_LICENSE,
+    aiGeneratedContent: false,
   },
   {
     id: 'promo',
@@ -131,9 +150,11 @@ export const materials: Material[] = [
     availability: 'download',
     format: 'PDF',
     extent: '9 Seiten',
-    version: '0.3',
-    stand: '18.11.2026',
-    href: '/materialien/PAOLO-SMS_Entscheidungspraesentation_R1.0_V0.3.pdf',
+    version: '0.4',
+    stand: '27.11.2026',
+    href: '/materialien/PAOLO-SMS_Entscheidungspraesentation_R1.0_V0.4.pdf',
+    license: MATERIAL_LICENSE,
+    aiGeneratedContent: true,
   },
   {
     id: 'einfuehrung',
@@ -143,10 +164,12 @@ export const materials: Material[] = [
     purpose: 'Leitfaden für Vereine und Flugschulen: Rollen benennen, Betriebsweg wählen, einrichten, Betrieb aufnehmen.',
     availability: 'download',
     format: 'PDF',
-    extent: '12 Seiten',
-    version: '1.1',
-    stand: '18.11.2026',
-    href: '/materialien/PAOLO-SMS_Einfuehrung-Betrieb_R0.1_V1.1.pdf',
+    extent: '13 Seiten',
+    version: '1.2',
+    stand: '28.11.2026',
+    href: '/materialien/PAOLO-SMS_Einfuehrung-Betrieb_R1.0_V1.2.pdf',
+    license: MATERIAL_LICENSE,
+    aiGeneratedContent: false,
   },
   {
     id: 'handbuch',

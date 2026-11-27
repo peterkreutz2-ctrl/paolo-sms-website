@@ -34,6 +34,8 @@ const linkLabel: Partial<Record<Material['availability'], string>> = {
     {item.format && <div><dt>Format:</dt> <dd>{item.format}</dd></div>}
     {item.extent && <div><dt>Umfang:</dt> <dd>{item.extent}</dd></div>}
     {item.version && <div><dt>Version:</dt> <dd>{item.version}{item.stand ? `, Stand ${item.stand}` : ''}</dd></div>}
+    {item.license && <div><dt>Lizenz:</dt> <dd><a href={item.license.href}>{item.license.name}</a>, Namensnennung: {item.license.attribution}</dd></div>}
+    {item.aiGeneratedContent && <div><dt>KI-Hinweis:</dt> <dd>Enthält KI-generierte Diagramme oder Illustrationen; redaktionell geprüft.</dd></div>}
   </dl>
   {href && linkLabel[item.availability] && (
     <p>
