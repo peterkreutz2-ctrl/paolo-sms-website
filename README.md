@@ -11,8 +11,7 @@ Die PDF-Dokumente unter `public/materialien/` stehen unter den dort angegebenen
 Lizenzbedingungen (CC BY 4.0). Diese Lizenz gilt nicht für den Quelltext und die
 übrigen Inhalte dieser Website. Für das separat angebotene PAOLO-SMS-Quellpaket
 gilt die darin enthaltene Softwarelizenz. Name und Logo von PAOLO sind gesondert
-vorbehalten; ihre Verwendung auf dieser Website ist in [BRAND.md](BRAND.md)
-dokumentiert.
+vorbehalten; ihre Verwendung auf dieser Website ist intern dokumentiert.
 
 ## Schnellstart
 
@@ -51,7 +50,7 @@ src/data/saeulen.ts      die vier Säulen eines SMS
 src/data/materials.ts    alle Informationsmaterialien
 src/styles/global.css    ein Stylesheet
 public/brand/            Logo (Original-SVG, unverändert)
-public/saeulen/          Säulengrafik der Startseite (enthält das Logo, siehe BRAND.md)
+public/saeulen/          Säulengrafik der Startseite (enthält das Logo)
 scripts/                 check-site.mjs, release-check.mjs
 .github/workflows/       Build, Prüfungen und Deployment auf GitHub Pages
 ```

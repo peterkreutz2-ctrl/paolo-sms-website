@@ -171,27 +171,10 @@ else {
   for (const l of listed) if (!expected.includes(l)) addMust('dist: sitemap.xml', `Eintrag ohne Seite: ${l}`);
 }
 
-// 3b. Logo: Verwendung muss dokumentiert sein
-if (allowedAssets.has('brand/paolo-sms-logo.svg')) {
-  const brand = join(ROOT, 'BRAND.md');
-  if (!existsSync(brand) || !/Berechtigung/.test(readFileSync(brand, 'utf8'))) addMust('BRAND.md', 'Dokumentation der Logo-Berechtigung fehlt');
-}
-
-// 3b2. DHV-Logo: Freigabe muss in BRAND.md stehen
-if (allowedAssets.has('brand/dhv-logo.svg')) {
-  const brand = join(ROOT, 'BRAND.md');
-  if (!existsSync(brand) || !/dhv-logo.svg/.test(readFileSync(brand, 'utf8'))) addMust('BRAND.md', 'Dokumentation des DHV-Logos fehlt');
-}
-
-// 3b3. DHV-Logo: dokumentierte Farbe (BRAND.md) muss in der ausgelieferten Datei stehen
+// 3b. DHV-Logo: freigegebene graue Fassung muss unverändert ausgeliefert werden.
+// Die Rechte- und Markenfreigaben werden außerhalb des öffentlichen Repositorys aufbewahrt.
 if (allowedAssets.has('brand/dhv-logo.svg') && existsSync(join(DIST, 'brand/dhv-logo.svg'))) {
-  if (!/fill="#55616a"/i.test(readFileSync(join(DIST, 'brand/dhv-logo.svg'), 'utf8'))) addMust('dist: brand/dhv-logo.svg', 'DHV-Logo nicht in dokumentiertem Grau #55616a (siehe BRAND.md)');
-}
-
-// 3c. Säulengrafik (enthält das Logo): Freigabe muss in BRAND.md stehen
-if (allowedAssets.has('saeulen/sms-saeulen.png')) {
-  const brand = join(ROOT, 'BRAND.md');
-  if (!existsSync(brand) || !/sms-saeulen\.png/.test(readFileSync(brand, 'utf8'))) addMust('BRAND.md', 'Dokumentation der Säulengrafik (mit Logo) fehlt');
+  if (!/fill="#55616a"/i.test(readFileSync(join(DIST, 'brand/dhv-logo.svg'), 'utf8'))) addMust('dist: brand/dhv-logo.svg', 'DHV-Logo nicht in freigegebenem Grau #55616a');
 }
 
 // 4. Impressum: festgelegte Anbieterangaben müssen im gebauten Impressum stehen
