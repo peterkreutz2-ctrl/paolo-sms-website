@@ -59,11 +59,6 @@ export const NAV: NavItem[] = [
 ];
 
 export const FOOTER_NAV: NavItem[] = [
-  { label: 'Die Idee', href: '/idee/' },
-  { label: 'Was ist PAOLO?', href: '/paolo/' },
-  { label: 'Einführen', href: '/einfuehren/' },
-  { label: 'Materialien', href: '/materialien/' },
-  { label: 'Mitmachen', href: '/mitmachen/' },
   { label: 'Impressum', href: '/impressum/' },
   { label: 'Datenschutz', href: '/datenschutz/' },
   { label: 'Kontakt', href: '/kontakt/' },
